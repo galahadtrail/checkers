@@ -16,7 +16,11 @@ private:
 	Vector2i mause_position;//позиция мыши
 	Checkers_on_board checkers_on_board;
 	vector <int> who_must_eat;//храню шашки, которые могут съесть
+	size_t time; //время игры в секундах.
 public:
+	int startTime = 0;
+
+
 	Checkers_on_board & get_checkers_on_board() {
 		return this->checkers_on_board;
 	}
@@ -558,6 +562,20 @@ public:
 	}
 
 	bool end_game(RenderWindow &_window, Event _event) {
+		wifstream input("user.txt");
+		wstring bulk;
+		getline(input, bulk);
+		int theme;
+		input.close();
+
+		int index = bulk.rfind(':') + 1;
+		if (bulk[index] == 'D') {
+			theme = 0;
+		}
+		else {
+			theme = 1;
+		}
+
 		int black = 0;
 		int white = 0;
 		for (int i = 0; i < checkers_on_board.get_size(); i++) {
@@ -570,7 +588,12 @@ public:
 		}
 		if (white == 0) {
 				RectangleShape back = RectangleShape(Vector2f(350, 150));
-				back.setFillColor(Color(245, 210, 175));
+				if (theme == 0) {
+					back.setFillColor(Color(245, 210, 175));
+				}
+				else {
+					back.setFillColor(Color(110, 110, 110));
+				}
 				back.setPosition(75, 175);
 				Font font;
 				font.loadFromFile("Font//bahnschrift.ttf");
@@ -586,7 +609,12 @@ public:
 		}
 		if (black == 0) {
 			RectangleShape back = RectangleShape(Vector2f(350, 150));
-			back.setFillColor(Color(245, 210, 175));
+			if (theme == 0) {
+				back.setFillColor(Color(245, 210, 175));
+			}
+			else {
+				back.setFillColor(Color(110, 110, 110));
+			}
 			back.setPosition(75, 175);
 			Font font;
 			font.loadFromFile("Font//bahnschrift.ttf");

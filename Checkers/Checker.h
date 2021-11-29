@@ -1,5 +1,8 @@
 #include <SFML/Graphics.hpp>
+#include <fstream>
+#include <iostream>
 using namespace sf;
+using namespace std;
 
 class Checker {
 private:
@@ -51,14 +54,38 @@ public:
 	Checker() { }
 
 	Checker(float _x_position, float _y_position, bool _color) {
+		wifstream input("user.txt");
+		wstring bulk;
+		getline(input, bulk);
+		int theme;
+		input.close();
+
+		int index = bulk.rfind(':') + 1;
+		if (bulk[index] == 'D') {
+			theme = 0;
+		}
+		else {
+			theme = 1;
+		}
+
 		this->checker.setOutlineThickness(3);
 		this->checker.setOutlineColor(sf::Color(0, 0, 0));
 		this->checker_color = _color;
 		if (_color == 0) {
-			this->set_color(Color(180, 120, 55));
+			if (theme == 0) {
+				this->set_color(Color(180, 120, 55));
+			}
+			else {
+				this->set_color(Color(255, 255, 255));
+			}
 		}
 		else if (_color == 1) {
-			this->set_color(Color(61, 25, 7));
+			if (theme == 0) {
+				this->set_color(Color(61, 25, 7));  
+			}
+			else {
+				this->set_color(Color(0, 0, 0));
+			}
 		}
 		this->set_position(_x_position, _y_position);
 		this->select = 0;
@@ -76,16 +103,40 @@ public:
 	}
 
 	Checker operator = (Checker _checker) {
+		wifstream input("user.txt");
+		wstring bulk;
+		getline(input, bulk);
+		int theme;
+		input.close();
+
+		int index = bulk.rfind(':') + 1;
+		if (bulk[index] == 'D') {
+			theme = 0;
+		}
+		else {
+			theme = 1;
+		}
+
 		this->texture = _checker.texture;
 		this->sprite = _checker.sprite;
 		this->select = _checker.select;
 		this->queen = _checker.queen;
 		this->checker_color = _checker.checker_color;
 		if (_checker.checker_color == 0) {
-			this->set_color(Color(180, 120, 55));
+			if (theme == 0) {
+				this->set_color(Color(180, 120, 55));
+			}
+			else {
+				this->set_color(Color(255, 255, 255));
+			}
 		}
 		else if (_checker.checker_color == 1) {
-			this->set_color(Color(61, 25, 7));
+			if (theme == 0) {
+				this->set_color(Color(61, 25, 7));
+			}
+			else {
+				this->set_color(Color(0, 0, 0));
+			}
 		}
 		this->set_position(_checker.get_position().x, _checker.get_position().y);
 		return (*this);

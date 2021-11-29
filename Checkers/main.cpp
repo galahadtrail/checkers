@@ -5,9 +5,11 @@ int main() {
 
 	Game game;
 	bool start = 1;
+	
 
-	RenderWindow gameWindow(VideoMode(600, 500), "Checkers");
+	RenderWindow gameWindow(VideoMode(800, 500), "Checkers");
 	menu(gameWindow);
 
 	return 0;
 }
+
