@@ -1,0 +1,78 @@
+﻿  menu.cpp
+c:\users\levaf\desktop\chessddz\board.h(19): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\board.h(19): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\board.h(29): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\board.h(60): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\board.h(62): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\board.h(67): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\board.h(69): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\checkers_on_board.h(21): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(98): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(100): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+c:\users\levaf\desktop\chessddz\game.h(102): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(103): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(112): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+c:\users\levaf\desktop\chessddz\game.h(116): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(117): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(149): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(151): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(154): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(156): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(161): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(163): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(166): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(168): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(179): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(180): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(181): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(183): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(189): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(190): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(191): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(193): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(199): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(200): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(201): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(203): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(209): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(210): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(211): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(213): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(227): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(256): warning C4838: преобразование из "int" в "bool" требует сужающего преобразования
+c:\users\levaf\desktop\chessddz\game.h(258): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(259): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(263): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(269): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(293): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(294): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(296): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(302): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(326): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(327): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(329): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(335): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(359): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(360): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(362): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(368): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(404): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(405): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(422): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(423): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(440): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(441): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(458): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(459): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(478): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\levaf\desktop\chessddz\game.h(35): warning C4715: Game::centre_on_square: значение возвращается не при всех путях выполнения
+c:\users\levaf\desktop\chessddz\game.h(399): warning C4715: Game::queen_square_for_move: значение возвращается не при всех путях выполнения
+  ChessDDZ.vcxproj -> C:\Users\levaf\Desktop\ChessDDZ\x64\Debug\ChessDDZ.exe
