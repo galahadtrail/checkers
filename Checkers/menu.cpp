@@ -526,25 +526,27 @@ void menu(sf::RenderWindow& window)
     textExit.setStyle(sf::Text::Italic);
     textExit.setPosition(240, 300);
 
-    wifstream input("user.txt");
-    wstring bulk;
-    getline(input, bulk);
-    int theme;
-    input.close();
-
-    int index = bulk.rfind(':') + 1;
-    if (bulk[index] == 'D') {
-        theme = 0;
-    }
-    else {
-        theme = 1;
-    }
+   
 
     while (window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event))
         {
+            wifstream input("user.txt");
+            wstring bulk;
+            getline(input, bulk);
+            int theme;
+            input.close();
+
+            int index = bulk.rfind(':') + 1;
+            if (bulk[index] == 'D') {
+                theme = 0;
+            }
+            else {
+                theme = 1;
+            }
+
             if (event.type == sf::Event::Closed ||
                 (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
 
