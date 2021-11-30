@@ -1,4 +1,4 @@
-#include "menu.h"
+    #include "menu.h"
 
 void InstructionSettings(sf::RenderWindow& window) {
     Texture fon, whites, blacks;
