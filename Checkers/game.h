@@ -62,13 +62,8 @@ void assignValuesFromFile(std::string fileName)
 	int startTime = 0;
 
 
-	Checkers_on_board & get_checkers_on_board() {
-		return this->checkers_on_board;
-	}
-	void set_mause_position(RenderWindow &_window) {
-		this->mause_position = Mouse::getPosition(_window);
-	}
-
+	
+	
 	Checkers_on_board& get_checkers_on_board() { return this->checkers_on_board; }
 
 	void set_mause_position(RenderWindow& _window) { this->mousePosition = Mouse::getPosition(_window); }
