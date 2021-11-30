@@ -1,5 +1,16 @@
     #include "menu.h"
 
+class PauseOption {
+private:   
+    int option = 0;
+
+public:
+    int getOption() { return this->option; }
+    void setOption(int val) { this->option = val; }
+};
+
+PauseOption pauseOption;
+
 void InstructionSettings(sf::RenderWindow& window) {
     Texture fon, whites, blacks;
     fon.loadFromFile("images/fon.jpg");
@@ -477,6 +488,7 @@ void ExitFunc(sf::RenderWindow& window) {
             if (Mouse::isButtonPressed(Mouse::Left)) {
                 if (leave) {
                     windowDaugth.close();
+                    pauseOption.setOption(4);
                     window.close();
                 }
 
@@ -495,7 +507,7 @@ void ExitFunc(sf::RenderWindow& window) {
     }
 }
 
-void menu(sf::RenderWindow& window)
+bool menu(sf::RenderWindow& window)
 {
     Texture fon;
     fon.loadFromFile("images/fon.jpg");
@@ -528,11 +540,10 @@ void menu(sf::RenderWindow& window)
     textExit.setStyle(sf::Text::Italic);
     textExit.setPosition(240, 300);
 
-   
-
     while (window.isOpen())
     {
         sf::Event event;
+
         while (window.pollEvent(event))
         {
             wifstream input("user.txt");
@@ -563,10 +574,32 @@ void menu(sf::RenderWindow& window)
 
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
                 window.setActive(false);
+
                 sf::Thread newPollThread(Pause, std::ref(window));
+                
                 newPollThread.launch();
                 newPollThread.wait();
                 window.setActive();
+
+                switch (pauseOption.getOption()) {
+                case 0:
+                {
+                    pauseOption.setOption(4);
+                    window.close();
+                    return true;
+                    break;
+                }
+                case 1:
+                {
+
+                    break;
+                }
+                /*case 2:
+                {
+
+                }*/
+                }
+
                 isReadyOptions = false;
                 isReadyUserSettings = false;
                 isExit = false;
@@ -690,7 +723,7 @@ void menu(sf::RenderWindow& window)
                     newPollThread.wait();
                     window.setActive();
                     if (!window.isOpen()) {
-                        return;
+                        return false;
                     }
                 }
             }
@@ -704,10 +737,16 @@ void menu(sf::RenderWindow& window)
         window.display();
     }
 
-    return;
+    if (pauseOption.getOption() == 0) {
+        window.close();
+        return true;
+    }
+    return false;
 }
 
 void Pause(sf::RenderWindow& window) {
+    
+    
     window.setActive(false);
     Texture fon;
     fon.loadFromFile("images/fon.jpg");
@@ -746,7 +785,7 @@ void Pause(sf::RenderWindow& window) {
         sf::Event event;
         while (windowDaugth.pollEvent(event))
         {
-            if (IntRect(170, 210, 70, 30).contains(Mouse::getPosition(windowDaugth))) {
+            if (IntRect(170, 210, 150, 30).contains(Mouse::getPosition(windowDaugth))) {
                 yes.setFillColor(sf::Color::Yellow);
                 leave = true;
             }
@@ -755,7 +794,7 @@ void Pause(sf::RenderWindow& window) {
                 leave = false;
             }
 
-            if (IntRect(170, 280, 70, 30).contains(Mouse::getPosition(windowDaugth))) {
+            if (IntRect(170, 280, 232, 30).contains(Mouse::getPosition(windowDaugth))) {
                 no.setFillColor(sf::Color::Yellow);
                 stay = true;
             }
@@ -764,14 +803,30 @@ void Pause(sf::RenderWindow& window) {
                 stay = false;
             }
 
+            if (IntRect(170, 350, 208, 30).contains(Mouse::getPosition(windowDaugth))) {
+                newGame.setFillColor(sf::Color::Yellow);
+                startNew = true;
+            }
+            else {
+                newGame.setFillColor(sf::Color::White);
+                startNew = false;
+            }
+
             if (Mouse::isButtonPressed(Mouse::Left)) {
                 if (leave) {
                     windowDaugth.close();
+                    pauseOption.setOption(0);
                     window.close();
                 }
 
                 if (stay) {
                     windowDaugth.close();
+                    pauseOption.setOption(1);
+                }
+
+                if (startNew) {
+                    windowDaugth.close();
+                    pauseOption.setOption(2);
                 }
             }
 
