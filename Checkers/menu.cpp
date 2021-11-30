@@ -549,11 +549,21 @@ void menu(sf::RenderWindow& window)
                 theme = 1;
             }
 
-            if (event.type == sf::Event::Closed ||
-                (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
+            if (event.type == sf::Event::Closed) {
 
                 window.setActive(false);
                 sf::Thread newPollThread(ExitFunc, std::ref(window));
+                newPollThread.launch();
+                newPollThread.wait();
+                window.setActive();
+                isReadyOptions = false;
+                isReadyUserSettings = false;
+                isExit = false;
+            }
+
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
+                window.setActive(false);
+                sf::Thread newPollThread(Pause, std::ref(window));
                 newPollThread.launch();
                 newPollThread.wait();
                 window.setActive();
@@ -617,13 +627,29 @@ void menu(sf::RenderWindow& window)
                         
 
                         while (window.pollEvent(event)) {
-                            if (event.type == sf::Event::Closed ||
-                                (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
+                            if (event.type == sf::Event::Closed) {
                                 window.setActive(false);
                                 sf::Thread newPollThread(ExitFunc, std::ref(window));
+                                game.pauseTimeIn = clock();
                                 newPollThread.launch();
                                 newPollThread.wait();
                                 window.setActive();
+                                game.pauseTimeOut = clock() - game.pauseTimeIn;
+                                game.startTime += game.pauseTimeOut;
+                            }
+
+                            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
+                                window.setActive(false);
+                                sf::Thread newPollThread(Pause, std::ref(window));
+                                game.pauseTimeIn = clock();
+                                newPollThread.launch();
+                                newPollThread.wait();
+                                window.setActive();
+                                isReadyOptions = false;
+                                isReadyUserSettings = false;
+                                isExit = false;
+                                game.pauseTimeOut = clock() - game.pauseTimeIn;
+                                game.startTime += game.pauseTimeOut;
                             }
                             
                             game.make_move(window, event);
@@ -679,4 +705,83 @@ void menu(sf::RenderWindow& window)
     }
 
     return;
+}
+
+void Pause(sf::RenderWindow& window) {
+    window.setActive(false);
+    Texture fon;
+    fon.loadFromFile("images/fon.jpg");
+    Sprite fons(fon);
+
+
+    sf::RenderWindow windowDaugth(sf::VideoMode(600, 500), "Checkers");
+    sf::Font font;
+    font.loadFromFile("Font//Deutsch Gothic.ttf");
+
+    sf::Text textStart(L"Пауза", font, 30);
+    textStart.setFillColor(sf::Color::White);
+    textStart.setStyle(sf::Text::Bold);
+    textStart.setPosition(150, 150);
+
+    bool stay = false;
+    sf::Text yes(L"В меню", font, 30);
+    yes.setFillColor(sf::Color::White);
+    yes.setStyle(sf::Text::Bold);
+    yes.setPosition(170, 210);
+
+    bool leave = false;
+    sf::Text no(L"Продолжить", font, 30);
+    no.setFillColor(sf::Color::White);
+    no.setStyle(sf::Text::Bold);
+    no.setPosition(170, 280);
+
+    bool startNew = false;
+    sf::Text newGame(L"Новая игра", font, 30);
+    newGame.setFillColor(sf::Color::White);
+    newGame.setStyle(sf::Text::Bold);
+    newGame.setPosition(170, 350);
+
+    while (windowDaugth.isOpen())
+    {
+        sf::Event event;
+        while (windowDaugth.pollEvent(event))
+        {
+            if (IntRect(170, 210, 70, 30).contains(Mouse::getPosition(windowDaugth))) {
+                yes.setFillColor(sf::Color::Yellow);
+                leave = true;
+            }
+            else {
+                yes.setFillColor(sf::Color::White);
+                leave = false;
+            }
+
+            if (IntRect(170, 280, 70, 30).contains(Mouse::getPosition(windowDaugth))) {
+                no.setFillColor(sf::Color::Yellow);
+                stay = true;
+            }
+            else {
+                no.setFillColor(sf::Color::White);
+                stay = false;
+            }
+
+            if (Mouse::isButtonPressed(Mouse::Left)) {
+                if (leave) {
+                    windowDaugth.close();
+                    window.close();
+                }
+
+                if (stay) {
+                    windowDaugth.close();
+                }
+            }
+
+        }
+        windowDaugth.clear();
+        windowDaugth.draw(fons);
+        windowDaugth.draw(textStart);
+        windowDaugth.draw(yes);
+        windowDaugth.draw(no);
+        windowDaugth.draw(newGame);
+        windowDaugth.display();
+    }
 }

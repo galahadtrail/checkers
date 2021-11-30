@@ -60,7 +60,8 @@ void assignValuesFromFile(std::string fileName)
 }
 
 	int startTime = 0;
-
+	int pauseTimeIn = 0;
+	int pauseTimeOut = 0;
 
 	
 	

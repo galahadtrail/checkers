@@ -40,20 +40,20 @@ public:
 				all_squares[i - 1][j - 1].set_position(i * 50.0, j * 50);
 				if ((i + j) % 2 == 1) {
 					if (theme == 0) {
-						all_squares[i - 1][j - 1].set_color(Color(255, 178, 115));   //белые клетки
-					}
-					else {
-						all_squares[i - 1][j - 1].set_color(Color(255, 255, 255));
-					}
-				}  
-				else { 
-					if (theme == 0) {
 						all_squares[i - 1][j - 1].set_color(Color(101, 61, 16));
 					}
 					else {
 						all_squares[i - 1][j - 1].set_color(Color(80, 80, 80));
 					}
-				} //чёрные клетки
+				}  
+				else { 
+					if (theme == 0) {
+						all_squares[i - 1][j - 1].set_color(Color(255, 178, 115));   //белые клетки
+					}
+					else {
+						all_squares[i - 1][j - 1].set_color(Color(255, 255, 255));
+					}
+				} //белые клетки
 				_window.draw(all_squares[i - 1][j - 1].get_square());
 			}
 		}

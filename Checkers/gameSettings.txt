@@ -1,1 +1,1 @@
-2|Checkers|white
+1|Russian|white
