@@ -1,5 +1,7 @@
+
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <ctime>
 #include "Checker.h"
 #include "Board.h"
 using namespace sf;
@@ -8,9 +10,18 @@ class Checkers_on_board {
 private:
 	vector <Checker> checkers;//светлые шашки
 	Board board;
+	int time;
 public:
 	Board &get_board() {
 		return this->board;
+	}
+
+	void setTime(int time) {
+		this->time = time;
+	}
+
+	int getTime() {
+		return this->time;
 	}
 
 	Checker &get_checker(int _i) {
@@ -60,8 +71,8 @@ public:
 		start_game();//расставл€ю шашки
 	};
 
-	void draw_checkers(RenderWindow &_window) {//функци€ рисовани€ пол€ с фигурами
-		board.draw_board(_window);//рисую доску
+	void draw_checkers(RenderWindow &_window, int time) {//функци€ рисовани€ пол€ с фигурами
+		board.draw_board(_window, time);//рисую доску
 		for (int i = 0; i < checkers.size(); i++) {
 			checkers[i].draw_checker(_window);//рисую каждую шашку
 		}

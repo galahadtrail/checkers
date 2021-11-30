@@ -15,7 +15,7 @@ void InstructionSettings(sf::RenderWindow& window) {
     bool isBlack = false;
     std::string color = "";
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(600, 500), "Checker");
+    sf::RenderWindow windowDaugth(sf::VideoMode(800, 500), "Checker");
     sf::Font font;
     font.loadFromFile("Font//Deutsch Gothic.ttf");
 
@@ -37,21 +37,21 @@ void InstructionSettings(sf::RenderWindow& window) {
     sf::Text textVariants(L"Вариант игры: ", font, 20);
     textVariants.setFillColor(sf::Color::White);
     textVariants.setPosition(20, 200);
-    sf::Text textRus(L"русские, ", font, 12);
-    textRus.setStyle(sf::Text::Italic);
+    sf::Text textRus(L"Русские  ", font, 12);
+    //textRus.setStyle(sf::Text::Italic);
     textRus.setFillColor(sf::Color::White);
     textRus.setPosition(200, 210);
-    sf::Text textEngl(L"английские, ", font, 12);
-    textEngl.setStyle(sf::Text::Italic);
+    sf::Text textEngl(L"Английские  ", font, 12);
+    //textEngl.setStyle(sf::Text::Italic);
     textEngl.setFillColor(sf::Color::White);
     textEngl.setPosition(265, 210);
-    sf::Text textGive(L"поддавки, ", font, 12);
-    textGive.setStyle(sf::Text::Italic);
+    sf::Text textGive(L"Поддавки  ", font, 12);
+    //textGive.setStyle(sf::Text::Italic);
     textGive.setFillColor(sf::Color::White);
     textGive.setPosition(355, 210);
-    sf::Text textInter(L"международные", font, 12);
+    sf::Text textInter(L"Международные", font, 12);
     textInter.setFillColor(sf::Color::White);
-    textInter.setStyle(sf::Text::Italic);
+    //textInter.setStyle(sf::Text::Italic);
     textInter.setPosition(435, 210);
     bool isRus = false;
     bool isEn = false;
@@ -78,7 +78,11 @@ void InstructionSettings(sf::RenderWindow& window) {
         sf::Event event;
         while (windowDaugth.pollEvent(event))
         {
-            if (IntRect(200, 210, 60, 30).contains(Mouse::getPosition(window))) {
+            if (event.type == sf::Event::Closed) {
+                windowDaugth.close();
+            }
+
+            if (IntRect(200, 210, 60, 30).contains(Mouse::getPosition(windowDaugth))) {
                 isRus = true;
                 textRus.setFillColor(sf::Color::Yellow);
             }
@@ -87,7 +91,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                 isRus = false;
             }
 
-            if (IntRect(265, 210, 80, 30).contains(Mouse::getPosition(window))) {
+            if (IntRect(265, 210, 80, 30).contains(Mouse::getPosition(windowDaugth))) {
                 isEn = true;
                 textEngl.setFillColor(sf::Color::Yellow);
             }
@@ -96,7 +100,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                 isEn = false;
             }
 
-            if (IntRect(345, 210, 80, 30).contains(Mouse::getPosition(window))) {
+            if (IntRect(345, 210, 80, 30).contains(Mouse::getPosition(windowDaugth))) {
                 isGive = true;
                 textGive.setFillColor(sf::Color::Yellow);
             }
@@ -105,7 +109,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                 isGive = false;
             }
 
-            if (IntRect(435, 210, 120, 30).contains(Mouse::getPosition(window))) {
+            if (IntRect(435, 210, 120, 30).contains(Mouse::getPosition(windowDaugth))) {
                 isInter = true;
                 textInter.setFillColor(sf::Color::Yellow);
             }
@@ -114,7 +118,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                 isInter = false;
             }
 
-            if (IntRect(250, 250, 70, 39).contains(Mouse::getPosition(window))) {
+            if (IntRect(250, 250, 70, 39).contains(Mouse::getPosition(windowDaugth))) {
                 isWhite = true;
                 white.setColor(sf::Color::White);
             }
@@ -123,7 +127,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                 isWhite = false;
             }
 
-            if (IntRect(380, 250, 160, 30).contains(Mouse::getPosition(window))) {
+            if (IntRect(380, 250, 160, 30).contains(Mouse::getPosition(windowDaugth))) {
                 isBlack = true;
                 black.setColor(sf::Color::White);
             }
@@ -132,7 +136,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                 isBlack = false;
             }
 
-            if (IntRect(390, 150, 160, 30).contains(Mouse::getPosition(window))) {
+            if (IntRect(390, 150, 160, 30).contains(Mouse::getPosition(windowDaugth))) {
                 isFast = true;
                 textFast.setFillColor(sf::Color::Yellow);
             }
@@ -141,7 +145,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                 textFast.setFillColor(sf::Color::White);
             }
 
-            if (IntRect(20, 450, 80, 30).contains(Mouse::getPosition(window))) {
+            if (IntRect(20, 450, 80, 30).contains(Mouse::getPosition(windowDaugth))) {
                 isLeave = true;
                 textEnd.setFillColor(sf::Color::Yellow);
             }
@@ -150,7 +154,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                 isLeave = false;
             }
 
-            if (IntRect(20, 350, 150, 30).contains(Mouse::getPosition(window))) {
+            if (IntRect(20, 350, 150, 30).contains(Mouse::getPosition(windowDaugth))) {
                 textStart.setFillColor(sf::Color::Yellow);
                 isStart = true;
             }
@@ -162,6 +166,7 @@ void InstructionSettings(sf::RenderWindow& window) {
             if (event.type == sf::Event::TextEntered) {
                 textFast.setFillColor(sf::Color::White);
                 isFast = false;
+
                 if (event.text.unicode == 8 || event.text.unicode == 127) {
                     if (rounds.size() > 0) {
                         rounds.resize(rounds.size() - 1);
@@ -170,7 +175,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                 else {
                     rounds += char(event.text.unicode);
                 }
-                textAmount.setString(L"Количество раундов: " + rounds);
+                textAmount.setString(L"Количество раундов:   " + rounds);
             }
 
             if (rounds == "1") {
@@ -229,6 +234,7 @@ void InstructionSettings(sf::RenderWindow& window) {
 
                 if (isFast) {
                     rounds = "1";
+                    textAmount.setString(L"Количество раундов:   1");
                 }
 
                 if (isStart && mode != "" && rounds != "" && color != "") {
@@ -262,17 +268,15 @@ void InstructionSettings(sf::RenderWindow& window) {
 }
 
 void UserSettings(sf::RenderWindow& window) {
-    std::string userName = "";
-    std::string theme = "default";
+    std::locale::global(std::locale(""));
+    std::wstring userName = L"";
+    std::wstring theme = L"Default";
 
     Texture fon, hallowen, newYear;
     fon.loadFromFile("images/fon.jpg");
-    hallowen.loadFromFile("images/haloween.jpg");
-    hallowen.setSmooth(true);
-    newYear.loadFromFile("images/new_year.jpg");
-    newYear.setSmooth(true);
+   
     CircleShape hallo;
-    Sprite fons(fon), halo(hallowen, IntRect(0, 0, 70, 47)), newyear(newYear, IntRect(0, 0, 70, 46));
+    Sprite fons(fon);
 
     sf::RenderWindow windowDaugth(sf::VideoMode(600, 500), "Checker");
     sf::Font font;
@@ -290,17 +294,16 @@ void UserSettings(sf::RenderWindow& window) {
     textTheme.setFillColor(sf::Color::White);
     textTheme.setPosition(20, 200);
 
+    sf::Text bw(L"Black&White", font, 20);
+    bw.setFillColor((Color(255, 255, 255, 84)));
+    bw.setPosition(150, 200);
+
     sf::Text textDefault(L"Default", font, 20);
     textDefault.setFillColor((Color(255, 255, 255, 84)));
     textDefault.setPosition(350, 200);
-    halo.setPosition(150, 200);
-    newyear.setPosition(250, 200);
 
     bool isDefault = false;
-    bool isHalo = false;
-    bool isNew = false;
-    halo.setColor((Color(255, 255, 255, 84)));
-    newyear.setColor((Color(255, 255, 255, 84)));
+    bool isBW = false;
 
     bool save = false;
     sf::Text textFinish(L"Сохранить настройки", font, 20);
@@ -317,7 +320,11 @@ void UserSettings(sf::RenderWindow& window) {
         sf::Event event;
         while (windowDaugth.pollEvent(event))
         {
-            if (IntRect(20, 350, 300, 30).contains(Mouse::getPosition(window))) {
+            if (event.type == sf::Event::Closed) {
+                windowDaugth.close();
+            }
+
+            if (IntRect(20, 350, 300, 30).contains(Mouse::getPosition(windowDaugth))) {
                 textFinish.setFillColor(sf::Color::Yellow);
                 save = true;
             }
@@ -326,16 +333,9 @@ void UserSettings(sf::RenderWindow& window) {
                 save = false;
             }
 
-            if (IntRect(150, 200, 70, 47).contains(Mouse::getPosition(window))) {
-                halo.setColor(Color::White);
-                isHalo = true;
-            }
-            else {
-                isHalo = false;
-                halo.setColor(Color(255, 255, 255, 84));
-            }
 
-            if (IntRect(350, 200, 140, 47).contains(Mouse::getPosition(window))) {
+
+            if (IntRect(350, 200, 67, 47).contains(Mouse::getPosition(windowDaugth))) {
                 textDefault.setFillColor(Color::White);
                 isDefault = true;
             }
@@ -344,16 +344,16 @@ void UserSettings(sf::RenderWindow& window) {
                 textDefault.setFillColor(Color(255, 255, 255, 84));
             }
 
-            if (IntRect(250, 200, 70, 46).contains(Mouse::getPosition(window))) {
-                newyear.setColor(Color::White);
-                isNew = true;
+            if (IntRect(150, 200, 113, 46).contains(Mouse::getPosition(windowDaugth))) {
+                bw.setFillColor(Color::White);
+                isBW = true;
             }
             else {
-                newyear.setColor(Color(255, 255, 255, 84));
-                isNew = false;
+                bw.setFillColor(Color(255, 255, 255, 84));
+                isBW = false;
             }
 
-            if (IntRect(20, 400, 300, 40).contains(Mouse::getPosition(window))) {
+            if (IntRect(20, 400, 300, 40).contains(Mouse::getPosition(windowDaugth))) {
                 isExit = true;
                 textExit.setFillColor(Color::Yellow);
             }
@@ -362,13 +362,11 @@ void UserSettings(sf::RenderWindow& window) {
                 textExit.setFillColor(Color::Red);
             }
 
-            if (theme == "Halloween") {
-                halo.setColor(Color::White);
+
+            if (theme == L"BlackWhite") {
+                bw.setFillColor(Color::White);
             }
-            if (theme == "New_Year") {
-                newyear.setColor(Color::White);
-            }
-            if (theme == "Default") {
+            if (theme == L"Default") {
                 textDefault.setFillColor(Color::White);
             }
 
@@ -379,25 +377,22 @@ void UserSettings(sf::RenderWindow& window) {
                     }
                 }
                 else {
-                    userName += char(event.text.unicode);
+                    userName += wchar_t(event.text.unicode);
                 }
                 textUser.setString(L"Имя пользователя: " + userName);
             }
 
             if (Mouse::isButtonPressed(Mouse::Left)) {
-                if (isHalo) {
-                    halo.setColor(Color::White);
-                    theme = "Halloween";
-                }
 
-                if (isNew) {
-                    newyear.setColor(Color::White);
-                    theme = "New_Year";
+
+                if (isBW) {
+                    bw.setFillColor(Color::White);
+                    theme = L"BlackWhite";
                 }
 
                 if (isDefault) {
                     textDefault.setFillColor(Color::White);
-                    theme = "Default";
+                    theme = L"Default";
                 }
 
                 if (isExit) {
@@ -405,9 +400,11 @@ void UserSettings(sf::RenderWindow& window) {
                 }
 
                 if (save && userName != "") {
-                    ofstream output("user.txt");
-                    output <<  userName << "|";
-                    output  << theme;
+
+                    wofstream output("user.txt");
+                    output << L"Name:" << userName << L"|";
+                    output << L"Theme:" << theme;
+
                     output.close();
                     windowDaugth.close();
                 }
@@ -415,8 +412,7 @@ void UserSettings(sf::RenderWindow& window) {
         }
         windowDaugth.clear();
         windowDaugth.draw(fons);
-        windowDaugth.draw(halo);
-        windowDaugth.draw(newyear);
+        windowDaugth.draw(bw);
         windowDaugth.draw(textTheme);
         windowDaugth.draw(textDefault);
         windowDaugth.draw(textFinish);
@@ -460,7 +456,7 @@ void ExitFunc(sf::RenderWindow& window) {
         sf::Event event;
         while (windowDaugth.pollEvent(event))
         {
-            if (IntRect(170, 210, 70, 30).contains(Mouse::getPosition(window))) {
+            if (IntRect(170, 210, 70, 30).contains(Mouse::getPosition(windowDaugth))) {
                 yes.setFillColor(sf::Color::Yellow);
                 leave = true;
             }
@@ -469,7 +465,7 @@ void ExitFunc(sf::RenderWindow& window) {
                 leave = false;
             }
 
-            if (IntRect(170, 280, 70, 30).contains(Mouse::getPosition(window))) {
+            if (IntRect(170, 280, 70, 30).contains(Mouse::getPosition(windowDaugth))) {
                 no.setFillColor(sf::Color::Yellow);
                 stay = true;
             }
@@ -532,11 +528,27 @@ void menu(sf::RenderWindow& window)
     textExit.setStyle(sf::Text::Italic);
     textExit.setPosition(240, 300);
 
+   
+
     while (window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event))
         {
+            wifstream input("user.txt");
+            wstring bulk;
+            getline(input, bulk);
+            int theme;
+            input.close();
+
+            int index = bulk.rfind(':') + 1;
+            if (bulk[index] == 'D') {
+                theme = 0;
+            }
+            else {
+                theme = 1;
+            }
+
             if (event.type == sf::Event::Closed ||
                 (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
 
@@ -590,14 +602,19 @@ void menu(sf::RenderWindow& window)
 
                     Game game;
                     bool start = 1;
+
                     ifstream in("gameSettings.txt");
                     string str;
                     in >> str;
                     in.close();
+    
+                    game.startTime = clock();
+
 
                     while (window.isOpen() && str != "") {
                         game.assignValuesFromFile("gameSettings.txt");
                         Event event;
+                        
 
                         while (window.pollEvent(event)) {
                             if (event.type == sf::Event::Closed ||
@@ -612,15 +629,21 @@ void menu(sf::RenderWindow& window)
                             game.make_move(window, event);
                         }
 
-                        window.clear(Color(245, 210, 175));
+                        if (theme == 0) {
+                            window.clear(Color(245, 210, 175));
+                        }
+                        else {
+                            window.clear(Color(110, 110, 110));
+                        }
 
                         if (start) {
                             game.start_game(window, event, start);
                         }
 
-                        game.get_checkers_on_board().draw_checkers(window);//рисую поле и шашки
-
-                        game.end_game(window, event);//рисую если конец игры	
+                        if (game.end_game(window, event))
+                            game.get_checkers_on_board().draw_checkers(window, game.startTime);//рисую поле и шашки пока идёт игра
+                        else
+                            game.end_game(window, event);//рисую если конец игры
 
                         window.display();
                     }

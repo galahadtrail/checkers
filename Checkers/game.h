@@ -19,42 +19,54 @@ private:
 	Vector2i mousePosition;//позиция мыши
 	Checkers_on_board checkers_on_board;
 	vector <int> who_must_eat;//храню шашки, которые могут съесть
+	size_t time; //время игры в секундах.
 public:
-	void assignValuesFromFile(std::string fileName)
+
+void assignValuesFromFile(std::string fileName)
+{
+	ifstream in(fileName);
+	std::string raw_result;
+	in >> raw_result;
+	in.close();
+	size_t first = raw_result.find('|');
+	size_t second = raw_result.find('|', first + 1);
+	int i = 0;
+	std::string temp;
+	while (i < first)
 	{
-		ifstream in(fileName);
-		std::string raw_result;
-		in >> raw_result;
-		in.close();
-		size_t first = raw_result.find('|');
-		size_t second = raw_result.find('|', first + 1);
-		int i = 0;
-		std::string temp;
-		while (i < first)
-		{
-			temp += raw_result[i];
-			i++;
-		}
+		temp += raw_result[i];
+		i++;
+	}
 
-		rounds = temp;
-		temp = "";
-		i = first + 1;
-		while (i < second)
-		{
-			temp += raw_result[i];
-			i++;
-		}
+	rounds = temp;
+	temp = "";
+	i = first + 1;
+	while (i < second)
+	{
+		temp += raw_result[i];
+		i++;
+	}
 
-		mode = temp;
-		temp = "";
-		i = second + 1;
-		while (i < raw_result.size())
-		{
-			temp += raw_result[i];
-			i++;
-		}
-		colorChecker = temp;
-		return;
+	mode = temp;
+	temp = "";
+	i = second + 1;
+	while (i < raw_result.size())
+	{
+		temp += raw_result[i];
+		i++;
+	}
+	colorChecker = temp;
+	return;
+}
+
+	int startTime = 0;
+
+
+	Checkers_on_board & get_checkers_on_board() {
+		return this->checkers_on_board;
+	}
+	void set_mause_position(RenderWindow &_window) {
+		this->mause_position = Mouse::getPosition(_window);
 	}
 
 	Checkers_on_board& get_checkers_on_board() { return this->checkers_on_board; }
@@ -803,7 +815,22 @@ public:
 		}
 	}
 
-	bool end_game(RenderWindow& _window, Event _event) {
+
+	bool end_game(RenderWindow &_window, Event _event) {
+		wifstream input("user.txt");
+		wstring bulk;
+		getline(input, bulk);
+		int theme;
+		input.close();
+
+		int index = bulk.rfind(':') + 1;
+		if (bulk[index] == 'D') {
+			theme = 0;
+		}
+		else {
+			theme = 1;
+		}
+
 		int black = 0;
 		int white = 0;
 		for (int i = 0; i < checkers_on_board.get_size(); i++) {
@@ -815,8 +842,14 @@ public:
 			}
 		}
 		if (white == 0) {
+
 			RectangleShape back = RectangleShape(Vector2f(350, 150));
-			back.setFillColor(Color(245, 210, 175));
+			if (theme == 0) {
+				back.setFillColor(Color(245, 210, 175));
+			}
+			else {
+				back.setFillColor(Color(110, 110, 110));
+			}
 			back.setPosition(75, 175);
 			Font font;
 			font.loadFromFile("Font//bahnschrift.ttf");
@@ -829,10 +862,16 @@ public:
 			if (_event.type == Event::Closed)
 				_window.close();
 			return 0;
+
 		}
 		if (black == 0) {
 			RectangleShape back = RectangleShape(Vector2f(350, 150));
-			back.setFillColor(Color(245, 210, 175));
+			if (theme == 0) {
+				back.setFillColor(Color(245, 210, 175));
+			}
+			else {
+				back.setFillColor(Color(110, 110, 110));
+			}
 			back.setPosition(75, 175);
 			Font font;
 			font.loadFromFile("Font//bahnschrift.ttf");
