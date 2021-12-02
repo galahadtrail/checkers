@@ -59,11 +59,6 @@ void assignValuesFromFile(std::string fileName)
 	return;
 }
 
-	int startTime = 0;
-	int pauseTimeIn = 0;
-	int pauseTimeOut = 0;
-
-	
 	
 	Checkers_on_board& get_checkers_on_board() { return this->checkers_on_board; }
 

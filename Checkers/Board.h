@@ -35,6 +35,17 @@ public:
 			theme = 1;
 		}
 
+		Texture fon;
+
+		if (theme == 0) {
+			fon.loadFromFile("images/fon6.jpg");
+		}
+		else {
+			fon.loadFromFile("images/fon7.jpg");
+		}
+		Sprite fons(fon);
+		_window.draw(fons);
+
 		for (int i = 1; i <= 8; i++) {
 			for (int j = 1; j <= 8; j++) {
 				all_squares[i - 1][j - 1].set_position(i * 50.0, j * 50);
@@ -72,11 +83,13 @@ public:
 				_window.draw(all_squares[i - 1][j - 1].get_square());
 			}
 		}
-		Font font;
-		font.loadFromFile("Font//bahnschrift.ttf");
+		Font font1;
+		font1.loadFromFile("Font//Deutsch Gothic.ttf");
+		Font font2;
+		font2.loadFromFile("Font//bahnschrift.ttf");
 		Text *t[16];
 		for (int i = 0; i < 16; i++) {
-			t[i] = new Text("", font, 35);
+			t[i] = new Text("", font2, 35);
 
 		}
 		t[0]->setString(L"1");
@@ -97,6 +110,8 @@ public:
 		t[15]->setString(L"H");
 		for (int i = 0; i < 8; i++) {
 			t[i]->setFillColor(Color::Black);
+			t[i]->setOutlineColor(sf::Color::White);
+			t[i]->setOutlineThickness(1);
 			t[i]->setPosition(15, i * 50 + 55);
 			_window.draw(*t[i]);
 			t[i]->setPosition(465, i * 50 + 55);
@@ -104,6 +119,8 @@ public:
 		}
 		for (int i = 8; i < 16; i++) {
 			t[i]->setFillColor(Color::Black);
+			t[i]->setOutlineColor(sf::Color::White);
+			t[i]->setOutlineThickness(1);
 			t[i]->setPosition((i - 8) * 50 + 60, 5);
 			_window.draw(*t[i]);
 			t[i]->setPosition((i - 8) * 50 + 60, 455);
@@ -111,9 +128,11 @@ public:
 		}
 
 		
-		Text time(L"Время:   ", font, 35);
-		time.setPosition(550, 5);
+		Text time(L"Время:   ", font1, 23);
+		time.setPosition(520, 20);
 		time.setFillColor(sf::Color::Black);
+		time.setOutlineColor(sf::Color::White);
+		time.setOutlineThickness(1);
 
 		int timeIntVal = (clock() - timex) / 1000;
 		
@@ -122,8 +141,10 @@ public:
 
 		_window.draw(time);
 
-		Text name(L"Имя:   ", font, 35);
-		name.setPosition(550, 50);
+		Text name(L"Имя:   ", font1, 23);
+		name.setPosition(520, 70);
+		name.setOutlineColor(sf::Color::White);
+		name.setOutlineThickness(1);
 		name.setFillColor(sf::Color::Black);
 		
 
