@@ -1,4 +1,5 @@
 #include "menu.h"
+#include "Game.h"
 
 class PauseOption {
 private:
@@ -32,7 +33,7 @@ void InstructionSettings(sf::RenderWindow& window) {
     bool isBlack = false;
     std::string color = "";
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(800, 500), "Checkers");
+    sf::RenderWindow windowDaugth(sf::VideoMode(800, 600), "Checkers");
     sf::Font font1;
     font1.loadFromFile("Font//Deutsch Gothic.ttf");
     sf::Font font2;
@@ -114,7 +115,7 @@ void InstructionSettings(sf::RenderWindow& window) {
     textStart.setStyle(sf::Text::Bold);
     textStart.setOutlineColor(sf::Color::White);
     textStart.setOutlineThickness(1);
-    textStart.setPosition(20, 350);
+    textStart.setPosition(20, 500);
     bool isStart = false;
 
     sf::Text textEnd(L"Назад", font1, 23);
@@ -122,8 +123,40 @@ void InstructionSettings(sf::RenderWindow& window) {
     textEnd.setStyle(sf::Text::Bold);
     textEnd.setOutlineColor(sf::Color::White);
     textEnd.setOutlineThickness(1);
-    textEnd.setPosition(20, 400);
+    textEnd.setPosition(20, 600);
     bool isLeave = false;
+
+    sf::Text textRegime(L"Режим игры: ", font2, 23);
+    textRegime.setFillColor(sf::Color::Black);
+    textRegime.setStyle(sf::Text::Bold);
+    textRegime.setOutlineColor(sf::Color::White);
+    textRegime.setOutlineThickness(1);
+    textRegime.setPosition(20, 400);
+
+    sf::Text textComp(L"vs. Computer", font2, 23);
+    textComp.setFillColor(sf::Color::Black);
+    textComp.setStyle(sf::Text::Bold);
+    textComp.setOutlineColor(sf::Color::White);
+    textComp.setOutlineThickness(1);
+    textComp.setPosition(200, 400);
+    bool vsComputer = false;
+
+    sf::Text textPVP(L"PvP", font2, 23);
+    textPVP.setFillColor(sf::Color::Black);
+    textPVP.setStyle(sf::Text::Bold);
+    textPVP.setOutlineColor(sf::Color::White);
+    textPVP.setOutlineThickness(1);
+    textPVP.setPosition(400, 400);
+    bool pvp = false;
+    wstring regime = L"";
+
+    sf::Text textGuest(L"Guest name:", font2, 23);
+    textGuest.setFillColor(sf::Color::Black);
+    textGuest.setStyle(sf::Text::Bold);
+    textGuest.setOutlineColor(sf::Color::White);
+    textGuest.setOutlineThickness(1);
+    textGuest.setPosition(20, 450);
+    wstring guestName = L"";
 
     while (windowDaugth.isOpen())
     {
@@ -132,6 +165,24 @@ void InstructionSettings(sf::RenderWindow& window) {
         {
             if (event.type == sf::Event::Closed) {
                 windowDaugth.close();
+            }
+
+            if (IntRect(200, 400, 120, 30).contains(Mouse::getPosition(windowDaugth))) {
+                vsComputer = true;
+                textComp.setFillColor(sf::Color::Color(160, 70, 0));
+            }
+            else {
+                textComp.setFillColor(sf::Color::Black);
+                vsComputer = false;
+            }
+
+            if (IntRect(400, 400, 120, 30).contains(Mouse::getPosition(windowDaugth))) {
+                pvp = true;
+                textPVP.setFillColor(sf::Color::Color(160, 70, 0));
+            }
+            else {
+                textPVP.setFillColor(sf::Color::Black);
+                pvp = false;
             }
 
             if (IntRect(200, 210, 60, 30).contains(Mouse::getPosition(windowDaugth))) {
@@ -206,7 +257,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                 isLeave = false;
             }
 
-            if (IntRect(20, 350, 150, 30).contains(Mouse::getPosition(windowDaugth))) {
+            if (IntRect(20, 500, 150, 30).contains(Mouse::getPosition(windowDaugth))) {
                 textStart.setFillColor(sf::Color::Color(160, 70, 0));
                 isStart = true;
             }
@@ -215,18 +266,24 @@ void InstructionSettings(sf::RenderWindow& window) {
                 isStart = false;
             }
 
-            if (event.type == sf::Event::TextEntered) {
+            if (event.type == sf::Event::TextEntered || event.key.code == sf::Keyboard::Delete) {
                 textFast.setFillColor(sf::Color::Black);
                 isFast = false;
 
-                if (event.text.unicode == 8 || event.text.unicode == 127) {
-                    if (rounds.size() > 0) {
+                if (event.text.unicode == 8 || event.key.code == sf::Keyboard::Delete) {
+                    if (rounds.size() > 0 && event.text.unicode == 8) {
                         rounds.resize(rounds.size() - 1);
                     }
+                    if (guestName.size() > 0 && event.key.code == sf::Keyboard::Delete) {
+                        guestName.resize(guestName.size() - 1);
+                    }
                 }
-                else {
+                else if (event.text.unicode >= 49 && event.text.unicode <= 58){
                     rounds += char(event.text.unicode);
+                } else {
+                    guestName += wchar_t(event.text.unicode);
                 }
+                textGuest.setString(L"Guest name: " + guestName);
                 textAmount.setString(L"Количество раундов:   " + rounds);
             }
 
@@ -252,10 +309,22 @@ void InstructionSettings(sf::RenderWindow& window) {
             if (mode == "International") {
                 textInter.setFillColor(sf::Color::Color(160, 70, 0));
             }
+            if (regime == L"Computer") {
+                textComp.setFillColor(sf::Color::Color(160, 70, 0));
+            }
+            if (regime == L"PvP") {
+                textPVP.setFillColor(sf::Color::Color(160, 70, 0));
+            }
 
             if (Mouse::isButtonPressed(Mouse::Left)) {
                 if (isLeave) {
                     windowDaugth.close();
+                }
+                if (vsComputer) {
+                    regime = L"Computer";
+                }
+                if (pvp) {
+                    regime = L"PvP";
                 }
 
                 if (isWhite) {
@@ -289,10 +358,13 @@ void InstructionSettings(sf::RenderWindow& window) {
                     textAmount.setString(L"Количество раундов:   1");
                 }
 
-                if (isStart && mode != "" && rounds != "" && color != "") {
+                if (isStart && mode != "" && rounds != "" && color != "" && regime != L"") {
                     ofstream output("gameSettings.txt");
                     output << rounds << "|" << mode << "|" << color;
                     output.close();
+                    wofstream outpu("regime.txt");
+                    outpu << regime <<L"|"<< guestName;
+                    outpu.close();
                     windowDaugth.close();
                 }
             }
@@ -314,6 +386,10 @@ void InstructionSettings(sf::RenderWindow& window) {
         }
         windowDaugth.draw(textFast);
         windowDaugth.draw(textVariants);
+        windowDaugth.draw(textComp);
+        windowDaugth.draw(textRegime);
+        windowDaugth.draw(textPVP);
+        windowDaugth.draw(textGuest);
         windowDaugth.draw(textEnd);
         windowDaugth.display();
     }
@@ -330,7 +406,7 @@ void UserSettings(sf::RenderWindow& window) {
     CircleShape hallo;
     Sprite fons(fon);
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(800, 500), "Checkers");
+    sf::RenderWindow windowDaugth(sf::VideoMode(800, 600), "Checkers");
     sf::Font font1;
     font1.loadFromFile("Font//Deutsch Gothic.ttf");
     sf::Font font2;
@@ -442,7 +518,7 @@ void UserSettings(sf::RenderWindow& window) {
             }
 
             if (event.type == sf::Event::TextEntered) {
-                if (event.text.unicode == 8 || event.text.unicode == 127) {
+                if (event.text.unicode == 8 || event.text.unicode == 46) {
                     if (userName.size() > 0) {
                         userName.resize(userName.size() - 1);
                     }
@@ -502,7 +578,7 @@ void ExitFunc(sf::RenderWindow& window) {
     Sprite fons(fon);
 
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(800, 500), "Checkers");
+    sf::RenderWindow windowDaugth(sf::VideoMode(800, 600), "Checkers");
     sf::Font font1;
     font1.loadFromFile("Font//Deutsch Gothic.ttf");
     sf::Font font2;
@@ -583,7 +659,7 @@ void Pause(sf::RenderWindow& window) {
     Sprite fons(fon);
 
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(800, 500), "Checkers");
+    sf::RenderWindow windowDaugth(sf::VideoMode(800, 600), "Checkers");
     sf::Font font1;
     font1.loadFromFile("Font//Deutsch Gothic.ttf");
     sf::Font font2;
@@ -703,6 +779,10 @@ void playGame(sf::RenderWindow& window) {
     string str;
     in >> str;
     in.close();
+    ofstream out("ligth.txt");
+    out << "";
+    out.close();
+    size_t amountSteps = 0;
 
     pauseOption.setTime(clock());
 
@@ -741,6 +821,11 @@ void playGame(sf::RenderWindow& window) {
                 }
             }
 
+            ofstream out("ligth.txt");
+            out << ++amountSteps << "|" << game.getColor()<<"|"<<game.getMode();
+            out.close();
+
+            game.set_who_can_move();
             game.make_move(window, event);
         }
 
@@ -755,8 +840,62 @@ void playGame(sf::RenderWindow& window) {
             game.start_game(window, event, start);
         }
 
+        ifstream in("ligth.txt");
+
+        std::string raw_result;
+        in >> raw_result;
+        in.close();
+        size_t first = raw_result.find('|');
+        size_t second = raw_result.find('|', first + 1);
+        int i = 0;
+        std::string temp;
+        while (i < first)
+        {
+            temp += raw_result[i];
+            i++;
+        }
+
+        string amountSteps = temp;
+        temp = "";
+        i = first + 1;
+        while (i < second)
+        {
+            temp += raw_result[i];
+            i++;
+        }
+
+        string masterColor = temp;
+        temp = "";
+        i = second + 1;
+        while (i < raw_result.size())
+        {
+            temp += raw_result[i];
+            i++;
+        }
+        string regime = temp;
+        bool master = false;
+        if (regime != "Checkers") {
+            if (stoi(amountSteps) % 2 == 1) {
+                master = true;
+            }
+            else {
+                master = false;
+            }
+        }
+        else {
+            if (stoi(amountSteps) % 2 == 0) {
+                master = true;
+            }
+            else {
+                master = false;
+            }
+        }
+
         if (game.end_game(window, event))
-            game.get_checkers_on_board().draw_checkers(window, pauseOption.getTime());//рисую поле и шашки пока идёт игра
+            if (game.getMode() == "International")
+                game.get_checkers_on_board_inter().draw_checkers(window, pauseOption.getTime(), master);//рисую поле и шашки для международного режима
+            else
+                game.get_checkers_on_board().draw_checkers(window, pauseOption.getTime(), master);
         else
             game.end_game(window, event);//рисую если конец игры
 
@@ -766,7 +905,7 @@ void playGame(sf::RenderWindow& window) {
 
 void menu()
 {
-    RenderWindow window(sf::VideoMode(800, 500), "Checkers");
+    RenderWindow window(sf::VideoMode(800, 600), "Checkers");
     Texture fon;
     fon.loadFromFile("images/fon1.jpg");
 
@@ -805,7 +944,7 @@ void menu()
     textExit.setOutlineColor(sf::Color::White);
     textExit.setOutlineThickness(1);
     textExit.setStyle(sf::Text::Bold);
-    textExit.setPosition(150, 300);
+    textExit.setPosition(150, 220);
 
     while (window.isOpen())
     {
@@ -857,7 +996,7 @@ void menu()
                 isReadyUserSettings = false;
             }
 
-            if (IntRect(150, 300, 300, 20).contains(Mouse::getPosition(window))) {
+            if (IntRect(150, 220, 300, 20).contains(Mouse::getPosition(window))) {
                 textExit.setFillColor(sf::Color::Color(165, 70, 0));
                 isExit = true;
             }
@@ -871,6 +1010,9 @@ void menu()
                     ofstream out("gameSettings.txt");
                     out << "";
                     out.close();
+                    wofstream output("regime.txt");
+                    output << "";
+                    output.close();
                     window.setActive(false);
                     sf::Thread newPollThread(InstructionSettings, std::ref(window));
                     newPollThread.launch();

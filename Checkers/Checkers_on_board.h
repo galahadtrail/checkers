@@ -1,4 +1,4 @@
-
+#pragma once
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <ctime>
@@ -71,8 +71,8 @@ public:
 		start_game();//расставл€ю шашки
 	};
 
-	void draw_checkers(RenderWindow &_window, int time) {//функци€ рисовани€ пол€ с фигурами
-		board.draw_board(_window, time);//рисую доску
+	void draw_checkers(RenderWindow &_window, int time, bool master) {//функци€ рисовани€ пол€ с фигурами
+		board.draw_board(_window, time, master);//рисую доску
 		for (int i = 0; i < checkers.size(); i++) {
 			checkers[i].draw_checker(_window);//рисую каждую шашку
 		}

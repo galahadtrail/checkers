@@ -1,5 +1,5 @@
+#pragma once
 #include <SFML/Graphics.hpp>
-
 #include "Square.h"
 #include <ctime>
 #include <time.h>
@@ -17,7 +17,7 @@ public:
 		return this->all_squares[_i][_j];
 	}
 
-	void draw_board(RenderWindow &_window, int timex) {
+	void draw_board(RenderWindow &_window, int timex, bool master) {
 		locale::global(locale(""));
 		int theme;
 
@@ -109,8 +109,8 @@ public:
 		t[14]->setString(L"G");
 		t[15]->setString(L"H");
 		for (int i = 0; i < 8; i++) {
-			t[i]->setFillColor(Color::Black);
-			t[i]->setOutlineColor(sf::Color::White);
+			t[i]->setFillColor(Color::White);
+			t[i]->setOutlineColor(sf::Color::Black);
 			t[i]->setOutlineThickness(1);
 			t[i]->setPosition(15, i * 50 + 55);
 			_window.draw(*t[i]);
@@ -118,8 +118,8 @@ public:
 			_window.draw(*t[i]);
 		}
 		for (int i = 8; i < 16; i++) {
-			t[i]->setFillColor(Color::Black);
-			t[i]->setOutlineColor(sf::Color::White);
+			t[i]->setFillColor(Color::White);
+			t[i]->setOutlineColor(sf::Color::Black);
 			t[i]->setOutlineThickness(1);
 			t[i]->setPosition((i - 8) * 50 + 60, 5);
 			_window.draw(*t[i]);
@@ -147,6 +147,18 @@ public:
 		name.setOutlineThickness(1);
 		name.setFillColor(sf::Color::Black);
 		
+		Text nameGuest(L"Имя гостя:   \n", font1, 23);
+		nameGuest.setPosition(520, 120);
+		nameGuest.setOutlineColor(sf::Color::White);
+		nameGuest.setOutlineThickness(1);
+		nameGuest.setFillColor(sf::Color::Black);
+
+		if (master) {
+			name.setFillColor(Color::Yellow);
+		}
+		else {
+			nameGuest.setFillColor(Color::Yellow);
+		}
 
 		wifstream nameInput("user.txt");
 		wstring buffer;
@@ -171,9 +183,13 @@ public:
 			
 		}
 		nameInput.close();
+		
+		
 
 		name.setString(L"Имя:   " + semi);
+		nameGuest.setString(L"Имя гостя:   \n" + assignRegimeFromFile("regime.txt"));
 
 		_window.draw(name);
+		_window.draw(nameGuest);
 	}
 };

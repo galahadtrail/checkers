@@ -1,5 +1,34 @@
+#pragma once
 #include <SFML/Graphics.hpp>
 using namespace sf; 
+
+wstring assignRegimeFromFile(std::string fileName) {
+	wifstream in(fileName);
+	std::wstring raw_result;
+	in >> raw_result;
+	in.close();
+	size_t first = raw_result.find('|');
+
+	int i = 0;
+	std::wstring temp;
+	while (i < first)
+	{
+		temp += raw_result[i];
+		i++;
+	}
+	wstring regime = temp;
+
+	temp = L"";
+	i = first + 1;
+	while (i < raw_result.size())
+	{
+		temp += raw_result[i];
+		i++;
+	}
+	wstring guestName = temp;
+
+	return guestName;
+}
 
 class Square {
 private:

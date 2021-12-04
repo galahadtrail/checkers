@@ -1,1 +1,1 @@
-﻿  ChessDDZ.vcxproj -> C:\dev\checkersddz\Checkers\x64\Debug\ChessDDZ.exe
+﻿LINK : fatal error LNK1104: cannot open file 'sfml-graphics-d.lib'
