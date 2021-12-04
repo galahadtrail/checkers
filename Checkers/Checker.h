@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
+
 class Checker {
 private:
 	CircleShape checker = CircleShape(18);
