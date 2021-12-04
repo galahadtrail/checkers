@@ -15,9 +15,9 @@ void InstructionSettings(sf::RenderWindow& window) {
     bool isBlack = false;
     std::string color = "";
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(600, 500), "Checker");
+    sf::RenderWindow windowDaugth(sf::VideoMode(600, 600), "Checker");
     sf::Font font;
-    font.loadFromFile("Font//bahnschrift.ttf");
+    font.loadFromFile("Font//Deutsch Gothic.ttf");
 
     sf::Text textSettings(L"Настройки игры", font, 20);
     textSettings.setFillColor(sf::Color::Green);
@@ -57,7 +57,7 @@ void InstructionSettings(sf::RenderWindow& window) {
     bool isEn = false;
     bool isInter = false;
     bool isGive = false;
-    std::string regim = "";
+    std::string mode = "";
 
     sf::Text textColor(L"Цвет шашек: ", font, 20);
     textColor.setFillColor(sf::Color::White);
@@ -183,16 +183,16 @@ void InstructionSettings(sf::RenderWindow& window) {
             else if (color == "black") {
                 black.setColor(Color::Black);
             }
-            if (regim == "Russian") {
+            if (mode == "Russian") {
                 textRus.setFillColor(sf::Color::Yellow);
             }
-            if (regim == "Checkers") {
+            if (mode == "Checkers") {
                 textEngl.setFillColor(sf::Color::Yellow);
             }
-            if (regim == "Giveaway") {
+            if (mode == "Giveaway") {
                 textGive.setFillColor(sf::Color::Yellow);
             }
-            if (regim == "International") {
+            if (mode == "International") {
                 textInter.setFillColor(sf::Color::Yellow);
             }
 
@@ -212,31 +212,30 @@ void InstructionSettings(sf::RenderWindow& window) {
                 }
 
                 if (isRus) {
-                    regim = "Russian";
+                    mode = "Russian";
                 }
 
                 if (isEn) {
-                    regim = "Checkers";
+                    mode = "Checkers";
                 }
 
                 if (isGive) {
-                    regim = "Giveaway";
+                    mode = "Giveaway";
                 }
 
                 if (isInter) {
-                    regim = "International";
+                    mode = "International";
                 }
 
                 if (isFast) {
                     rounds = "1";
                 }
 
-                if (isStart && regim != "" && rounds != "" && color != "") {
+                if (isStart && mode != "" && rounds != "" && color != "") {
                     ofstream output("gameSettings.txt");
-                    output << "Раундов:" << rounds << "||" << "Режим:" << regim << "||" << "Цвет:" << color;
+                    output << rounds << "|" << mode << "|" << color;
                     output.close();
                     windowDaugth.close();
-
                 }
             }
         }
@@ -277,7 +276,7 @@ void UserSettings(sf::RenderWindow& window) {
 
     sf::RenderWindow windowDaugth(sf::VideoMode(600, 500), "Checker");
     sf::Font font;
-    font.loadFromFile("Font//bahnschrift.ttf");
+    font.loadFromFile("Font//Deutsch Gothic.ttf");
     sf::Text textStart(L"Пользовательские настройки", font, 20);
     textStart.setFillColor(sf::Color::Green);
     textStart.setPosition(20, 50);
@@ -407,8 +406,8 @@ void UserSettings(sf::RenderWindow& window) {
 
                 if (save && userName != "") {
                     ofstream output("user.txt");
-                    output << "Name:" << userName << "||";
-                    output << "Theme:" << theme;
+                    output <<  userName << "|";
+                    output  << theme;
                     output.close();
                     windowDaugth.close();
                 }
@@ -435,9 +434,9 @@ void ExitFunc(sf::RenderWindow& window) {
     Sprite fons(fon);
 
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(800, 500), "Checker");
+    sf::RenderWindow windowDaugth(sf::VideoMode(600, 600), "Checker");
     sf::Font font;
-    font.loadFromFile("Font//bahnschrift.ttf");
+    font.loadFromFile("Font//Deutsch Gothic.ttf");
 
     sf::Text textStart(L"Вы хотите выйти?", font, 30);
     textStart.setFillColor(sf::Color::White);
@@ -508,7 +507,7 @@ void menu(sf::RenderWindow& window)
     Sprite fons(fon);
 
     sf::Font font;
-    font.loadFromFile("Font//bahnschrift.ttf");
+    font.loadFromFile("Font//Deutsch Gothic.ttf");
 
     sf::Text textStart(L"Начать!", font, 30);
     textStart.setFillColor(sf::Color::White);
@@ -580,6 +579,9 @@ void menu(sf::RenderWindow& window)
 
             if (Mouse::isButtonPressed(Mouse::Left)) {
                 if (isReadyOptions) {
+                    ofstream out("gameSettings.txt");
+                    out << "";
+                    out.close();
                     window.setActive(false);
                     sf::Thread newPollThread(InstructionSettings, std::ref(window));
                     newPollThread.launch();
@@ -588,9 +590,13 @@ void menu(sf::RenderWindow& window)
 
                     Game game;
                     bool start = 1;
+                    ifstream in("gameSettings.txt");
+                    string str;
+                    in >> str;
+                    in.close();
 
-                    while (window.isOpen()) {
-
+                    while (window.isOpen() && str != "") {
+                        game.assignValuesFromFile("gameSettings.txt");
                         Event event;
 
                         while (window.pollEvent(event)) {
@@ -602,7 +608,7 @@ void menu(sf::RenderWindow& window)
                                 newPollThread.wait();
                                 window.setActive();
                             }
-
+                            game.set_who_can_move();
                             game.make_move(window, event);
                         }
 
@@ -612,7 +618,10 @@ void menu(sf::RenderWindow& window)
                             game.start_game(window, event, start);
                         }
 
-                        game.get_checkers_on_board().draw_checkers(window);//рисую поле и шашки
+                        if(game.getMode() == "International")
+                            game.get_checkers_on_board_inter().draw_checkers(window);//рисую поле и шашки для международного режима
+                        else
+                            game.get_checkers_on_board_rcg().draw_checkers(window);//рисую поле и шашки для русского, английского или поддавков
 
                         game.end_game(window, event);//рисую если конец игры	
 
