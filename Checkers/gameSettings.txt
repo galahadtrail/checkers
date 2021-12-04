@@ -1,1 +1,1 @@
-Раундов:1||Режим:Russian||Цвет:white
+1|Russian|white
