@@ -2,15 +2,14 @@
 #include <SFML/Graphics.hpp>
 using namespace sf;
 
-
 class Checker {
 private:
 	CircleShape checker = CircleShape(18);
-	bool checker_color;// 0  , 1  
-	bool select = 0;//1  , 0  
-	bool queen = 0;//1   , 0  
-	Texture texture;//  
-	Sprite sprite;//  
+	bool checker_color;// 0 для белых, 1 для черных
+	bool select = 0;//1 если выбрана, 0 если нет
+	bool queen = 0;//1 если шашка дамка, 0 если нет
+	Texture texture;//текстура значка дамки
+	Sprite sprite;//спрайт значка дамки
 public:
 	CircleShape &get_checker() {return this->checker;}
 	Vector2f get_position() {return this->checker.getPosition();}
@@ -62,17 +61,10 @@ public:
 		this->select = _checker.select;
 		this->queen = _checker.queen;
 		this->checker_color = _checker.checker_color;
-<<<<<<< HEAD
 		if (_checker.checker_color == 0) 
 			this->set_color(Color(195, 132, 60));
 
 		if (_checker.checker_color == 1)
-=======
-		if (_checker.checker_color == 1) 
-			this->set_color(Color(195, 132, 60));
-
-		if (_checker.checker_color == 0)
->>>>>>> ad8cce315a83d616ad1f06e7b8045ee26fff55cc
 			this->set_color(Color(88, 39, 15));
 
 		this->set_position(_checker.get_position().x, _checker.get_position().y);
