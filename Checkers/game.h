@@ -568,7 +568,7 @@ public:
 			}
 		}
 		if (checkers_on_board_inter.get_checker(choiseChecker).get_color() == 1 && size(who_must_eat) == 0) {
-			if (checkers_on_board_inter.get_checker(choiseChecker).get_y() == 7) {
+			if (checkers_on_board_inter.get_checker(choiseChecker).get_y() == 9) {
 				checkers_on_board_inter.get_checker(choiseChecker).make_queen();
 			}
 		}
