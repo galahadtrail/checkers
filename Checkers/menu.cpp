@@ -782,7 +782,8 @@ void playGame(sf::RenderWindow& window) {
     ofstream out("ligth.txt");
     out << "";
     out.close();
-    size_t amountSteps = 0;
+    size_t amountSteps = 1;
+    bool shouldHigh = false;
 
     pauseOption.setTime(clock());
 
@@ -799,7 +800,13 @@ void playGame(sf::RenderWindow& window) {
                 newPollThread.wait();
                 window.setActive();
             }
-
+            if (Mouse::isButtonPressed(Mouse::Left)) {
+                shouldHigh = true;
+            }
+            if (Mouse::isButtonPressed(Mouse::Right) && shouldHigh) {
+                amountSteps++;
+                shouldHigh = false;
+            }
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
                 window.setActive(false);
                 Pause(window);
@@ -822,7 +829,7 @@ void playGame(sf::RenderWindow& window) {
             }
 
             ofstream out("ligth.txt");
-            out << ++amountSteps << "|" << game.getColor()<<"|"<<game.getMode();
+            out << amountSteps << "|" << game.getColor()<<"|"<<game.getMode();
             out.close();
 
             game.set_who_can_move();
@@ -875,7 +882,7 @@ void playGame(sf::RenderWindow& window) {
         string regime = temp;
         bool master = false;
         if (regime != "Checkers") {
-            if (stoi(amountSteps) % 2 == 1) {
+            if (stoi(amountSteps) % 2 == 1 && masterColor == "white") {
                 master = true;
             }
             else {
@@ -883,7 +890,7 @@ void playGame(sf::RenderWindow& window) {
             }
         }
         else {
-            if (stoi(amountSteps) % 2 == 0) {
+            if (stoi(amountSteps) % 2 == 1 && masterColor == "black") {
                 master = true;
             }
             else {
