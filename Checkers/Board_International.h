@@ -43,8 +43,22 @@ public:
 		for (int i = 1; i <= 10; i++) {
 			for (int j = 1; j <= 10; j++) {
 				all_squares[i - 1][j - 1].set_position(i * 50.0, j * 50);
-				if ((i + j) % 2 == 1) all_squares[i - 1][j - 1].set_color(Color(85, 52, 14));
-				else all_squares[i - 1][j - 1].set_color(Color(255, 210, 117));
+				if ((i + j) % 2 == 1) {
+					if (theme == 0) {
+						all_squares[i - 1][j - 1].set_color(Color(101, 61, 16));
+					}
+					else {
+						all_squares[i - 1][j - 1].set_color(Color(80, 80, 80));
+					}
+				}
+				else {
+					if (theme == 0) {
+						all_squares[i - 1][j - 1].set_color(Color(255, 178, 115));   //белые клетки
+					}
+					else {
+						all_squares[i - 1][j - 1].set_color(Color(255, 255, 255));
+					}
+				}
 				_window.draw(all_squares[i - 1][j - 1].get_square());
 			}
 		}
@@ -53,7 +67,12 @@ public:
 				if (all_squares[i - 1][j - 1].get_backlight() == 1) {
 					RectangleShape square_light(Vector2f(50, 50));
 					square_light.setPosition(i * 50, j * 50);
-					all_squares[i - 1][j - 1].set_color(Color(150, 120, 90));
+					if (theme == 0) {
+						all_squares[i - 1][j - 1].set_color(Color(150, 120, 90));
+					}
+					else {
+						all_squares[i - 1][j - 1].set_color(Color(180, 180, 180));
+					}
 				}
 				_window.draw(all_squares[i - 1][j - 1].get_square());
 			}
@@ -125,7 +144,7 @@ public:
 		name.setFillColor(sf::Color::Black);
 
 		Text nameGuest(L"Имя гостя:   \n", font1, 23);
-		nameGuest.setPosition(520, 120);
+		nameGuest.setPosition(650, 120);
 		nameGuest.setOutlineColor(sf::Color::White);
 		nameGuest.setOutlineThickness(1);
 		nameGuest.setFillColor(sf::Color::Black);

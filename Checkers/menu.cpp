@@ -33,7 +33,7 @@ void InstructionSettings(sf::RenderWindow& window) {
     bool isBlack = false;
     std::string color = "";
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(800, 600), "Checkers");
+    sf::RenderWindow windowDaugth(sf::VideoMode(960, 600), "Checkers");
     sf::Font font1;
     font1.loadFromFile("Font//Deutsch Gothic.ttf");
     sf::Font font2;
@@ -406,7 +406,7 @@ void UserSettings(sf::RenderWindow& window) {
     CircleShape hallo;
     Sprite fons(fon);
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(800, 600), "Checkers");
+    sf::RenderWindow windowDaugth(sf::VideoMode(960, 600), "Checkers");
     sf::Font font1;
     font1.loadFromFile("Font//Deutsch Gothic.ttf");
     sf::Font font2;
@@ -578,7 +578,7 @@ void ExitFunc(sf::RenderWindow& window) {
     Sprite fons(fon);
 
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(800, 600), "Checkers");
+    sf::RenderWindow windowDaugth(sf::VideoMode(960, 600), "Checkers");
     sf::Font font1;
     font1.loadFromFile("Font//Deutsch Gothic.ttf");
     sf::Font font2;
@@ -659,7 +659,7 @@ void Pause(sf::RenderWindow& window) {
     Sprite fons(fon);
 
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(800, 600), "Checkers");
+    sf::RenderWindow windowDaugth(sf::VideoMode(960, 600), "Checkers");
     sf::Font font1;
     font1.loadFromFile("Font//Deutsch Gothic.ttf");
     sf::Font font2;
@@ -912,7 +912,7 @@ void playGame(sf::RenderWindow& window) {
 
 void menu()
 {
-    RenderWindow window(sf::VideoMode(800, 600), "Checkers");
+    RenderWindow window(sf::VideoMode(960, 600), "Checkers");
     Texture fon;
     fon.loadFromFile("images/fon1.jpg");
 
@@ -926,7 +926,7 @@ void menu()
     sf::Text textStart(L"Шашки by AkTeam", font1, 35);
     textStart.setFillColor(sf::Color::Black);
     textStart.setStyle(sf::Text::Bold);
-    textStart.setPosition(230, 50);
+    textStart.setPosition(300, 50);
 
 
     bool isReadyOptions = false;
@@ -1027,7 +1027,7 @@ void menu()
                     window.setActive();
 
                     playGame(window);
-                }///////////
+                }
 
                 if (isReadyUserSettings) {
                     window.setActive(false);
