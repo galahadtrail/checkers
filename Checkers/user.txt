@@ -1,1 +1,1 @@
-Name:Izmailov|Theme:BlackWhite
+Name:Izmailov|Theme:Default
