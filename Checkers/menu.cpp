@@ -1,7 +1,7 @@
-    #include "menu.h"
+#include "menu.h"
 
 class PauseOption {
-private:   
+private:
     int option = 0;
 
 public:
@@ -26,7 +26,7 @@ void InstructionSettings(sf::RenderWindow& window) {
     bool isBlack = false;
     std::string color = "";
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(800, 500), "Checker");
+    sf::RenderWindow windowDaugth(sf::VideoMode(800, 500), "Checkers");
     sf::Font font;
     font.loadFromFile("Font//Deutsch Gothic.ttf");
 
@@ -289,7 +289,7 @@ void UserSettings(sf::RenderWindow& window) {
     CircleShape hallo;
     Sprite fons(fon);
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(600, 500), "Checker");
+    sf::RenderWindow windowDaugth(sf::VideoMode(800, 500), "Checkers");
     sf::Font font;
     font.loadFromFile("Font//Deutsch Gothic.ttf");
     sf::Text textStart(L"Пользовательские настройки", font, 20);
@@ -441,7 +441,7 @@ void ExitFunc(sf::RenderWindow& window) {
     Sprite fons(fon);
 
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(600, 500), "Checker");
+    sf::RenderWindow windowDaugth(sf::VideoMode(800, 500), "Checkers");
     sf::Font font;
     font.loadFromFile("Font//Deutsch Gothic.ttf");
 
@@ -507,8 +507,188 @@ void ExitFunc(sf::RenderWindow& window) {
     }
 }
 
-bool menu(sf::RenderWindow& window)
+void Pause(sf::RenderWindow& window) {
+    window.setActive(false);
+    Texture fon;
+    fon.loadFromFile("images/fon.jpg");
+    Sprite fons(fon);
+
+
+    sf::RenderWindow windowDaugth(sf::VideoMode(800, 500), "Checkers");
+    sf::Font font;
+    font.loadFromFile("Font//Deutsch Gothic.ttf");
+
+    sf::Text textStart(L"Вы можете вернуться к игре \nили выйти в главное меню", font, 15);
+    textStart.setFillColor(sf::Color::White);
+    textStart.setStyle(sf::Text::Bold);
+    textStart.setPosition(150, 150);
+
+    bool stay = false;
+    sf::Text yes(L"Вернуться", font, 15);
+    yes.setFillColor(sf::Color::White);
+    yes.setStyle(sf::Text::Bold);
+    yes.setPosition(170, 210);
+
+    bool leave = false;
+    sf::Text no(L"Выйти в меню", font, 15);
+    no.setFillColor(sf::Color::White);
+    no.setStyle(sf::Text::Bold);
+    no.setPosition(170, 280);
+
+    bool restart = false;
+    sf::Text res(L"Рестарт", font, 15);
+    res.setFillColor(sf::Color::White);
+    res.setStyle(sf::Text::Bold);
+    res.setPosition(170, 350);
+
+    while (windowDaugth.isOpen())
+    {
+        sf::Event event;
+        while (windowDaugth.pollEvent(event))
+        {
+            if (IntRect(170, 210, 120, 30).contains(Mouse::getPosition(windowDaugth))) {
+                yes.setFillColor(sf::Color::Yellow);
+                leave = true;
+            }
+            else {
+                yes.setFillColor(sf::Color::White);
+                leave = false;
+            }
+
+            if (IntRect(170, 280, 170, 30).contains(Mouse::getPosition(windowDaugth))) {
+                no.setFillColor(sf::Color::Yellow);
+                stay = true;
+            }
+            else {
+                no.setFillColor(sf::Color::White);
+                stay = false;
+            }
+            if (IntRect(170, 350, 150, 30).contains(Mouse::getPosition(windowDaugth))) {
+                res.setFillColor(sf::Color::Yellow);
+                restart = true;
+            }
+            else {
+                res.setFillColor(sf::Color::White);
+                restart = false;
+            }
+
+            if (Mouse::isButtonPressed(Mouse::Left)) {
+                if (leave) {
+                    windowDaugth.close();
+                    pauseOption.setOption(1);
+                    return;
+                }
+
+                if (stay) {
+                    pauseOption.setOption(0);
+                    window.close();
+                    windowDaugth.close();
+                    menu();
+                }
+                if (restart) {
+                    windowDaugth.close();
+                    pauseOption.setOption(2);
+                    playGame(window);
+                }
+            }
+
+        }
+        windowDaugth.clear();
+        windowDaugth.draw(fons);
+        windowDaugth.draw(textStart);
+        windowDaugth.draw(yes);
+        windowDaugth.draw(no);
+        windowDaugth.draw(res);
+        windowDaugth.display();
+    }
+}
+
+void playGame(sf::RenderWindow& window) {
+    wifstream input("user.txt");
+    wstring bulk;
+    getline(input, bulk);
+    int theme;
+    input.close();
+
+    int index = bulk.rfind(':') + 1;
+    if (bulk[index] == 'D') {
+        theme = 0;
+    }
+    else {
+        theme = 1;
+    }
+    
+    Game game;
+    bool start = 1;
+
+    ifstream in("gameSettings.txt");
+    string str;
+    in >> str;
+    in.close();
+
+    game.startTime = clock();
+
+    while (window.isOpen() && str != "") {
+        game.assignValuesFromFile("gameSettings.txt");
+        Event event;
+
+
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.setActive(false);
+                sf::Thread newPollThread(ExitFunc, std::ref(window));
+                newPollThread.launch();
+                newPollThread.wait();
+                window.setActive();
+            }
+
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
+                window.setActive(false);
+                Pause(window);
+
+                window.setActive();
+                switch (pauseOption.getOption()) {
+                case 0:
+                {
+                    pauseOption.setOption(4);
+                    window.close();
+                    return;
+                    break;
+                }
+                case 1:
+                {
+
+                    break;
+                }
+                }
+            }
+
+            game.make_move(window, event);
+        }
+
+        if (theme == 0) {
+            window.clear(Color(245, 210, 175));
+        }
+        else {
+            window.clear(Color(110, 110, 110));
+        }
+
+        if (start) {
+            game.start_game(window, event, start);
+        }
+
+        if (game.end_game(window, event))
+            game.get_checkers_on_board().draw_checkers(window, game.startTime);//рисую поле и шашки пока идёт игра
+        else
+            game.end_game(window, event);//рисую если конец игры
+
+        window.display();
+    }
+}
+
+void menu()
 {
+    RenderWindow window(sf::VideoMode(800, 500), "CheckerS");
     Texture fon;
     fon.loadFromFile("images/fon.jpg");
 
@@ -560,46 +740,13 @@ bool menu(sf::RenderWindow& window)
                 theme = 1;
             }
 
-            if (event.type == sf::Event::Closed) {
+            if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) {
 
                 window.setActive(false);
                 sf::Thread newPollThread(ExitFunc, std::ref(window));
                 newPollThread.launch();
                 newPollThread.wait();
                 window.setActive();
-                isReadyOptions = false;
-                isReadyUserSettings = false;
-                isExit = false;
-            }
-
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-                window.setActive(false);
-
-                sf::Thread newPollThread(Pause, std::ref(window));
-                
-                newPollThread.launch();
-                newPollThread.wait();
-                window.setActive();
-
-                switch (pauseOption.getOption()) {
-                case 0:
-                {
-                    pauseOption.setOption(4);
-                    window.close();
-                    return true;
-                    break;
-                }
-                case 1:
-                {
-
-                    break;
-                }
-                /*case 2:
-                {
-
-                }*/
-                }
-
                 isReadyOptions = false;
                 isReadyUserSettings = false;
                 isExit = false;
@@ -643,70 +790,8 @@ bool menu(sf::RenderWindow& window)
                     newPollThread.wait();
                     window.setActive();
 
-                    Game game;
-                    bool start = 1;
-
-                    ifstream in("gameSettings.txt");
-                    string str;
-                    in >> str;
-                    in.close();
-    
-                    game.startTime = clock();
-
-
-                    while (window.isOpen() && str != "") {
-                        game.assignValuesFromFile("gameSettings.txt");
-                        Event event;
-                        
-
-                        while (window.pollEvent(event)) {
-                            if (event.type == sf::Event::Closed) {
-                                window.setActive(false);
-                                sf::Thread newPollThread(ExitFunc, std::ref(window));
-                                game.pauseTimeIn = clock();
-                                newPollThread.launch();
-                                newPollThread.wait();
-                                window.setActive();
-                                game.pauseTimeOut = clock() - game.pauseTimeIn;
-                                game.startTime += game.pauseTimeOut;
-                            }
-
-                            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-                                window.setActive(false);
-                                sf::Thread newPollThread(Pause, std::ref(window));
-                                game.pauseTimeIn = clock();
-                                newPollThread.launch();
-                                newPollThread.wait();
-                                window.setActive();
-                                isReadyOptions = false;
-                                isReadyUserSettings = false;
-                                isExit = false;
-                                game.pauseTimeOut = clock() - game.pauseTimeIn;
-                                game.startTime += game.pauseTimeOut;
-                            }
-                            
-                            game.make_move(window, event);
-                        }
-
-                        if (theme == 0) {
-                            window.clear(Color(245, 210, 175));
-                        }
-                        else {
-                            window.clear(Color(110, 110, 110));
-                        }
-
-                        if (start) {
-                            game.start_game(window, event, start);
-                        }
-
-                        if (game.end_game(window, event))
-                            game.get_checkers_on_board().draw_checkers(window, game.startTime);//рисую поле и шашки пока идёт игра
-                        else
-                            game.end_game(window, event);//рисую если конец игры
-
-                        window.display();
-                    }
-                }
+                    playGame(window);
+                }///////////
 
                 if (isReadyUserSettings) {
                     window.setActive(false);
@@ -722,9 +807,6 @@ bool menu(sf::RenderWindow& window)
                     newPollThread.launch();
                     newPollThread.wait();
                     window.setActive();
-                    if (!window.isOpen()) {
-                        return false;
-                    }
                 }
             }
         }
@@ -739,104 +821,6 @@ bool menu(sf::RenderWindow& window)
 
     if (pauseOption.getOption() == 0) {
         window.close();
-        return true;
-    }
-    return false;
-}
-
-void Pause(sf::RenderWindow& window) {
-    
-    
-    window.setActive(false);
-    Texture fon;
-    fon.loadFromFile("images/fon.jpg");
-    Sprite fons(fon);
-
-
-    sf::RenderWindow windowDaugth(sf::VideoMode(600, 500), "Checkers");
-    sf::Font font;
-    font.loadFromFile("Font//Deutsch Gothic.ttf");
-
-    sf::Text textStart(L"Пауза", font, 30);
-    textStart.setFillColor(sf::Color::White);
-    textStart.setStyle(sf::Text::Bold);
-    textStart.setPosition(150, 150);
-
-    bool stay = false;
-    sf::Text yes(L"В меню", font, 30);
-    yes.setFillColor(sf::Color::White);
-    yes.setStyle(sf::Text::Bold);
-    yes.setPosition(170, 210);
-
-    bool leave = false;
-    sf::Text no(L"Продолжить", font, 30);
-    no.setFillColor(sf::Color::White);
-    no.setStyle(sf::Text::Bold);
-    no.setPosition(170, 280);
-
-    bool startNew = false;
-    sf::Text newGame(L"Новая игра", font, 30);
-    newGame.setFillColor(sf::Color::White);
-    newGame.setStyle(sf::Text::Bold);
-    newGame.setPosition(170, 350);
-
-    while (windowDaugth.isOpen())
-    {
-        sf::Event event;
-        while (windowDaugth.pollEvent(event))
-        {
-            if (IntRect(170, 210, 150, 30).contains(Mouse::getPosition(windowDaugth))) {
-                yes.setFillColor(sf::Color::Yellow);
-                leave = true;
-            }
-            else {
-                yes.setFillColor(sf::Color::White);
-                leave = false;
-            }
-
-            if (IntRect(170, 280, 232, 30).contains(Mouse::getPosition(windowDaugth))) {
-                no.setFillColor(sf::Color::Yellow);
-                stay = true;
-            }
-            else {
-                no.setFillColor(sf::Color::White);
-                stay = false;
-            }
-
-            if (IntRect(170, 350, 208, 30).contains(Mouse::getPosition(windowDaugth))) {
-                newGame.setFillColor(sf::Color::Yellow);
-                startNew = true;
-            }
-            else {
-                newGame.setFillColor(sf::Color::White);
-                startNew = false;
-            }
-
-            if (Mouse::isButtonPressed(Mouse::Left)) {
-                if (leave) {
-                    windowDaugth.close();
-                    pauseOption.setOption(0);
-                    window.close();
-                }
-
-                if (stay) {
-                    windowDaugth.close();
-                    pauseOption.setOption(1);
-                }
-
-                if (startNew) {
-                    windowDaugth.close();
-                    pauseOption.setOption(2);
-                }
-            }
-
-        }
-        windowDaugth.clear();
-        windowDaugth.draw(fons);
-        windowDaugth.draw(textStart);
-        windowDaugth.draw(yes);
-        windowDaugth.draw(no);
-        windowDaugth.draw(newGame);
-        windowDaugth.display();
+        return;
     }
 }

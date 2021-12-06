@@ -12,5 +12,6 @@
 void InstructionSettings(sf::RenderWindow& window);
 void UserSettings(sf::RenderWindow& window);
 void ExitFunc(sf::RenderWindow& window);
-bool menu(sf::RenderWindow& window);
 void Pause(sf::RenderWindow& window);
+void playGame(sf::RenderWindow& window);
+void menu();
