@@ -1369,13 +1369,42 @@ void assignValuesFromFile(std::string fileName)
 			Font font;
 			font.loadFromFile("Font//bahnschrift.ttf");
 			Text t = Text("", font, 81);
+			string whoWin = (mode == "Giveaway") ? "White win" : "Black win";
 			t.setString(mode == "Giveaway" ? L"White win" : L"Black win");
 			t.setFillColor(Color::Black);
 			t.setPosition(78, 190);
 
 			int roundS = stoi(rounds);
 
-			if (roundS != 1) {
+			_window.draw(back);
+			_window.draw(t);
+
+			ifstream in("score.txt");
+			int master_score = 0;
+			int slave_score = 0;
+			in>>master_score;
+			in.ignore(1);
+			in >> slave_score;
+			in.close();
+
+			if (whoWin == "White win" && this->getColor() == "white") {
+				master_score += 1;
+			}
+			else if (whoWin == "White win" && this->getColor() == "black") {
+				slave_score += 1;
+			}
+			else if (whoWin == "Black win" && this->getColor() == "black") {
+				master_score += 1;
+			}
+			else {
+				slave_score += 1;
+			}
+
+			ofstream out("score.txt");
+			out << to_string(master_score) << "|" << to_string(slave_score);
+			out.close();
+
+			if (roundS > 1) {
 				rounds = to_string(roundS - 1);
 				ofstream out("gameSettings.txt");
 				out << rounds << "|" << mode << "|" << colorChecker;
@@ -1383,8 +1412,6 @@ void assignValuesFromFile(std::string fileName)
 				playGame(_window);
 			}
 
-			_window.draw(back);
-			_window.draw(t);
 			if (_event.type == Event::Closed)
 				_window.close();
 			return 0;
@@ -1402,12 +1429,40 @@ void assignValuesFromFile(std::string fileName)
 			Font font;
 			font.loadFromFile("Font//bahnschrift.ttf");
 			Text t = Text("", font, 81);
+			string whoWin = mode == "Giveaway" ? "Black win" : "White win";
 			t.setString(mode == "Giveaway" ? L"Black win" : L"White win");
 			t.setFillColor(Color::Black);
 			t.setPosition(75, 190);
 			int roundS = stoi(rounds);
+			_window.draw(back);
+			_window.draw(t);
 
-			if (roundS != 1) {
+			ifstream in("score.txt");
+			int master_score = 0;
+			int slave_score = 0;
+			in >> master_score;
+			in.ignore(1);
+			in >> slave_score;
+			in.close();
+
+			if (whoWin == "White win" && this->getColor() == "white") {
+				master_score += 1;
+			}
+			else if (whoWin == "White win" && this->getColor() == "black") {
+				slave_score += 1;
+			}
+			else if (whoWin == "Black win" && this->getColor() == "black") {
+				master_score += 1;
+			}
+			else {
+				slave_score += 1;
+			}
+
+			ofstream out("score.txt");
+			out << to_string(master_score) << "|" << to_string(slave_score);
+			out.close();
+
+			if (roundS > 1) {
 				rounds = to_string(roundS - 1);
 				ofstream out("gameSettings.txt");
 				out << rounds << "|" << mode << "|" << colorChecker;
@@ -1415,8 +1470,8 @@ void assignValuesFromFile(std::string fileName)
 				playGame(_window);
 			}
 
-			_window.draw(back);
-			_window.draw(t);
+			
+
 			if (_event.type == Event::Closed)
 				_window.close();
 			return 0;

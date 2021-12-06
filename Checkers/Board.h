@@ -129,7 +129,7 @@ public:
 
 		
 		Text time(L"Время:   ", font1, 23);
-		time.setPosition(520, 20);
+		time.setPosition(650, 20);
 		time.setFillColor(sf::Color::Black);
 		time.setOutlineColor(sf::Color::White);
 		time.setOutlineThickness(1);
@@ -142,13 +142,13 @@ public:
 		_window.draw(time);
 
 		Text name(L"Имя:   ", font1, 23);
-		name.setPosition(520, 70);
+		name.setPosition(650, 70);
 		name.setOutlineColor(sf::Color::White);
 		name.setOutlineThickness(1);
 		name.setFillColor(sf::Color::Black);
 		
 		Text nameGuest(L"Имя гостя:   \n", font1, 23);
-		nameGuest.setPosition(520, 120);
+		nameGuest.setPosition(650, 120);
 		nameGuest.setOutlineColor(sf::Color::White);
 		nameGuest.setOutlineThickness(1);
 		nameGuest.setFillColor(sf::Color::Black);
@@ -184,10 +184,20 @@ public:
 		}
 		nameInput.close();
 		
-		
+		ifstream in("score.txt");
+		int masterScore = 0;
+		int slaveScore = 0;
+		in >> masterScore;
+		in.ignore(1);
+		in >> slaveScore;
+		in.close();
 
-		name.setString(L"Имя:   " + semi);
-		nameGuest.setString(L"Имя гостя:   \n" + assignRegimeFromFile("regime.txt"));
+		ofstream out("score.txt");
+		out << masterScore << "|" << slaveScore;
+		out.close();
+
+		name.setString(L"Имя:   " + semi + "- " + to_string(masterScore));
+		nameGuest.setString(L"Имя гостя:   \n" + assignRegimeFromFile("regime.txt") + "- " + to_string(slaveScore));
 
 		_window.draw(name);
 		_window.draw(nameGuest);

@@ -33,7 +33,7 @@ void InstructionSettings(sf::RenderWindow& window) {
     bool isBlack = false;
     std::string color = "";
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(800, 600), "Checkers");
+    sf::RenderWindow windowDaugth(sf::VideoMode(960, 600), "Checkers");
     sf::Font font1;
     font1.loadFromFile("Font//Deutsch Gothic.ttf");
     sf::Font font2;
@@ -406,7 +406,7 @@ void UserSettings(sf::RenderWindow& window) {
     CircleShape hallo;
     Sprite fons(fon);
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(800, 600), "Checkers");
+    sf::RenderWindow windowDaugth(sf::VideoMode(960, 600), "Checkers");
     sf::Font font1;
     font1.loadFromFile("Font//Deutsch Gothic.ttf");
     sf::Font font2;
@@ -578,7 +578,7 @@ void ExitFunc(sf::RenderWindow& window) {
     Sprite fons(fon);
 
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(800, 600), "Checkers");
+    sf::RenderWindow windowDaugth(sf::VideoMode(960, 600), "Checkers");
     sf::Font font1;
     font1.loadFromFile("Font//Deutsch Gothic.ttf");
     sf::Font font2;
@@ -659,7 +659,7 @@ void Pause(sf::RenderWindow& window) {
     Sprite fons(fon);
 
 
-    sf::RenderWindow windowDaugth(sf::VideoMode(800, 600), "Checkers");
+    sf::RenderWindow windowDaugth(sf::VideoMode(960, 600), "Checkers");
     sf::Font font1;
     font1.loadFromFile("Font//Deutsch Gothic.ttf");
     sf::Font font2;
@@ -779,9 +779,7 @@ void playGame(sf::RenderWindow& window) {
     string str;
     in >> str;
     in.close();
-    ofstream out("ligth.txt");
-    out << "";
-    out.close();
+    
     size_t amountSteps = 1;
     bool shouldHigh = false;
 
@@ -829,7 +827,7 @@ void playGame(sf::RenderWindow& window) {
             }
 
             ofstream out("ligth.txt");
-            out << amountSteps << "|" << game.getColor()<<"|"<<game.getMode();
+            out << amountSteps << "|" << game.getColor() << "|" << game.getMode();
             out.close();
 
             game.set_who_can_move();
@@ -885,6 +883,12 @@ void playGame(sf::RenderWindow& window) {
             if (stoi(amountSteps) % 2 == 1 && masterColor == "white") {
                 master = true;
             }
+            else if (stoi(amountSteps) % 2 == 1 && masterColor == "black") {
+                master = false;
+            }
+            else if (stoi(amountSteps) % 2 == 0 && masterColor == "black") {
+                master =true;
+            }
             else {
                 master = false;
             }
@@ -893,8 +897,14 @@ void playGame(sf::RenderWindow& window) {
             if (stoi(amountSteps) % 2 == 1 && masterColor == "black") {
                 master = true;
             }
-            else {
+            else if (stoi(amountSteps) % 2 == 0 && masterColor == "black") {
                 master = false;
+            }
+            else if (stoi(amountSteps) % 2 == 1 && masterColor == "white") {
+                master = false;
+            }
+            else {
+                master = true;
             }
         }
 
@@ -912,7 +922,7 @@ void playGame(sf::RenderWindow& window) {
 
 void menu()
 {
-    RenderWindow window(sf::VideoMode(800, 600), "Checkers");
+    RenderWindow window(sf::VideoMode(960, 600), "Checkers");
     Texture fon;
     fon.loadFromFile("images/fon1.jpg");
 
@@ -926,7 +936,7 @@ void menu()
     sf::Text textStart(L"Шашки by AkTeam", font1, 35);
     textStart.setFillColor(sf::Color::Black);
     textStart.setStyle(sf::Text::Bold);
-    textStart.setPosition(230, 50);
+    textStart.setPosition(300, 50);
 
 
     bool isReadyOptions = false;
@@ -1020,14 +1030,20 @@ void menu()
                     wofstream output("regime.txt");
                     output << "";
                     output.close();
+                    ofstream ouT("ligth.txt");
+                    ouT << "";
+                    ouT.close();
                     window.setActive(false);
                     sf::Thread newPollThread(InstructionSettings, std::ref(window));
                     newPollThread.launch();
                     newPollThread.wait();
                     window.setActive();
+                    ofstream iN("score.txt");
+                    iN << "";
+                    iN.close();
 
                     playGame(window);
-                }///////////
+                }
 
                 if (isReadyUserSettings) {
                     window.setActive(false);
