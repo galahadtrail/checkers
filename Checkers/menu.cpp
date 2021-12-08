@@ -358,7 +358,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                     textAmount.setString(L"Количество раундов:   1");
                 }
 
-                if (isStart && mode != "" && rounds != "" && color != "" && regime != L"") {
+                if (isStart && mode != "" && rounds != "" && color != "" && regime != L"" && guestName != L"") {
                     ofstream output("gameSettings.txt");
                     output << rounds << "|" << mode << "|" << color;
                     output.close();
@@ -779,14 +779,13 @@ void playGame(sf::RenderWindow& window) {
     string str;
     in >> str;
     in.close();
-    
-    size_t amountSteps = 1;
-    bool shouldHigh = false;
+
 
     pauseOption.setTime(clock());
 
     while (window.isOpen() && str != "") {
         game.assignValuesFromFile("gameSettings.txt");
+        game.assignRegimeFromFile("regime.txt");
         Event event;
 
 
@@ -797,13 +796,6 @@ void playGame(sf::RenderWindow& window) {
                 newPollThread.launch();
                 newPollThread.wait();
                 window.setActive();
-            }
-            if (Mouse::isButtonPressed(Mouse::Left)) {
-                shouldHigh = true;
-            }
-            if (Mouse::isButtonPressed(Mouse::Right) && shouldHigh) {
-                amountSteps++;
-                shouldHigh = false;
             }
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
                 window.setActive(false);
@@ -827,11 +819,20 @@ void playGame(sf::RenderWindow& window) {
             }
 
             ofstream out("ligth.txt");
-            out << amountSteps << "|" << game.getColor() << "|" << game.getMode();
+            out << game.getAmountSteps() << "|" << game.getColor() << "|" << game.getMode();
             out.close();
 
             game.set_who_can_move();
-            game.make_move(window, event);
+            if(((game.getWhoCanMove() == 0 && game.getColor() == "black") || 
+                (game.getWhoCanMove() == 1 && game.getColor() == "white")) && game.getRegime() == "Computer")
+            {
+                game.bot_make_move();
+            }
+
+            else
+            {
+                game.make_move(window, event);
+            }
         }
 
         if (theme == 0) {

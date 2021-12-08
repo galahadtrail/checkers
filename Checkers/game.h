@@ -5,10 +5,101 @@
 #include <string>
 #include <fstream>
 #include "menu.h"
+#include <Windows.h>
 using namespace sf;
+
+void winDisplay(RenderWindow& window, wstring guestName)
+{
+	sf::Font font1;
+	font1.loadFromFile("Font//Deutsch Gothic.ttf");
+	sf::Font font2;
+	font2.loadFromFile("Font//bahnschrift.ttf");
+
+	ifstream in("score.txt");
+	int master_score = 0;
+	int slave_score = 0;
+	in >> master_score;
+	in.ignore(1);
+	in >> slave_score;
+	in.close();
+	wstring score = to_wstring(master_score) + L"-" + to_wstring(slave_score);
+
+	wifstream input("user.txt");
+	wstring str;
+	input >> str;
+	input.close();
+	sf::Text textMaster(L"Победил: ", font2, 40);
+	textMaster.setFillColor(sf::Color::Black);
+	textMaster.setStyle(sf::Text::Bold);
+	textMaster.setOutlineColor(sf::Color::White);
+	textMaster.setOutlineThickness(1);
+	textMaster.setPosition(200, 100);
+
+	sf::Text textSlave(L"Победил: ", font2, 30);
+	textSlave.setFillColor(sf::Color::Black);
+	textSlave.setStyle(sf::Text::Bold);
+	textSlave.setOutlineColor(sf::Color::White);
+	textSlave.setOutlineThickness(1);
+	textSlave.setPosition(200, 300);
+
+	sf::Text textPar(L"Ничья!", font2, 30);
+	textPar.setFillColor(sf::Color::Black);
+	textPar.setStyle(sf::Text::Bold);
+	textPar.setOutlineColor(sf::Color::White);
+	textPar.setOutlineThickness(1);
+	textPar.setPosition(200, 300);
+
+	int posColon = str.find(L":");
+	posColon++;
+	int posDiv = str.find(L"|");
+	wstring masterName;
+
+	while (posColon < posDiv) {
+		masterName += str[posColon];
+		posColon++;
+	}
+
+	bool masterWin = false;
+	bool slaveWin = false;
+	bool paritet = false;
+	if (master_score > slave_score) {
+		masterWin = true;
+	}
+	else if (master_score < slave_score)  {
+		slaveWin = false;
+	}
+	else {
+		paritet = true;
+	}
+
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed) {
+				window.close();
+				return;
+			}
+		}
+		if (masterWin) {
+			textMaster.setString(L"Победил: \n" + masterName + L"\nсо счётом: " + score);
+		}
+		if (slaveWin) {
+			textMaster.setString(L"Победил: \n" + guestName + L"\nсо счётом: " + score);
+		}
+		if (paritet) {
+			textMaster.setString(L"Ничья!\n" + score);	
+		}
+
+		window.draw(textMaster);
+		window.display();
+	}
+}
 
 class Game {
 private:
+	size_t amountSteps = 1;
 	int how_many = 0;
 	bool flag = false;//переменная хранит, был ли первый ход
 	bool who_can_move = 0;//цвет хода, 0 если ход белых, 1 если ход черных
@@ -17,8 +108,9 @@ private:
 	std::string mode;//режим игры
 	std::string rounds;//количество раундов
 	std::string colorChecker;//Цвет шашек
-	std::wstring regime;
-	std::wstring guestName;
+	std::string regime;//PvP или против компьютера
+	std::wstring guestName;// Имя второго игрока, если выбран PvP
+	bool computerColor;//цвет шашек компьютера 
 	float x;//номер клетки в которой шашка по оси х
 	float y;//номер клетки в которой шашка по оси у
 	Vector2i mousePosition;//позиция мыши
@@ -27,10 +119,12 @@ private:
 	vector <int> who_must_eat;//храню шашки, которые могут съесть
 	size_t time; //время игры в секундах.
 public:
+	size_t getAmountSteps() { return amountSteps; }
 	std::string getMode() { return mode; }
 	std::string getColor() { return colorChecker; }
-
-void assignValuesFromFile(std::string fileName)
+	std::string getRegime() { return regime; }
+	size_t getWhoCanMove() { return who_can_move; }
+	void assignValuesFromFile(std::string fileName)
 {
 	ifstream in(fileName);
 	std::string raw_result;
@@ -67,22 +161,39 @@ void assignValuesFromFile(std::string fileName)
 	return;
 }
 
+	void assignRegimeFromFile(std::string fileName)
+	{
+		ifstream in(fileName);
+		std::string raw_result;
+		in >> raw_result;
+		in.close();
+		size_t first = raw_result.find('|');
+		int i = 0;
+		std::string temp;
+		while (i < first)
+		{
+			temp += raw_result[i];
+			i++;
+		}
+		regime = temp;
+		temp = "";
+	}
+
 	Checkers_on_board_Inter& get_checkers_on_board_inter() { return this->checkers_on_board_inter; }
 	Checkers_on_board& get_checkers_on_board() { return this->checkers_on_board; }
 
-	void set_mause_position(RenderWindow& _window) { this->mousePosition = Mouse::getPosition(_window); }
-
+	void set_mouse_position(RenderWindow& _window) { this->mousePosition = Mouse::getPosition(_window); }
 	Vector2i centre_on_square() {
 		int maxSize = mode == "International" ? 10 : 8;
 		for (int i = 0; i < maxSize; i++) {
 			for (int j = 0; j < maxSize; j++) {
-				if (mousePosition.x < i * 50 + 100 && mousePosition.x < (i + 1) * 50 + 100 &&
-					mousePosition.y < j * 50 + 100 && mousePosition.y < (j + 1) * 50 + 100) {
+				if (mousePosition.x < i * 50 + 100 && mousePosition.y < j * 50 + 100) {
 					return Vector2i(i * 50 + 57, j * 50 + 57);
 				}
 			}
 		}
 	}
+
 	void set_who_can_move()
 	{
 		if (mode == "Checkers" && flag == false)
@@ -90,8 +201,6 @@ void assignValuesFromFile(std::string fileName)
 			this->who_can_move = 1;
 			flag = true;
 		}
-		//для проверки на работоспособность,
-		//заменить условие на - (mode == "Checkers" && who_can_move == 2) и переменной who_can_move присвоить по умолчанию 2
 	}
 
 	void choise_of_chacker(RenderWindow& _window, Event _event) {
@@ -99,7 +208,7 @@ void assignValuesFromFile(std::string fileName)
 		{
 			if (_event.type == sf::Event::MouseButtonPressed) {
 				if (_event.key.code == Mouse::Left) {
-					set_mause_position(_window);
+					set_mouse_position(_window);
 					if (_event.type == sf::Event::MouseButtonPressed) {//для отмены взятия фигуры
 						if (_event.key.code == Mouse::Left) {
 							if (checkers_on_board.get_checker(choiseChecker).get_select() == 1 && select_is_made == 1) {
@@ -153,7 +262,7 @@ void assignValuesFromFile(std::string fileName)
 		{
 			if (_event.type == sf::Event::MouseButtonPressed) {
 				if (_event.key.code == Mouse::Left) {
-					set_mause_position(_window);
+					set_mouse_position(_window);
 					if (_event.type == sf::Event::MouseButtonPressed) {//для отмены взятия фигуры
 						if (_event.key.code == Mouse::Left) {
 							if (checkers_on_board_inter.get_checker(choiseChecker).get_select() == 1 && select_is_made == 1) {
@@ -211,10 +320,15 @@ void assignValuesFromFile(std::string fileName)
 			if (_event.key.code == Mouse::Right && mode != "International")
 			{
 				if (checkers_on_board.get_checker(choiseChecker).get_select() == 1 && select_is_made == 1) {
-					set_mause_position(_window);
-					if (checkers_on_board.get_board().get_all_squares((centre_on_square().x - 57) / 50, (centre_on_square().y - 57) / 50).get_backlight()) {
+					set_mouse_position(_window);
+					ofstream out("ligth.txt");
+					out << ++this->amountSteps << "|" << this->getColor() << "|" << this->getMode();
+					out.close();
+					if (checkers_on_board.get_board().get_all_squares((centre_on_square().x - 57) / 50, (centre_on_square().y - 57) / 50).get_backlight()) 
+					{
 						checkers_on_board.get_board().get_all_squares(x, y).square_free();
-						if (checkers_on_board.get_checker(choiseChecker).get_queen() == 1) {
+						if (checkers_on_board.get_checker(choiseChecker).get_queen() == 1) 
+						{
 							checkers_on_board.get_checker(choiseChecker).set_position(centre_on_square().x, centre_on_square().y);
 							if (queen_eat_checker()) {
 								x = (centre_on_square().x - 57) / 50;
@@ -224,7 +338,8 @@ void assignValuesFromFile(std::string fileName)
 									return;
 							}
 						}
-						else {
+						else 
+						{
 							checkers_on_board.get_checker(choiseChecker).set_position(centre_on_square().x, centre_on_square().y);
 							make_queen();
 							if (eat_checker()) {
@@ -232,6 +347,7 @@ void assignValuesFromFile(std::string fileName)
 								x = (centre_on_square().x - 57) / 50;
 								y = (centre_on_square().y - 57) / 50;
 								if (!chance_eat_checker(checkers_on_board.get_checker(choiseChecker).get_color())) {
+									queen_eat_checker();
 									return;
 								}
 							}
@@ -248,8 +364,12 @@ void assignValuesFromFile(std::string fileName)
 			else
 			{
 				if (checkers_on_board_inter.get_checker(choiseChecker).get_select() == 1 && select_is_made == 1) {
-					set_mause_position(_window);
-					if (checkers_on_board_inter.get_board().get_all_squares((centre_on_square().x - 57) / 50, (centre_on_square().y - 57) / 50).get_backlight()) {
+					set_mouse_position(_window);
+					ofstream out("ligth.txt");
+					out << ++this->amountSteps << "|" << this->getColor() << "|" << this->getMode();
+					out.close();
+					if (checkers_on_board_inter.get_board().get_all_squares((centre_on_square().x - 57) / 50, (centre_on_square().y - 57) / 50).get_backlight()) 
+					{
 						checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
 						if (checkers_on_board_inter.get_checker(choiseChecker).get_queen() == 1) {
 							checkers_on_board_inter.get_checker(choiseChecker).set_position(centre_on_square().x, centre_on_square().y);
@@ -286,7 +406,128 @@ void assignValuesFromFile(std::string fileName)
 		}
 	}
 
-	void make_move(RenderWindow& _window, Event _event) {
+	int bot_choise_chacker()
+	{
+		computerColor = colorChecker == "white" ? 1 : 0;
+		vector<int> checkers_can_make_move;
+		for (int i = 0; i < checkers_on_board.get_size(); i++)
+		{
+			if (checkers_on_board.get_checker(i).get_color() == computerColor)
+			{
+				x = checkers_on_board.get_checker(i).get_x();
+				y = checkers_on_board.get_checker(i).get_y();
+				if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment() == 0 && end_board(x + 1, y + 1)) {
+					checkers_can_make_move.push_back(i);
+					continue;
+				}
+				if (checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_employment() == 0 && end_board(x - 1, y + 1)) {
+					checkers_can_make_move.push_back(i);
+					continue;
+				}
+				if (checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_employment() == 0 && end_board(x + 1, y - 1)) {
+					checkers_can_make_move.push_back(i);
+					continue;
+				}
+				if (checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_employment() == 0 && end_board(x - 1, y - 1)) {
+					checkers_can_make_move.push_back(i);
+					continue;
+				}
+			}
+		}
+
+		return checkers_can_make_move[rand() % checkers_can_make_move.size()];//Когда у компьютера нет доступных ходов, вылетает ошибка (придумать как фиксить)
+	}
+
+	void bot_make_move()
+	{
+		int choiseChecker = bot_choise_chacker();//номер шашки, которой ходит компьютер
+
+		//записываем все номера шашек, за которых играет компьютер и которые находятся на доске
+			x = checkers_on_board.get_checker(choiseChecker).get_x();
+			y = checkers_on_board.get_checker(choiseChecker).get_y();
+			if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment() == 0 && end_board(x + 1, y + 1) && computerColor == 1)
+			{
+				ofstream out("ligth.txt");
+				out << ++this->amountSteps << "|" << this->getColor() << "|" << this->getMode();
+				out.close();
+				checkers_on_board.get_board().get_all_squares(x, y).square_free();
+				checkers_on_board.get_checker(choiseChecker).set_position(x * 50 + 107, y * 50 + 107);
+				checkers_on_board.get_board().get_all_squares((x * 50 + 50) / 50, (y * 50 + 50) / 50).square_employment(checkers_on_board.get_checker(choiseChecker).get_color());
+				who_can_move = !who_can_move;
+				return;
+			}
+			if (checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_employment() == 0 && end_board(x - 1, y + 1) && computerColor == 1)
+			{
+				ofstream out("ligth.txt");
+				out << ++this->amountSteps << "|" << this->getColor() << "|" << this->getMode();
+				out.close();
+				checkers_on_board.get_board().get_all_squares(x, y).square_free();
+				checkers_on_board.get_checker(choiseChecker).set_position(x * 50 + 7, y * 50 + 107);
+				checkers_on_board.get_board().get_all_squares((x * 50 - 50) / 50, (y * 50 + 50) / 50).square_employment(checkers_on_board.get_checker(choiseChecker).get_color());				who_can_move = !who_can_move;
+				return;
+			}
+			if (checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_employment() == 0 && end_board(x + 1, y - 1) && computerColor == 0)
+			{
+				ofstream out("ligth.txt");
+				out << ++this->amountSteps << "|" << this->getColor() << "|" << this->getMode();
+				out.close();
+				checkers_on_board.get_board().get_all_squares(x, y).square_free();
+				checkers_on_board.get_checker(choiseChecker).set_position(x * 50 + 107, y * 50 + 7);
+				checkers_on_board.get_board().get_all_squares((x * 50 + 50) / 50, (y * 50 - 50) / 50).square_employment(checkers_on_board.get_checker(choiseChecker).get_color());
+				who_can_move = !who_can_move;
+				return;
+			}
+			if (checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_employment() == 0 && end_board(x - 1, y - 1) && computerColor == 0) 
+			{
+				ofstream out("ligth.txt");
+				out << ++this->amountSteps << "|" << this->getColor() << "|" << this->getMode();
+				out.close();
+				checkers_on_board.get_board().get_all_squares(x, y).square_free();
+				checkers_on_board.get_checker(choiseChecker).set_position(x * 50 + 7, y * 50 + 7);
+				checkers_on_board.get_board().get_all_squares((x * 50 - 50) / 50, (y * 50 - 50) / 50).square_employment(checkers_on_board.get_checker(choiseChecker).get_color());
+				who_can_move = !who_can_move;
+				return;
+			}
+	}
+		/*
+		//если какая-то из шашек может съесть
+		for (int number = 0; number < checkers_on_board.get_size(); number++)
+		{
+			if (checkers_on_board.get_checker(number).get_color() == computerColor) {
+				if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment() == 1 &&
+					checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != who_can_move &&
+					checkers_on_board.get_board().get_all_squares(x + 2, y + 2).get_employment() == 0 && end_board(x + 2, y + 2))
+				{
+					//checkers_on_board.get_checker(number).set_position(, centre_on_square().y);
+				}
+
+				if (checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_employment() == 1 &&
+					checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_checker_color() != who_can_move &&
+					checkers_on_board.get_board().get_all_squares(x - 2, y + 2).get_employment() == 0 && end_board(x - 2, y + 2))
+				{
+
+				}
+
+				if (checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_employment() == 1 &&
+					checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_checker_color() != who_can_move &&
+					checkers_on_board.get_board().get_all_squares(x + 2, y - 2).get_employment() == 0 && end_board(x + 2, y - 2))
+				{
+
+				}
+
+				if (checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_employment() == 1 &&
+					checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_checker_color() != who_can_move &&
+					checkers_on_board.get_board().get_all_squares(x - 2, y - 2).get_employment() == 0 && end_board(x - 2, y - 2))
+				{
+
+				}
+			}
+		}
+		*/
+	
+
+	void make_move(RenderWindow& _window, Event _event)
+	{
 		choise_of_chacker(_window, _event);
 		change_position(_window, _event);
 	}
@@ -511,13 +752,17 @@ void assignValuesFromFile(std::string fileName)
 			(centre_on_square().y - 57) / 50 - y == 2 || (centre_on_square().y - 57) / 50 - y == -2) {
 			for (int i = 0; i < checkers_on_board.get_size(); i++) {
 				if (checkers_on_board.get_checker(i).get_x() == x + (checkers_on_board.get_checker(choiseChecker).get_x() - x) / 2 &&
-					checkers_on_board.get_checker(i).get_y() == y + (checkers_on_board.get_checker(choiseChecker).get_y() - y) / 2) {
+					checkers_on_board.get_checker(i).get_y() == y + (checkers_on_board.get_checker(choiseChecker).get_y() - y) / 2) 
+				{
 					checkers_on_board.get_board().get_all_squares(checkers_on_board.get_checker(i).get_x(), checkers_on_board.get_checker(i).get_y()).square_free();
-					for (int j = i; j < checkers_on_board.get_size() - 1; j++) {
+					for (int j = i; j < checkers_on_board.get_size() - 1; j++) 
+					{
 						checkers_on_board.get_checker(j) = checkers_on_board.get_checker(j + 1);
 					}
+
 					checkers_on_board.delete_checker();
-					if (i < choiseChecker) {
+					if (i < choiseChecker) 
+					{
 						choiseChecker = choiseChecker - 1;
 					}
 					return 1;
@@ -1218,7 +1463,8 @@ void assignValuesFromFile(std::string fileName)
 		return 0;
 	}
 
-	bool end_board(float _x, float _y) {//проверка выходы за пределы поля
+	bool end_board(float _x, float _y)//проверка выходы за пределы поля
+	{
 		int maxSize = mode == "International" ? 10 : 8;
 		if (_x >= 0 && _x < maxSize && _y >= 0 && _y < maxSize)
 			return 1;
@@ -1252,8 +1498,10 @@ void assignValuesFromFile(std::string fileName)
 			}
 		}
 		checkers_on_board.delete_backlight();
-		if (who_must_eat.size() != 0) return 1;
-		else return 0;
+		if (who_must_eat.size() != 0) 
+			return 1;
+		else 
+			return 0;
 	}
 	bool if_you_can_eat_you_must_eat_inter(bool _color) {
 		while (who_must_eat.size() != 0) {
@@ -1378,6 +1626,8 @@ void assignValuesFromFile(std::string fileName)
 
 			_window.draw(back);
 			_window.draw(t);
+			_window.display();
+			Sleep(3000);
 
 			ifstream in("score.txt");
 			int master_score = 0;
@@ -1411,9 +1661,19 @@ void assignValuesFromFile(std::string fileName)
 				out.close();
 				playGame(_window);
 			}
-
-			if (_event.type == Event::Closed)
+			else {
 				_window.close();
+				sf::RenderWindow _window(sf::VideoMode(960, 600), "Checkers");
+				Texture fons;
+				fons.loadFromFile("images/fon8.jpg");
+				Sprite fon(fons);
+				_window.draw(fon);
+				_window.display();
+				winDisplay(_window, guestName);
+				
+			}
+
+			
 			return 0;
 
 		}
@@ -1434,8 +1694,11 @@ void assignValuesFromFile(std::string fileName)
 			t.setFillColor(Color::Black);
 			t.setPosition(75, 190);
 			int roundS = stoi(rounds);
+			
 			_window.draw(back);
 			_window.draw(t);
+			_window.display();
+			Sleep(3000);
 
 			ifstream in("score.txt");
 			int master_score = 0;
@@ -1469,11 +1732,18 @@ void assignValuesFromFile(std::string fileName)
 				out.close();
 				playGame(_window);
 			}
-
-			
-
-			if (_event.type == Event::Closed)
+			else {
 				_window.close();
+				sf::RenderWindow _window(sf::VideoMode(960, 600), "Checkers");
+				Texture fons;
+				fons.loadFromFile("images/fon8.jpg");
+				Sprite fon(fons);
+				_window.draw(fon);
+				_window.display();
+				winDisplay(_window, guestName);
+				
+			}
+
 			return 0;
 		}
 		return 1;
