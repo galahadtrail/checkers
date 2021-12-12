@@ -23,91 +23,90 @@ c:\users\alex3\desktop\checkers\board_international.h(120): warning C4244: 'argu
 c:\users\alex3\desktop\checkers\board_international.h(122): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\alex3\desktop\checkers\board_international.h(168): warning C4018: '<': signed/unsigned mismatch
 c:\users\alex3\desktop\checkers\checkers_on_board_inter.h(76): warning C4018: '<': signed/unsigned mismatch
-c:\users\alex3\desktop\checkers\game.h(142): warning C4018: '<': signed/unsigned mismatch
-c:\users\alex3\desktop\checkers\game.h(151): warning C4018: '<': signed/unsigned mismatch
-c:\users\alex3\desktop\checkers\game.h(160): warning C4018: '<': signed/unsigned mismatch
-c:\users\alex3\desktop\checkers\game.h(179): warning C4018: '<': signed/unsigned mismatch
-c:\users\alex3\desktop\checkers\game.h(351): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(354): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(143): warning C4018: '<': signed/unsigned mismatch
+c:\users\alex3\desktop\checkers\game.h(152): warning C4018: '<': signed/unsigned mismatch
+c:\users\alex3\desktop\checkers\game.h(161): warning C4018: '<': signed/unsigned mismatch
+c:\users\alex3\desktop\checkers\game.h(180): warning C4018: '<': signed/unsigned mismatch
+c:\users\alex3\desktop\checkers\game.h(352): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(355): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=int
           ]
-c:\users\alex3\desktop\checkers\game.h(356): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(357): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(365): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(358): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(366): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=int
           ]
-c:\users\alex3\desktop\checkers\game.h(369): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(370): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(403): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(406): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(371): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(404): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(407): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=int
           ]
-c:\users\alex3\desktop\checkers\game.h(408): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(409): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(417): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(410): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(418): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=int
           ]
-c:\users\alex3\desktop\checkers\game.h(421): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(422): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(452): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(423): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(453): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(454): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(458): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(455): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(459): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(460): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(464): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(461): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(465): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(466): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(470): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(467): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(471): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(472): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(493): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(473): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(494): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(495): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(499): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(496): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(500): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(501): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(505): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(502): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(506): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(507): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(511): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(508): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(512): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(513): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(529): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(544): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(549): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(551): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(557): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(562): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(564): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(570): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(575): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(577): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(583): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(588): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(590): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(601): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(616): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(621): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(623): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(629): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(634): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(636): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(642): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(647): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(649): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(655): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(660): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(662): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(682): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(514): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(530): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(545): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(550): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(552): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(558): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(563): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(565): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(571): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(576): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(578): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(584): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(589): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(591): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(602): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(617): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(622): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(624): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(630): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(635): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(637): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(643): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(648): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(650): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(656): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(661): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(663): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(683): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(684): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(685): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -119,7 +118,7 @@ c:\users\alex3\desktop\checkers\game.h(690): warning C4244: 'argument': conversi
 c:\users\alex3\desktop\checkers\game.h(691): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(692): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(693): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(721): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(694): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(722): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(723): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(724): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
@@ -131,191 +130,202 @@ c:\users\alex3\desktop\checkers\game.h(729): warning C4244: 'argument': conversi
 c:\users\alex3\desktop\checkers\game.h(730): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(731): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(732): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(803): warning C4018: '>': signed/unsigned mismatch
-c:\users\alex3\desktop\checkers\game.h(823): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(824): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(848): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(849): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(850): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(854): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(856): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(861): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(862): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(863): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(867): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(869): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(874): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(875): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(876): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(880): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(882): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(887): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(888): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(889): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(893): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(895): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(911): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(912): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(913): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(917): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(920): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(925): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(926): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(927): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(931): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(934): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(939): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(940): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(941): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(733): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(804): warning C4018: '>': signed/unsigned mismatch
+c:\users\alex3\desktop\checkers\game.h(827): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(828): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(834): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(840): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(846): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(852): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(886): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(887): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(893): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(899): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(905): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(911): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(943): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(944): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(945): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(948): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(953): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(954): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(955): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(950): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(952): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(957): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(958): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(959): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(962): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(981): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(983): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(964): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(966): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(971): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(972): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(973): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(978): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(980): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(985): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(986): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(988): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(993): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(995): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(998): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1000): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(987): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(992): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(994): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1010): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1011): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1012): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1014): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1017): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1019): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1024): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1025): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1026): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1029): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1031): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1034): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1039): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1040): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1041): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1046): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1049): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1054): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1055): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1056): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1058): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1061): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1064): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1065): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1066): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1068): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1074): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1075): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1076): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1078): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1084): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1083): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1085): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1086): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1088): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1099): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1090): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1095): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1097): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1100): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1101): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1103): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1109): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1110): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1111): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1113): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1102): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1114): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1116): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1119): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1120): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1121): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1123): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1129): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1130): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1126): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1128): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1131): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1133): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1145): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1146): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1147): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1149): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1155): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1156): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1157): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1158): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1159): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1165): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1166): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1161): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1167): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1168): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1169): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1175): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1176): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1171): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1177): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1178): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1179): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1200): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1181): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1187): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1188): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1189): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1191): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1202): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1203): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1204): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1206): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1212): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1213): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1214): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1216): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1222): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1223): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1224): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\alex3\desktop\checkers\game.h(1226): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1289): warning C4838: conversion from 'int' to 'bool' requires a narrowing conversion
-c:\users\alex3\desktop\checkers\game.h(1291): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1292): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1296): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1302): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1326): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1327): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1329): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1335): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1359): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1360): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1362): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1368): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1392): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1393): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1395): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1401): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1437): warning C4838: conversion from 'int' to 'bool' requires a narrowing conversion
-c:\users\alex3\desktop\checkers\game.h(1439): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1440): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1444): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1450): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1474): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1475): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1477): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1483): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1507): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1508): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1510): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1516): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1540): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1541): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1543): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1549): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1585): warning C4838: conversion from 'int' to 'bool' requires a narrowing conversion
-c:\users\alex3\desktop\checkers\game.h(1587): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1588): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1592): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1598): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1622): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1623): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1625): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1631): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1655): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1656): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1658): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1664): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1688): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1689): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1691): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1697): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1739): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1740): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1757): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1758): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1775): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1776): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1793): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1794): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1813): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1834): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1835): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1852): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1853): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1870): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1871): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1888): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1889): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(1908): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\alex3\desktop\checkers\game.h(2020): warning C4100: '_event': unreferenced formal parameter
-c:\users\alex3\desktop\checkers\game.h(2020): warning C4100: '_window': unreferenced formal parameter
-c:\users\alex3\desktop\checkers\game.h(2124): warning C4456: declaration of 'out' hides previous local declaration
-  c:\users\alex3\desktop\checkers\game.h(2118): note: see declaration of 'out'
-c:\users\alex3\desktop\checkers\game.h(2190): warning C4456: declaration of 'out' hides previous local declaration
-  c:\users\alex3\desktop\checkers\game.h(2184): note: see declaration of 'out'
-c:\users\alex3\desktop\checkers\game.h(2028): warning C4100: '_event': unreferenced formal parameter
+c:\users\alex3\desktop\checkers\game.h(1232): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1233): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1234): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1236): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1248): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1249): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1250): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1252): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1258): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1259): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1260): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1262): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1268): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1269): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1270): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1272): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1278): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1279): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1280): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1282): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1303): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1329): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1392): warning C4838: conversion from 'int' to 'bool' requires a narrowing conversion
+c:\users\alex3\desktop\checkers\game.h(1394): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1395): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1399): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1405): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1429): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1430): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1432): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1438): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1462): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1463): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1465): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1471): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1495): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1496): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1498): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1504): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1540): warning C4838: conversion from 'int' to 'bool' requires a narrowing conversion
+c:\users\alex3\desktop\checkers\game.h(1542): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1543): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1547): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1553): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1577): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1578): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1580): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1586): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1610): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1611): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1613): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1619): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1643): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1644): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1646): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1652): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1688): warning C4838: conversion from 'int' to 'bool' requires a narrowing conversion
+c:\users\alex3\desktop\checkers\game.h(1690): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1691): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1695): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1701): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1725): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1726): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1728): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1734): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1758): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1759): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1761): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1767): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1791): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1792): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1794): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1800): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1842): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1843): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1860): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1861): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1878): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1879): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1896): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1897): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1916): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1937): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1938): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1955): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1956): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1973): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1974): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1991): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(1992): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(2011): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex3\desktop\checkers\game.h(2123): warning C4100: '_event': unreferenced formal parameter
+c:\users\alex3\desktop\checkers\game.h(2123): warning C4100: '_window': unreferenced formal parameter
+c:\users\alex3\desktop\checkers\game.h(2227): warning C4456: declaration of 'out' hides previous local declaration
+  c:\users\alex3\desktop\checkers\game.h(2221): note: see declaration of 'out'
+c:\users\alex3\desktop\checkers\game.h(2293): warning C4456: declaration of 'out' hides previous local declaration
+  c:\users\alex3\desktop\checkers\game.h(2287): note: see declaration of 'out'
+c:\users\alex3\desktop\checkers\game.h(2131): warning C4100: '_event': unreferenced formal parameter
 c:\users\alex3\desktop\checkers\menu.cpp(21): warning C4100: 'window': unreferenced formal parameter
 c:\users\alex3\desktop\checkers\menu.cpp(399): warning C4100: 'window': unreferenced formal parameter
 c:\users\alex3\desktop\checkers\menu.cpp(850): warning C4456: declaration of 'in' hides previous local declaration
@@ -323,9 +333,8 @@ c:\users\alex3\desktop\checkers\menu.cpp(850): warning C4456: declaration of 'in
 c:\users\alex3\desktop\checkers\menu.cpp(859): warning C4018: '<': signed/unsigned mismatch
 c:\users\alex3\desktop\checkers\menu.cpp(868): warning C4018: '<': signed/unsigned mismatch
 c:\users\alex3\desktop\checkers\menu.cpp(877): warning C4018: '<': signed/unsigned mismatch
-c:\users\alex3\desktop\checkers\game.h(207): warning C4715: 'Game::centre_on_square': not all control paths return a value
-c:\users\alex3\desktop\checkers\game.h(1050): warning C4715: 'Game::chance_eat_checker': not all control paths return a value
-c:\users\alex3\desktop\checkers\game.h(1432): warning C4715: 'Game::queen_square_for_move_Inter': not all control paths return a value
-c:\users\alex3\desktop\checkers\game.h(1580): warning C4715: 'Game::queen_square_for_move_Checkers': not all control paths return a value
-c:\users\alex3\desktop\checkers\game.h(1728): warning C4715: 'Game::queen_square_for_move_Russian': not all control paths return a value
+c:\users\alex3\desktop\checkers\game.h(208): warning C4715: 'Game::centre_on_square': not all control paths return a value
+c:\users\alex3\desktop\checkers\game.h(1683): warning C4715: 'Game::queen_square_for_move_Checkers': not all control paths return a value
+c:\users\alex3\desktop\checkers\game.h(1831): warning C4715: 'Game::queen_square_for_move_Russian': not all control paths return a value
+c:\users\alex3\desktop\checkers\game.h(1535): warning C4715: 'Game::queen_square_for_move_Inter': not all control paths return a value
   ChessDDZ.vcxproj -> C:\Users\alex3\Desktop\Checkers\Debug\ChessDDZ.exe

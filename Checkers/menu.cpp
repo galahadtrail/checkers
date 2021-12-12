@@ -1,6 +1,5 @@
 #include "menu.h"
 #include "Game.h"
-#include <SFML/Audio.hpp>
 
 class PauseOption {
 private:
@@ -267,7 +266,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                 isStart = false;
             }
 
-            if (event.key.code != sf::Keyboard::Escape && (event.type == sf::Event::TextEntered || event.key.code == sf::Keyboard::Delete) ) {
+            if (event.type == sf::Event::TextEntered || event.key.code == sf::Keyboard::Delete) {
                 textFast.setFillColor(sf::Color::Black);
                 isFast = false;
 
@@ -281,8 +280,8 @@ void InstructionSettings(sf::RenderWindow& window) {
                 }
                 else if (event.text.unicode >= 49 && event.text.unicode <= 58){
                     rounds += char(event.text.unicode);
-                } else if (event.text.unicode < 128) {
-                    guestName += char(event.text.unicode);
+                } else {
+                    guestName += wchar_t(event.text.unicode);
                 }
                 textGuest.setString(L"Guest name: " + guestName);
                 textAmount.setString(L"Количество раундов:   " + rounds);
@@ -323,6 +322,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                 }
                 if (vsComputer) {
                     regime = L"Computer";
+                    guestName = L"Computer";
                 }
                 if (pvp) {
                     regime = L"PvP";
@@ -470,6 +470,9 @@ void UserSettings(sf::RenderWindow& window) {
         sf::Event event;
         while (windowDaugth.pollEvent(event))
         {
+            if (event.type == sf::Event::Closed) {
+                windowDaugth.close();
+            }
 
             if (IntRect(20, 350, 300, 30).contains(Mouse::getPosition(windowDaugth))) {
                 textFinish.setFillColor(sf::Color::Color(165, 70, 0));
@@ -824,7 +827,7 @@ void playGame(sf::RenderWindow& window) {
             if(((game.getWhoCanMove() == 0 && game.getColor() == "black") || 
                 (game.getWhoCanMove() == 1 && game.getColor() == "white")) && game.getRegime() == "Computer")
             {
-                game.bot_make_move();
+				game.bot_make_move();
             }
 
             else
@@ -886,7 +889,7 @@ void playGame(sf::RenderWindow& window) {
                 master = false;
             }
             else if (game.getWhoCanMove() && masterColor == "black") {
-                master =true;
+                master = true;
             }
             else {
                 master = false;
