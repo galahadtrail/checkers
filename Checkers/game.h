@@ -11,6 +11,8 @@
 #include <ctime>
 using namespace sf;
 
+//РџРѕС‡РёРЅРєР° РіРёС‚Р° Сѓ СЃРµР±СЏ.
+
 void winDisplay(RenderWindow & window, wstring guestName)
 {
 	Texture fons;
@@ -34,7 +36,7 @@ void winDisplay(RenderWindow & window, wstring guestName)
 	wstring str;
 	input >> str;
 	input.close();
-	sf::Text textMaster(L"Победил: ", font2, 40);
+	sf::Text textMaster(L"пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: ", font2, 40);
 	textMaster.setFillColor(sf::Color::Black);
 	textMaster.setStyle(sf::Text::Bold);
 	textMaster.setOutlineColor(sf::Color::White);
@@ -42,7 +44,7 @@ void winDisplay(RenderWindow & window, wstring guestName)
 	textMaster.setPosition(200, 100);
 
 	bool leave = false;
-	sf::Text no(L"Выйти в меню", font2, 23);
+	sf::Text no(L"пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ", font2, 23);
 	no.setFillColor(sf::Color::Black);
 	no.setOutlineColor(sf::Color::White);
 	no.setOutlineThickness(1);
@@ -50,7 +52,7 @@ void winDisplay(RenderWindow & window, wstring guestName)
 	no.setPosition(200, 250);
 
 	bool restart = false;
-	sf::Text res(L"Рестарт", font2, 23);
+	sf::Text res(L"пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", font2, 23);
 	res.setFillColor(sf::Color::Black);
 	res.setOutlineColor(sf::Color::White);
 	res.setOutlineThickness(1);
@@ -142,13 +144,13 @@ void winDisplay(RenderWindow & window, wstring guestName)
 			}
 		}
 		if (masterWin) {
-			textMaster.setString(L"Победил: \n" + masterName + L"\nсо счётом: " + score);
+			textMaster.setString(L"пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: \n" + masterName + L"\nпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ: " + score);
 		}
 		if (slaveWin) {
-			textMaster.setString(L"Победил: \n" + guestName + L"\nсо счётом: " + score);
+			textMaster.setString(L"пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: \n" + guestName + L"\nпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ: " + score);
 		}
 		if (paritet) {
-			textMaster.setString(L"Ничья!\n" + score);
+			textMaster.setString(L"пїЅпїЅпїЅпїЅпїЅ!\n" + score);
 		}
 		window.clear();
 		window.draw(fon);
@@ -169,30 +171,30 @@ private:
 	size_t count_eat = 0;
 	int how_many = 0;
 	int direction;
-	bool condition_first_dir;//направления для поедания шашки, для компьютера
+	bool condition_first_dir;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	bool condition_sec_dir;
 	bool condition_third_dir;
 	bool condition_four_dir;
 	vector<int> comp_checker_can_move;
-	bool flag = false;//переменная хранит, был ли первый ход
-	bool who_can_move = 0;//цвет хода, 0 если ход белых, 1 если ход черных
-	bool select_is_made = 0;//0 если фигуры не выбрана, 1 если выбрана
-	int choiseChecker;//номер выбранной для хода шашки
-	int bot_choiseChecker;//номер выбранной для хода шашки компьютером
-	int bot_number_eat_checker = -1;//номер выбранной шашки компьютером, которая может рубить
-	std::string mode;//режим игры
-	std::string rounds;//количество раундов
-	std::string colorChecker;//Цвет шашек
-	std::string regime;//PvP или против компьютера
-	std::wstring guestName;// Имя второго игрока, если выбран PvP
-	bool computerColor;//цвет шашек компьютера 
-	float x;//номер клетки в которой шашка по оси х
-	float y;//номер клетки в которой шашка по оси у
-	Vector2i mousePosition;//позиция мыши
+	bool flag = false;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+	bool who_can_move = 0;//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, 0 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, 1 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	bool select_is_made = 0;//0 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, 1 пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	int choiseChecker;//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	int bot_choiseChecker;//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	int bot_number_eat_checker = -1;//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	std::string mode;//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+	std::string rounds;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	std::string colorChecker;//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	std::string regime;//PvP пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	std::wstring guestName;// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ PvP
+	bool computerColor;//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
+	float x;//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅ
+	float y;//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅ
+	Vector2i mousePosition;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	Checkers_on_board checkers_on_board;
 	Checkers_on_board_Inter checkers_on_board_inter;
-	vector <int> who_must_eat;//храню шашки, которые могут съесть
-	//size_t time; //время игры в секундах.
+	vector <int> who_must_eat;//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	//size_t time; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 public:
 	size_t getAmountSteps() { return amountSteps; }
 	std::string getMode() { return mode; }
@@ -200,7 +202,7 @@ public:
 	std::string getRegime() { return regime; }
 	size_t getWhoCanMove() { return who_can_move; }
 
-	//получение настроек игры из файла
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	void assignValuesFromFile(std::string fileName)
 {
 	ifstream in(fileName);
@@ -238,7 +240,7 @@ public:
 	return;
 }
 
-	//получение режима игры из файла
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	void assignRegimeFromFile(std::string fileName)
 	{
 		ifstream in(fileName);
@@ -257,13 +259,13 @@ public:
 		temp = "";
 	}
 
-	//положение доски 
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 
 	Checkers_on_board_Inter& get_checkers_on_board_inter() { return this->checkers_on_board_inter; }
 
-	//положение доски в международном режиме
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	Checkers_on_board& get_checkers_on_board() { return this->checkers_on_board; }
 
-	//установление позиции мыши на экране
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	void set_mouse_position(RenderWindow& _window) {
 		auto current = Mouse::getPosition(_window);
 		double maxSize = mode == "International" ? 10.9 : 8.9;
@@ -286,7 +288,7 @@ public:
 		}
 	}
 
-	//установление цвета шашек для первого хода
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	void set_who_can_move()
 	{
 		if (mode == "Checkers" && flag == false)
@@ -296,7 +298,7 @@ public:
 		}
 	}
 
-	//выбор шашки для хода
+	//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	void choise_of_chacker(RenderWindow& _window, Event _event)
 	{
 		if (mode == "International")
@@ -305,7 +307,7 @@ public:
 		if (_event.type == sf::Event::MouseButtonPressed) {
 			if (_event.key.code == Mouse::Left) {
 				set_mouse_position(_window);
-				if (_event.type == sf::Event::MouseButtonPressed) {//для отмены взятия фигуры
+				if (_event.type == sf::Event::MouseButtonPressed) {//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 					if (_event.key.code == Mouse::Left) {
 						if (checkers_on_board.get_checker(choiseChecker).get_select() == 1 && select_is_made == 1) {
 							checkers_on_board.get_checker(choiseChecker).leave_checker();
@@ -355,13 +357,13 @@ public:
 		}
 	}
 
-	//выбор шашки для хода в международном режиме
+	//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	void choise_of_chacker_inter(RenderWindow& _window, Event _event)
 	{
 		if (_event.type == sf::Event::MouseButtonPressed) {
 			if (_event.key.code == Mouse::Left) {
 				set_mouse_position(_window);
-				if (_event.type == sf::Event::MouseButtonPressed) {//для отмены взятия фигуры
+				if (_event.type == sf::Event::MouseButtonPressed) {//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 					if (_event.key.code == Mouse::Left) {
 						if (checkers_on_board_inter.get_checker(choiseChecker).get_select() == 1 && select_is_made == 1) {
 							checkers_on_board_inter.get_checker(choiseChecker).leave_checker();
@@ -411,7 +413,7 @@ public:
 		}
 	}
 
-	//ход шашки
+	//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	void change_position(RenderWindow& _window, Event _event)
 	{
 		if(mode =="International")
@@ -466,7 +468,7 @@ public:
 		}
 	}
 
-	//ход шашки в международном режиме
+	//пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	void change_position_inter(RenderWindow& _window, Event _event)
 	{
 		if (_event.type == sf::Event::MouseButtonPressed)
@@ -518,7 +520,7 @@ public:
 		}
 	}
 
-	//поиск всех шашек, которыми компьютер может сходить 
+	//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
 	vector<int> bot_choise_chacker()
 	{
 		computerColor = colorChecker == "white" ? 1 : 0;
@@ -559,7 +561,7 @@ public:
 		return checkers_can_make_move;
 	}
 
-	//поиск всех шашек, которыми компьютер может сходить в международном режиме
+	//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	vector<int> bot_choise_chacker_inter()
 	{
 		computerColor = colorChecker == "white" ? 1 : 0;
@@ -600,29 +602,29 @@ public:
 		return checkers_can_make_move;
 	}
 
-	//передвижение шашек компьютером
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	void bot_make_move()
 	{
 		if (mode == "International")
 			return bot_make_move_inter();
 
 		srand(time(NULL));
-		comp_checker_can_move = bot_choise_chacker();//вектор из шашек компьютер, которые могут сходить
-		if (comp_checker_can_move.size() == 0)//если вектор пуст, то вызовется _gme
+		comp_checker_can_move = bot_choise_chacker();//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		if (comp_checker_can_move.size() == 0)//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ _gme
 			return;
 
-		bot_choiseChecker = comp_checker_can_move[rand() % comp_checker_can_move.size()];//номер шашки, которой будет ходить компьютер
-		bot_number_eat_checker = computerSteps == 0 ? -1 : bot_checker_which_eat(comp_checker_can_move);//выбирает шашку, которая может срубить
+		bot_choiseChecker = comp_checker_can_move[rand() % comp_checker_can_move.size()];//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		bot_number_eat_checker = computerSteps == 0 ? -1 : bot_checker_which_eat(comp_checker_can_move);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if (bot_number_eat_checker != -1)
 		{
-			return bot_eat_checker();//рубит шашку игрока
+			return bot_eat_checker();//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		}
 
 		if (bot_number_eat_checker != -1) {
 			bot_number_eat_checker = -1;
 		}
 
-		//алгоритм для передвижения шашки компьютером
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		x = checkers_on_board.get_checker(bot_choiseChecker).get_x();
 		y = checkers_on_board.get_checker(bot_choiseChecker).get_y();
 		if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment() == 0 && end_board(x + 1, y + 1) && computerColor == 1)
@@ -699,22 +701,22 @@ public:
 		}
 	}
 
-	// передвижение шашек компьютером в международном режиме
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	void bot_make_move_inter()
 	{
 		srand(time(NULL));
-		comp_checker_can_move = bot_choise_chacker_inter();//вектор из шашек компьютер, которые могут сходить
-		if (comp_checker_can_move.size() == 0)//если вектор пуст, то вызовется _gme
+		comp_checker_can_move = bot_choise_chacker_inter();//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		if (comp_checker_can_move.size() == 0)//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ _gme
 			return;
 
-		bot_choiseChecker = comp_checker_can_move[rand() % comp_checker_can_move.size()];//номер шашки, которой будет ходить компьютер
-		bot_number_eat_checker = computerSteps == 0 ? -1 : bot_checker_which_eat(comp_checker_can_move);//выбирает шашку, которая может срубить
+		bot_choiseChecker = comp_checker_can_move[rand() % comp_checker_can_move.size()];//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		bot_number_eat_checker = computerSteps == 0 ? -1 : bot_checker_which_eat(comp_checker_can_move);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if (bot_number_eat_checker != -1)
 		{
-			return bot_eat_checker_inter();//рубит шашку игрока
+			return bot_eat_checker_inter();//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		}
 
-		//алгоритм для передвижения шашки компьютером
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		x = checkers_on_board_inter.get_checker(bot_choiseChecker).get_x();
 		y = checkers_on_board_inter.get_checker(bot_choiseChecker).get_y();
 		if (checkers_on_board_inter.get_board().get_all_squares(x + 1, y + 1).get_employment() == 0 && end_board(x + 1, y + 1) && computerColor == 1)
@@ -771,7 +773,7 @@ public:
 		}
 	}
 
-	//условия поедания шашки компьютером для английских шашек
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	void conditions_for_Chekers()
 	{
 		condition_first_dir = condition_first_dir && computerColor == 1;
@@ -780,7 +782,7 @@ public:
 		condition_four_dir = condition_four_dir && computerColor == 0;
 	}
 
-	//условия поедания шашки компьютером для международных шашек
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	void conditions_for_Inter()
 	{
 		condition_first_dir = checkers_on_board_inter.get_board().get_all_squares(x + 1, y + 1).get_employment() == 1 &&
@@ -797,10 +799,10 @@ public:
 			checkers_on_board_inter.get_board().get_all_squares(x - 2, y - 2).get_employment() == 0 && end_board(x - 2, y - 2);
 	}
 
-	//выбирает шашку, которой компьютер может срубить максимальное количество шашек, но не более двух (если не ставить ограничение в msx=2 шашки цикл становится бескнечным
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ msx=2 пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	int bot_checker_which_eat(vector<int> checkers)
 	{
-		map<int, size_t> checkers_who_can_eat;// ключ - номер шашки, значение - сколько шашек она может съесть подряд
+		map<int, size_t> checkers_who_can_eat;// пїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		for(int number : checkers)
 		{
 			if(mode == "International")
@@ -816,7 +818,7 @@ public:
 			}
 			
 			if (checkers_on_board.get_checker(number).get_queen() == 1) {
-				int count = 0; //кол-во шашек, которое может срубить шашка компьютера
+				int count = 0; //пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				int cond1index;
 				int cond2index;
 				int cond3index;
@@ -830,7 +832,7 @@ public:
 				bool sec_dir;
 				bool third_dir;
 				bool four_dir;
-				while (condition_first_dir || condition_sec_dir || condition_third_dir || condition_four_dir) //пока есть возможность срубить шашку компьютером
+				while (condition_first_dir || condition_sec_dir || condition_third_dir || condition_four_dir) //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				{
 					condition_first_dir = 1;
 					condition_sec_dir = 1;
@@ -843,7 +845,7 @@ public:
 
 						if (first_dir) {
 							condition_first_dir = false;
-							cond1index = i;/////////////////////доступность везде
+							cond1index = i;/////////////////////пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 							break;
 						}
 					}
@@ -936,12 +938,12 @@ public:
 				checkers_who_can_eat[number] = count;
 			}
 			else {
-				int count = 0; //кол-во шашек, которое может срубить шашка компьютера
+				int count = 0; //пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				condition_first_dir = 1;
 				condition_sec_dir = 1;
 				condition_third_dir = 1;
 				condition_four_dir = 1;
-				while (condition_first_dir || condition_sec_dir || condition_third_dir || condition_four_dir) //пока есть возможность срубить шашку компьютером
+				while (condition_first_dir || condition_sec_dir || condition_third_dir || condition_four_dir) //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				{
 					condition_first_dir = checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment() == 1 &&
 					checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != computerColor &&
@@ -1007,7 +1009,7 @@ public:
 			}
 		}
 
-		//выбор шашки, которая может съесть
+		//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		int max_val_key = key_number_max_val(checkers_who_can_eat);
 		int max_val = max_val_key > -1 ? checkers_who_can_eat[max_val_key] : 0;
 
@@ -1020,7 +1022,7 @@ public:
 		return -1;
 	}
 
-	//определяет номер шашки, которая может срубить максимальное кол-во шашек игрока
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	int key_number_max_val(map<int, size_t> _checkers_can_eat)
 	{
 		int max_value = 0;
@@ -1036,7 +1038,7 @@ public:
 		return  key_value;
 	}
 
-	//удаляет срубленную компьютером шашку
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	void bot_del_eaten_checker()
 	{
 		if (mode == "International")
@@ -1157,7 +1159,7 @@ public:
 		}
 	}
 
-	//функция для непосредственного поедания шашек компьютером
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	void bot_eat_checker()
 	{
 		if (mode == "International")
@@ -1376,10 +1378,10 @@ public:
 		who_can_move = !who_can_move;
 	}
 
-	//функция для непосредственного поедания шашек компьютером в междунарожном режиме
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	void bot_eat_checker_inter()
 	{
-		while (count_eat != 0) //цикл производится, пока есть возможность срубить шашку игрока 
+		while (count_eat != 0) //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 
 		{
 			x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
 			y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
@@ -1451,7 +1453,7 @@ public:
 		change_position(_window, _event);
 	}
 
-	void square_for_move() {//варианты хода
+	void square_for_move() {//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		if (mode != "International")
 		{
 			if (checkers_on_board.get_checker(choiseChecker).get_color()) {
@@ -1478,7 +1480,7 @@ public:
 					}
 				}
 			}
-			if (!chance_eat_checker(checkers_on_board.get_checker(choiseChecker).get_color())) {//варианты съесть шашку
+			if (!chance_eat_checker(checkers_on_board.get_checker(choiseChecker).get_color())) {//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				checkers_on_board.delete_backlight();
 				chance_eat_checker(checkers_on_board.get_checker(choiseChecker).get_color());
 			}
@@ -1509,7 +1511,7 @@ public:
 					}
 				}
 			}
-			if (!chance_eat_checker(checkers_on_board_inter.get_checker(choiseChecker).get_color())) {//варианты съесть шашку
+			if (!chance_eat_checker(checkers_on_board_inter.get_checker(choiseChecker).get_color())) {//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 				checkers_on_board_inter.delete_backlight();
 				chance_eat_checker(checkers_on_board_inter.get_checker(choiseChecker).get_color());
 			}
@@ -1517,7 +1519,7 @@ public:
 
 	}
 
-	bool chance_eat_checker(bool _color) {//варианты съесть шашку
+	bool chance_eat_checker(bool _color) {//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		if (mode == "Russian" || mode == "Giveaway")
 			return chance_eat_checker_Russian(_color);
 
@@ -1527,7 +1529,7 @@ public:
 		return chance_eat_checker_Inter(_color);
 	}
 
-	bool chance_eat_checker_Inter(bool _color) {//варианты съесть шашку
+	bool chance_eat_checker_Inter(bool _color) {//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		bool more = 1;
 		if (checkers_on_board_inter.get_board().get_all_squares(x + 1, y + 1).get_employment()) {
 			if (checkers_on_board_inter.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != _color) {
@@ -1572,7 +1574,7 @@ public:
 		return more;
 	}
 
-	bool chance_eat_checker_Checkers(bool _color) {//варианты съесть шашку
+	bool chance_eat_checker_Checkers(bool _color) {//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		bool more = 1;
 		if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment()) {
 			if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != _color && _color == true) {
@@ -1617,7 +1619,7 @@ public:
 		return more;
 	}
 
-	bool chance_eat_checker_Russian(bool _color)//варианты съесть шашку
+	bool chance_eat_checker_Russian(bool _color)//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	{
 		bool more = 1;
 		if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment()) {
@@ -1663,7 +1665,7 @@ public:
 		return more;
 	}
 
-	//поедание шашки
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	bool eat_checker()
 	{
 		if (mode == "International")
@@ -1693,7 +1695,7 @@ public:
 		return 0;
 	}
 
-	//поедание шашки в международном режиме
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	bool eat_checker_inter()
 	{
 		if ((centre_on_square().x - 57) / 50 - x == 2 || (centre_on_square().x - 57) / 50 - x == -2 &&
@@ -1716,7 +1718,7 @@ public:
 		return 0;
 	}
 
-	//проверка, может ли шашка стать дамкой
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	void make_queen()
 	{
 		if (mode == "International")
@@ -1750,7 +1752,7 @@ public:
 		}
 	}
 
-	//проверка, может ли шашка стать дамкой в международном режиме
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	void make_queen_inter()
 	{
 		if (checkers_on_board_inter.get_checker(choiseChecker).get_color() == 0 && size(who_must_eat) == 0) {
@@ -1765,7 +1767,7 @@ public:
 		}
 	}
 
-	//варианты хода дамки
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	bool queen_square_for_move(bool _color, int _i1, int _i2, int _i3, int _i4) {
 		if (mode == "Russian" || mode == "Giveaway")
 			return queen_square_for_move_Russian(_color, _i1, _i2, _i3, _i4);
@@ -1775,8 +1777,8 @@ public:
 		return queen_square_for_move_Inter(_color, _i1, _i2, _i3, _i4);
 	}
 
-	//варианты хода дамки в международном режиме
-	bool queen_square_for_move_Inter(bool _color, int _i1, int _i2, int _i3, int _i4) {//варианты хода дамки
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	bool queen_square_for_move_Inter(bool _color, int _i1, int _i2, int _i3, int _i4) {//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		int must_eat = 0;
 		bool can_eat[4] = { _i1, _i2, _i3, _i4 };
 		checkers_on_board_inter.delete_backlight();
@@ -1923,8 +1925,8 @@ public:
 		}
 	}
 
-	//варианты хода дамки в английских шашках
-	bool queen_square_for_move_Checkers(bool _color, int _i1, int _i2, int _i3, int _i4) {//варианты хода дамки
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	bool queen_square_for_move_Checkers(bool _color, int _i1, int _i2, int _i3, int _i4) {//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		int must_eat = 0;
 		bool can_eat[4] = { _i1, _i2, _i3, _i4 };
 		checkers_on_board.delete_backlight();
@@ -2071,8 +2073,8 @@ public:
 		}
 	}
 
-	//варианты хода дамки в русских шашках
-	bool queen_square_for_move_Russian(bool _color, int _i1, int _i2, int _i3, int _i4) {//варианты хода дамки
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	bool queen_square_for_move_Russian(bool _color, int _i1, int _i2, int _i3, int _i4) {//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		int must_eat = 0;
 		bool can_eat[4] = { _i1, _i2, _i3, _i4 };
 		checkers_on_board.delete_backlight();
@@ -2219,7 +2221,7 @@ public:
 		}
 	}
 
-	//поедание шашки дамкой
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	bool queen_eat_checker()
 	{
 		if (mode == "International")
@@ -2317,7 +2319,7 @@ public:
 		return 0;
 	}
 
-	//поедание шашки дамкой в междунароном режиме
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	bool queen_eat_checker_inter() 
 	{
 		int x_eat = 0;
@@ -2412,7 +2414,7 @@ public:
 		return 0;
 	}
 
-	//проверка выходы за пределы поля
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	bool end_board(float _x, float _y)
 	{
 		int maxSize = mode == "International" ? 10 : 8;
@@ -2422,7 +2424,7 @@ public:
 		return 0;
 	}
 
-	//проверка попытки сходить, при наличии возможности срубить
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	bool if_you_can_eat_you_must_eat(bool _color) {
 		if (mode == "International")
 			return if_you_can_eat_you_must_eat_inter(_color);
@@ -2455,7 +2457,7 @@ public:
 			return 0;
 	}
 
-	//проверка попытки сходить, при наличии возможности срубить в международном режиме
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	bool if_you_can_eat_you_must_eat_inter(bool _color)
 	{
 		while (who_must_eat.size() != 0) {
@@ -2484,7 +2486,7 @@ public:
 		return 0;
 	}
 
-	//окно предупреждения, что есть возможность срубить
+	//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	void error_choise_checker(RenderWindow& _window, Event _event)
 	{
 		while (1) {
@@ -2508,7 +2510,7 @@ public:
 		}
 	}
 
-	//отрисовка экрана начала игры
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	void start_game(RenderWindow& _window, Event _event, bool& _start) {
 		while (1) {
 			_start = 0;
@@ -2516,7 +2518,7 @@ public:
 		}
 	}
 
-	//отрисовка экрана конца игры
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	bool end_game(RenderWindow &_window, Event _event) {
 		wifstream input("user.txt");
 		wstring bulk;
