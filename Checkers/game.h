@@ -11,35 +11,6 @@
 #include <ctime>
 using namespace sf;
 
-if (regime != "Checkers") {
-	if (!game.getWhoCanMove() && masterColor == "white") {
-		master = true;
-	}
-	else if (!game.getWhoCanMove() && masterColor == "black") {
-		master = false;
-	}
-	else if (game.getWhoCanMove() && masterColor == "black") {
-		master = true;
-	}
-	else {
-		master = false;
-	}
-}
-else {
-	if (game.getWhoCanMove() && masterColor == "black") {
-		master = true;
-	}
-	else if (!game.getWhoCanMove() && masterColor == "black") {
-		master = false;
-	}
-	else if (game.getWhoCanMove() && masterColor == "white") {
-		master = false;
-	}
-	else {
-		master = true;
-	}
-}
-
 void winDisplay(RenderWindow & window, wstring guestName)
 {
 	Texture fons;
@@ -208,7 +179,7 @@ private:
 	bool select_is_made = 0;//0 если фигуры не выбрана, 1 если выбрана
 	int choiseChecker;//номер выбранной для хода шашки
 	int bot_choiseChecker;//номер выбранной для хода шашки компьютером
-	int bot_number_eat_checker;//номер выбранной шашки компьютером, которая может рубить
+	int bot_number_eat_checker = -1;//номер выбранной шашки компьютером, которая может рубить
 	std::string mode;//режим игры
 	std::string rounds;//количество раундов
 	std::string colorChecker;//Цвет шашек
@@ -647,6 +618,10 @@ public:
 			return bot_eat_checker();//рубит шашку игрока
 		}
 
+		if (bot_number_eat_checker != -1) {
+			bot_number_eat_checker = -1;
+		}
+
 		//алгоритм для передвижения шашки компьютером
 		x = checkers_on_board.get_checker(bot_choiseChecker).get_x();
 		y = checkers_on_board.get_checker(bot_choiseChecker).get_y();
@@ -659,6 +634,11 @@ public:
 			checkers_on_board.get_checker(bot_choiseChecker).set_position(x * 50 + 107, y * 50 + 107);
 			checkers_on_board.get_board().get_all_squares((x * 50 + 50) / 50, (y * 50 + 50) / 50).square_employment(checkers_on_board.get_checker(bot_choiseChecker).get_color());
 			who_can_move = !who_can_move;
+
+
+			x = checkers_on_board.get_checker(bot_choiseChecker).get_x();
+			y = checkers_on_board.get_checker(bot_choiseChecker).get_y();
+			make_queen();
 			Sleep(500);
 			computerSteps += 1;
 			return;
@@ -672,6 +652,11 @@ public:
 			checkers_on_board.get_checker(bot_choiseChecker).set_position(x * 50 + 7, y * 50 + 107);
 			checkers_on_board.get_board().get_all_squares((x * 50 - 50) / 50, (y * 50 + 50) / 50).square_employment(checkers_on_board.get_checker(bot_choiseChecker).get_color());
 			who_can_move = !who_can_move;
+
+
+			x = checkers_on_board.get_checker(bot_choiseChecker).get_x();
+			y = checkers_on_board.get_checker(bot_choiseChecker).get_y();
+			make_queen();
 			Sleep(500);
 			computerSteps += 1;
 			return;
@@ -685,6 +670,11 @@ public:
 			checkers_on_board.get_checker(bot_choiseChecker).set_position(x * 50 + 107, y * 50 + 7);
 			checkers_on_board.get_board().get_all_squares((x * 50 + 50) / 50, (y * 50 - 50) / 50).square_employment(checkers_on_board.get_checker(bot_choiseChecker).get_color());
 			who_can_move = !who_can_move;
+
+
+			x = checkers_on_board.get_checker(bot_choiseChecker).get_x();
+			y = checkers_on_board.get_checker(bot_choiseChecker).get_y();
+			make_queen();
 			Sleep(500);
 			computerSteps += 1;
 			return;
@@ -698,6 +688,11 @@ public:
 			checkers_on_board.get_checker(bot_choiseChecker).set_position(x * 50 + 7, y * 50 + 7);
 			checkers_on_board.get_board().get_all_squares((x * 50 - 50) / 50, (y * 50 - 50) / 50).square_employment(checkers_on_board.get_checker(bot_choiseChecker).get_color());
 			who_can_move = !who_can_move;
+
+
+			x = checkers_on_board.get_checker(bot_choiseChecker).get_x();
+			y = checkers_on_board.get_checker(bot_choiseChecker).get_y();
+			make_queen();
 			Sleep(500);
 			computerSteps += 1;
 			return;
@@ -820,73 +815,181 @@ public:
 				y = checkers_on_board.get_checker(number).get_y();
 			}
 			
-			int count = 0; //кол-во шашек, которое может срубить шашка компьютера
-			condition_first_dir = 1;
-			condition_sec_dir = 1;
-			condition_third_dir = 1;
-			condition_four_dir = 1;
-			while (condition_first_dir || condition_sec_dir || condition_third_dir || condition_four_dir) //пока есть возможность срубить шашку компьютером
-			{
-				condition_first_dir = checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment() == 1 &&
+			if (checkers_on_board.get_checker(number).get_queen() == 1) {
+				int count = 0; //кол-во шашек, которое может срубить шашка компьютера
+				condition_first_dir = 1;
+				int cond1index;
+				int cond2index;
+				int cond3index;
+				int cond4index;
+				condition_sec_dir = 1;
+				condition_third_dir = 1;
+				condition_four_dir = 1;
+				while (condition_first_dir || condition_sec_dir || condition_third_dir || condition_four_dir) //пока есть возможность срубить шашку компьютером
+				{
+					for (int i = 1, j = 1; x + i < 7, y + j < 7; i++, j++) {
+						condition_first_dir = checkers_on_board.get_board().get_all_squares(x + i, y + j).get_employment() == 1 &&
+							checkers_on_board.get_board().get_all_squares(x + i, y + j).get_checker_color() != computerColor &&
+							checkers_on_board.get_board().get_all_squares(x + i + 1, y + j + 1).get_employment() == 0 && end_board(x + i + 1, y + j + 1);
+
+						if (condition_first_dir) {
+							cond1index = i;
+							break;
+						}
+					}
+
+					for (int i = 1, j = 1; x - i > 0, y + j < 7; i++, j++) {
+						condition_sec_dir = checkers_on_board.get_board().get_all_squares(x - i, y + j).get_employment() == 1 &&
+							checkers_on_board.get_board().get_all_squares(x - i, y + j).get_checker_color() != computerColor &&
+							checkers_on_board.get_board().get_all_squares(x - i - 1, y + j + 1).get_employment() == 0 && end_board(x - i - 1, y + j + 1);
+
+						if (condition_sec_dir) {
+							cond2index = i;
+							break;
+						}
+					}
+
+					for (int i = 1, j = 1; x + i < 7, y - j > 0; i++, j++) {
+						condition_third_dir = checkers_on_board.get_board().get_all_squares(x + i, y - j).get_employment() == 1 &&
+							checkers_on_board.get_board().get_all_squares(x + i, y - j).get_checker_color() != computerColor &&
+							checkers_on_board.get_board().get_all_squares(x + i + 1, y - j - 1).get_employment() == 0 && end_board(x + i + 1, y - j - 1);
+
+						if (condition_third_dir) {
+							cond3index = i;
+							break;
+						}
+					}
+
+					for (int i = 1, j = 1; x - i > 0, y - j > 0; i++, j++) {
+						condition_four_dir = checkers_on_board.get_board().get_all_squares(x - i, y - j).get_employment() == 1 &&
+							checkers_on_board.get_board().get_all_squares(x - i, y - j).get_checker_color() != computerColor &&
+							checkers_on_board.get_board().get_all_squares(x - i - 1, y - j - 1).get_employment() == 0 && end_board(x - i - 1, y - j - 1);
+
+						if (condition_four_dir) {
+							cond4index = i;
+							break;
+						}
+					}
+
+					if (mode == "Checkers")
+						conditions_for_Chekers();
+
+					if (mode == "International")
+						conditions_for_Inter();
+
+					if (condition_first_dir)
+					{
+						if (count == 2)
+							break;
+						x = x + cond1index + 1;
+						y = y + cond1index + 1;
+						count += 1;
+						continue;
+					}
+
+					if (condition_sec_dir)
+					{
+						if (count == 2)
+							break;
+						x = x - cond2index - 1;
+						y = y + cond2index + 1;
+						count += 1;
+						continue;
+					}
+
+					if (condition_third_dir)
+					{
+						if (count == 2)
+							break;
+						x = x + cond3index + 1;
+						y = y - cond3index - 1;
+						count += 1;
+						continue;
+					}
+
+					if (condition_four_dir)
+					{
+						if (count == 2)
+							break;
+						x = x - cond4index - 1;
+						y = y - cond4index - 1;
+						count += 1;
+						continue;
+					}
+				}
+
+				checkers_who_can_eat[number] = count;
+			}
+			else {
+				int count = 0; //кол-во шашек, которое может срубить шашка компьютера
+				condition_first_dir = 1;
+				condition_sec_dir = 1;
+				condition_third_dir = 1;
+				condition_four_dir = 1;
+				while (condition_first_dir || condition_sec_dir || condition_third_dir || condition_four_dir) //пока есть возможность срубить шашку компьютером
+				{
+					condition_first_dir = checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment() == 1 &&
 					checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != computerColor &&
 					checkers_on_board.get_board().get_all_squares(x + 2, y + 2).get_employment() == 0 && end_board(x + 2, y + 2);
-				condition_sec_dir = checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_employment() == 1 &&
+					condition_sec_dir = checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_employment() == 1 &&
 					checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_checker_color() != computerColor &&
 					checkers_on_board.get_board().get_all_squares(x - 2, y + 2).get_employment() == 0 && end_board(x - 2, y + 2);
-				condition_third_dir = checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_employment() == 1 &&
+					condition_third_dir = checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_employment() == 1 &&
 					checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_checker_color() != computerColor &&
 					checkers_on_board.get_board().get_all_squares(x + 2, y - 2).get_employment() == 0 && end_board(x + 2, y - 2);
-				condition_four_dir = checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_employment() == 1 &&
+					condition_four_dir = checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_employment() == 1 &&
 					checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_checker_color() != computerColor &&
 					checkers_on_board.get_board().get_all_squares(x - 2, y - 2).get_employment() == 0 && end_board(x - 2, y - 2);
 
-				if (mode == "Checkers")
-					conditions_for_Chekers();
+					if (mode == "Checkers")
+						conditions_for_Chekers();
 
-				if (mode == "International")
-					conditions_for_Inter();
+					if (mode == "International")
+						conditions_for_Inter();
 
-				if (condition_first_dir)
-				{
-					if (count == 2)
-						break;
-					x += 2;
-					y += 2;
-					count += 1;
-					continue;
+					if (condition_first_dir)
+					{
+						if (count == 2)
+							break;
+						x += 2;
+						y += 2;
+						count += 1;
+						continue;
+					}
+
+					if (condition_sec_dir)
+					{
+						if (count == 2)
+							break;
+						x -= 2;
+						y += 2;
+						count += 1;
+						continue;
+					}
+
+					if (condition_third_dir)
+					{
+						if (count == 2)
+							break;
+						x += 2;
+						y -= 2;
+						count += 1;
+						continue;
+					}
+
+					if (condition_four_dir)
+					{
+						if (count == 2)
+							break;
+						x -= 2;
+						y -= 2;
+						count += 1;
+						continue;
+					}
 				}
 
-				if (condition_sec_dir)
-				{
-					if (count == 2)
-						break;
-					x -= 2;
-					y += 2;
-					count += 1;
-					continue;
-				}
-
-				if (condition_third_dir)
-				{
-					if (count == 2)
-						break;
-					x += 2;
-					y -= 2;
-					count += 1;
-					continue;
-				}
-
-				if (condition_four_dir)
-				{
-					if (count == 2)
-						break;
-					x -= 2;
-					y -= 2;
-					count += 1;
-					continue;
-				}
+				checkers_who_can_eat[number] = count;
 			}
-			checkers_who_can_eat[number] = count;
 		}
 
 		//выбор шашки, которая может съесть
@@ -1046,64 +1149,193 @@ public:
 			return bot_eat_checker_inter();
 
 		while (count_eat != 0) {
-			x = checkers_on_board.get_checker(bot_number_eat_checker).get_x();
-			y = checkers_on_board.get_checker(bot_number_eat_checker).get_y();
-			if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment() == 1 &&
-				checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != computerColor &&
-				checkers_on_board.get_board().get_all_squares(x + 2, y + 2).get_employment() == 0 && end_board(x + 2, y + 2))
-			{
-				direction = 1;
-				bot_del_eaten_checker();
-				count_eat -= 1;
-				checkers_on_board.get_board().get_all_squares(x, y).square_free();
-				checkers_on_board.get_checker(bot_number_eat_checker).set_position(x * 50 + 157, y * 50 + 157);
-				checkers_on_board.get_board().get_all_squares((x * 50 + 100) / 50, (y * 50 + 100) / 50).square_employment(checkers_on_board.get_checker(bot_number_eat_checker).get_color());
-				Sleep(500);
-				continue;
+
+			if (bot_number_eat_checker != -1) {
+				x = checkers_on_board.get_checker(bot_number_eat_checker).get_x();
+				y = checkers_on_board.get_checker(bot_number_eat_checker).get_y();
+			}
+			else {
+				break;
 			}
 
-			if (checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_employment() == 1 &&
-				checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_checker_color() != computerColor &&
-				checkers_on_board.get_board().get_all_squares(x - 2, y + 2).get_employment() == 0 && end_board(x - 2, y + 2))
-			{
-				direction = 2;
-				bot_del_eaten_checker();
-				count_eat -= 1;
-				checkers_on_board.get_board().get_all_squares(x, y).square_free();
-				checkers_on_board.get_checker(bot_number_eat_checker).set_position(x * 50 - 43, y * 50 + 157);
-				checkers_on_board.get_board().get_all_squares((x * 50 - 100) / 50, (y * 50 + 100) / 50).square_employment(checkers_on_board.get_checker(bot_number_eat_checker).get_color());
-				Sleep(500);
-				continue;
-			}
+			bool cont = false;
 
-			if (checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_employment() == 1 &&
-				checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_checker_color() != computerColor &&
-				checkers_on_board.get_board().get_all_squares(x + 2, y - 2).get_employment() == 0 && end_board(x + 2, y - 2))
-			{
-				direction = 3;
-				bot_del_eaten_checker();
-				count_eat -= 1;
-				checkers_on_board.get_board().get_all_squares(x, y).square_free();
-				checkers_on_board.get_checker(bot_number_eat_checker).set_position(x * 50 + 157, y * 50 - 43);
-				checkers_on_board.get_board().get_all_squares((x * 50 + 100) / 50, (y * 50 - 100) / 50).square_employment(checkers_on_board.get_checker(bot_number_eat_checker).get_color());
-				Sleep(500);
-				continue;
-			}
+			if (checkers_on_board.get_checker(bot_number_eat_checker).get_queen() == 1) {
+				for (int i = 1, j = 1; x + i < 7, y + j < 7; i++, j++) {
+					if (checkers_on_board.get_board().get_all_squares(x + i, y + j).get_employment() == 1 &&
+						checkers_on_board.get_board().get_all_squares(x + i, y + j).get_checker_color() != computerColor &&
+						checkers_on_board.get_board().get_all_squares(x + i + 1, y + j + 1).get_employment() == 0 && end_board(x + i + 1, y + j + 1))
+					{
+						direction = 1;
+						bot_del_eaten_checker();
+						count_eat -= 1;
+						checkers_on_board.get_board().get_all_squares(x, y).square_free();
+						checkers_on_board.get_checker(bot_number_eat_checker).set_position(x * i * 50 + 157, y * j * 50 + 157);
+						checkers_on_board.get_board().get_all_squares((x * i * 50 + 100) / 50, (y * j * 50 + 100) / 50).square_employment(checkers_on_board.get_checker(bot_number_eat_checker).get_color());
+						x = checkers_on_board.get_checker(bot_number_eat_checker).get_x();
+						y = checkers_on_board.get_checker(bot_number_eat_checker).get_y();
+						make_queen();
+						Sleep(500);
+						break;
+						cont = true;
+					}
+				}
 
-			if (checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_employment() == 1 &&
-				checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_checker_color() != computerColor &&
-				checkers_on_board.get_board().get_all_squares(x - 2, y - 2).get_employment() == 0 && end_board(x - 2, y - 2))
-			{
-				direction = 4;
-				bot_del_eaten_checker();
-				count_eat -= 1;
-				checkers_on_board.get_board().get_all_squares(x, y).square_free();
-				checkers_on_board.get_checker(bot_number_eat_checker).set_position(x * 50 - 43, y * 50 - 43);
-				checkers_on_board.get_board().get_all_squares((x * 50 - 100) / 50, (y * 50 - 100) / 50).square_employment(checkers_on_board.get_checker(bot_number_eat_checker).get_color());
-				Sleep(500);
-				continue;
+				if (cont) {
+					cont = false;
+					continue;
+				}
+
+				for (int i = 1, j = 1; x - i > 0, y + j < 7; i++, j++) {
+					if (checkers_on_board.get_board().get_all_squares(x - i, y + j).get_employment() == 1 &&
+						checkers_on_board.get_board().get_all_squares(x - i, y + j).get_checker_color() != computerColor &&
+						checkers_on_board.get_board().get_all_squares(x - i - 1, y + j + 1).get_employment() == 0 && end_board(x - i - 1, y + j + 1))
+					{
+						direction = 1;
+						bot_del_eaten_checker();
+						count_eat -= 1;
+						checkers_on_board.get_board().get_all_squares(x, y).square_free();
+						checkers_on_board.get_checker(bot_number_eat_checker).set_position(x * i * 50 - 43, y * j * 50 + 157);
+						checkers_on_board.get_board().get_all_squares((x * i * 50 - 100) / 50, (y * j * 50 + 100) / 50).square_employment(checkers_on_board.get_checker(bot_number_eat_checker).get_color());
+						x = checkers_on_board.get_checker(bot_number_eat_checker).get_x();
+						y = checkers_on_board.get_checker(bot_number_eat_checker).get_y();
+						make_queen();
+						Sleep(500);
+						break;
+						cont = true;
+					}
+				}
+
+				if (cont) {
+					cont = false;
+					continue;
+				}
+
+				for (int i = 1, j = 1; x + i < 7, y - j > 0; i++, j++) {
+					if (checkers_on_board.get_board().get_all_squares(x + i, y - j).get_employment() == 1 &&
+						checkers_on_board.get_board().get_all_squares(x + i, y - j).get_checker_color() != computerColor &&
+						checkers_on_board.get_board().get_all_squares(x + i + 1, y - j - 1).get_employment() == 0 && end_board(x + i + 1, y - j - 1))
+					{
+						direction = 1;
+						bot_del_eaten_checker();
+						count_eat -= 1;
+						checkers_on_board.get_board().get_all_squares(x, y).square_free();
+						checkers_on_board.get_checker(bot_number_eat_checker).set_position(x * i * 50 + 157, y * j * 50 - 43);
+						checkers_on_board.get_board().get_all_squares((x * i * 50 + 100) / 50, (y * j * 50 - 100) / 50).square_employment(checkers_on_board.get_checker(bot_number_eat_checker).get_color());
+						x = checkers_on_board.get_checker(bot_number_eat_checker).get_x();
+						y = checkers_on_board.get_checker(bot_number_eat_checker).get_y();
+						make_queen();
+						Sleep(500);
+						break;
+						cont = true;
+					}
+				}
+
+				if (cont) {
+					cont = false;
+					continue;
+				}
+
+				for (int i = 1, j = 1; x - i > 0, y - j > 0; i++, j++) {
+					if (checkers_on_board.get_board().get_all_squares(x - i, y - j).get_employment() == 1 &&
+						checkers_on_board.get_board().get_all_squares(x - i, y - j).get_checker_color() != computerColor &&
+						checkers_on_board.get_board().get_all_squares(x - i - 1, y - j - 1).get_employment() == 0 && end_board(x - i - 1, y - j - 1))
+					{
+						direction = 1;
+						bot_del_eaten_checker();
+						count_eat -= 1;
+						checkers_on_board.get_board().get_all_squares(x, y).square_free();
+						checkers_on_board.get_checker(bot_number_eat_checker).set_position(x * i * 50 - 43, y * j * 50 - 43);
+						checkers_on_board.get_board().get_all_squares((x * i * 50 - 100) / 50, (y * j * 50 - 100) / 50).square_employment(checkers_on_board.get_checker(bot_number_eat_checker).get_color());
+						x = checkers_on_board.get_checker(bot_number_eat_checker).get_x();
+						y = checkers_on_board.get_checker(bot_number_eat_checker).get_y();
+						make_queen();
+						Sleep(500);
+						break;
+						cont = true;
+					}
+				}
+
+				if (cont) {
+					cont = false;
+					continue;
+				}
+
+			}
+			else {
+				if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment() == 1 &&
+					checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != computerColor &&
+					checkers_on_board.get_board().get_all_squares(x + 2, y + 2).get_employment() == 0 && end_board(x + 2, y + 2))
+				{
+					direction = 1;
+					bot_del_eaten_checker();
+					count_eat -= 1;
+					checkers_on_board.get_board().get_all_squares(x, y).square_free();
+					checkers_on_board.get_checker(bot_number_eat_checker).set_position(x * 50 + 157, y * 50 + 157);
+					checkers_on_board.get_board().get_all_squares((x * 50 + 100) / 50, (y * 50 + 100) / 50).square_employment(checkers_on_board.get_checker(bot_number_eat_checker).get_color());
+					x = checkers_on_board.get_checker(bot_number_eat_checker).get_x();
+					y = checkers_on_board.get_checker(bot_number_eat_checker).get_y();
+					make_queen();
+					Sleep(500);
+					continue;
+				}
+
+				if (checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_employment() == 1 &&
+					checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_checker_color() != computerColor &&
+					checkers_on_board.get_board().get_all_squares(x - 2, y + 2).get_employment() == 0 && end_board(x - 2, y + 2))
+				{
+					direction = 2;
+					bot_del_eaten_checker();
+					count_eat -= 1;
+					checkers_on_board.get_board().get_all_squares(x, y).square_free();
+					checkers_on_board.get_checker(bot_number_eat_checker).set_position(x * 50 - 43, y * 50 + 157);
+					checkers_on_board.get_board().get_all_squares((x * 50 - 100) / 50, (y * 50 + 100) / 50).square_employment(checkers_on_board.get_checker(bot_number_eat_checker).get_color());
+					x = checkers_on_board.get_checker(bot_number_eat_checker).get_x();
+					y = checkers_on_board.get_checker(bot_number_eat_checker).get_y();
+					make_queen();
+					Sleep(500);
+					continue;
+				}
+
+				if (checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_employment() == 1 &&
+					checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_checker_color() != computerColor &&
+					checkers_on_board.get_board().get_all_squares(x + 2, y - 2).get_employment() == 0 && end_board(x + 2, y - 2))
+				{
+					direction = 3;
+					bot_del_eaten_checker();
+					count_eat -= 1;
+					checkers_on_board.get_board().get_all_squares(x, y).square_free();
+					checkers_on_board.get_checker(bot_number_eat_checker).set_position(x * 50 + 157, y * 50 - 43);
+					checkers_on_board.get_board().get_all_squares((x * 50 + 100) / 50, (y * 50 - 100) / 50).square_employment(checkers_on_board.get_checker(bot_number_eat_checker).get_color());
+					x = checkers_on_board.get_checker(bot_number_eat_checker).get_x();
+					y = checkers_on_board.get_checker(bot_number_eat_checker).get_y();
+					make_queen();
+					Sleep(500);
+					continue;
+				}
+
+				if (checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_employment() == 1 &&
+					checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_checker_color() != computerColor &&
+					checkers_on_board.get_board().get_all_squares(x - 2, y - 2).get_employment() == 0 && end_board(x - 2, y - 2))
+				{
+					direction = 4;
+					bot_del_eaten_checker();
+					count_eat -= 1;
+					checkers_on_board.get_board().get_all_squares(x, y).square_free();
+					checkers_on_board.get_checker(bot_number_eat_checker).set_position(x * 50 - 43, y * 50 - 43);
+					checkers_on_board.get_board().get_all_squares((x * 50 - 100) / 50, (y * 50 - 100) / 50).square_employment(checkers_on_board.get_checker(bot_number_eat_checker).get_color());
+					x = checkers_on_board.get_checker(bot_number_eat_checker).get_x();
+					y = checkers_on_board.get_checker(bot_number_eat_checker).get_y();
+					make_queen();
+					Sleep(500);
+					continue;
+				}
 			}
 		}
+
+		x = checkers_on_board.get_checker(bot_number_eat_checker).get_x();
+		y = checkers_on_board.get_checker(bot_number_eat_checker).get_y();
+		make_queen();
 
 		who_can_move = !who_can_move;
 	}
@@ -1455,14 +1687,28 @@ public:
 			make_queen_inter();
 		else
 		{
-			if (checkers_on_board.get_checker(choiseChecker).get_color() == 0) {
-				if (checkers_on_board.get_checker(choiseChecker).get_y() == 0) {
-					checkers_on_board.get_checker(choiseChecker).make_queen();
+			if (regime == "Computer" && bot_number_eat_checker != -1) {
+				if (checkers_on_board.get_checker(bot_number_eat_checker).get_color() == 0) {
+					if (checkers_on_board.get_checker(bot_number_eat_checker).get_y() == 0) {
+						checkers_on_board.get_checker(bot_number_eat_checker).make_queen();
+					}
+				}
+				if (checkers_on_board.get_checker(bot_number_eat_checker).get_color() == 1) {
+					if (checkers_on_board.get_checker(bot_number_eat_checker).get_y() == 7) {
+						checkers_on_board.get_checker(bot_number_eat_checker).make_queen();
+					}
 				}
 			}
-			if (checkers_on_board.get_checker(choiseChecker).get_color() == 1) {
-				if (checkers_on_board.get_checker(choiseChecker).get_y() == 7) {
-					checkers_on_board.get_checker(choiseChecker).make_queen();
+			else {
+				if (checkers_on_board.get_checker(choiseChecker).get_color() == 0) {
+					if (checkers_on_board.get_checker(choiseChecker).get_y() == 0) {
+						checkers_on_board.get_checker(choiseChecker).make_queen();
+					}
+				}
+				if (checkers_on_board.get_checker(choiseChecker).get_color() == 1) {
+					if (checkers_on_board.get_checker(choiseChecker).get_y() == 7) {
+						checkers_on_board.get_checker(choiseChecker).make_queen();
+					}
 				}
 			}
 		}
