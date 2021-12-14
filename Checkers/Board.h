@@ -92,14 +92,14 @@ public:
 			t[i] = new Text("", font2, 35);
 
 		}
-		t[0]->setString(L"1");
-		t[1]->setString(L"2");
-		t[2]->setString(L"3");
-		t[3]->setString(L"4");
-		t[4]->setString(L"5");
-		t[5]->setString(L"6");
-		t[6]->setString(L"7");
-		t[7]->setString(L"8");
+		t[0]->setString(L"8");
+		t[1]->setString(L"7");
+		t[2]->setString(L"6");
+		t[3]->setString(L"5");
+		t[4]->setString(L"4");
+		t[5]->setString(L"3");
+		t[6]->setString(L"2");
+		t[7]->setString(L"1");
 		t[8]->setString(L"À");
 		t[9]->setString(L"B");
 		t[10]->setString(L"C");

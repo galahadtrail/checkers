@@ -171,6 +171,7 @@ private:
 	size_t count_eat = 0;
 	int how_many = 0;
 	int direction;
+	int queenRequest = -1;
 	bool condition_first_dir;//����������� ��� �������� �����, ��� ����������
 	bool condition_sec_dir;
 	bool condition_third_dir;
@@ -613,7 +614,11 @@ public:
 		if (comp_checker_can_move.size() == 0)//���� ������ ����, �� ��������� _gme
 			return;
 
-		bot_choiseChecker = comp_checker_can_move[rand() % comp_checker_can_move.size()];//����� �����, ������� ����� ������ ���������
+		int size = comp_checker_can_move.size();
+		int random = rand();
+		int randResult = rand() % comp_checker_can_move.size();
+
+		bot_choiseChecker = comp_checker_can_move[randResult];//����� �����, ������� ����� ������ ���������  БАГ БАГ БАГБАГ БАГ БАГБАГ БАГ БАГБАГ БАГ БАГ
 		bot_number_eat_checker = computerSteps == 0 ? -1 : bot_checker_which_eat(comp_checker_can_move);//�������� �����, ������� ����� �������
 		if (bot_number_eat_checker != -1)
 		{
@@ -638,9 +643,11 @@ public:
 			who_can_move = !who_can_move;
 
 
+			queenRequest = 1;
 			x = checkers_on_board.get_checker(bot_choiseChecker).get_x();
 			y = checkers_on_board.get_checker(bot_choiseChecker).get_y();
 			make_queen();
+			queenRequest = -1;
 			Sleep(500);
 			computerSteps += 1;
 			return;
@@ -656,9 +663,11 @@ public:
 			who_can_move = !who_can_move;
 
 
+			queenRequest = 1;
 			x = checkers_on_board.get_checker(bot_choiseChecker).get_x();
 			y = checkers_on_board.get_checker(bot_choiseChecker).get_y();
 			make_queen();
+			queenRequest = -1;
 			Sleep(500);
 			computerSteps += 1;
 			return;
@@ -674,9 +683,11 @@ public:
 			who_can_move = !who_can_move;
 
 
+			queenRequest = 1;
 			x = checkers_on_board.get_checker(bot_choiseChecker).get_x();
 			y = checkers_on_board.get_checker(bot_choiseChecker).get_y();
 			make_queen();
+			queenRequest = -1;
 			Sleep(500);
 			computerSteps += 1;
 			return;
@@ -691,14 +702,21 @@ public:
 			checkers_on_board.get_board().get_all_squares((x * 50 - 50) / 50, (y * 50 - 50) / 50).square_employment(checkers_on_board.get_checker(bot_choiseChecker).get_color());
 			who_can_move = !who_can_move;
 
-
+			queenRequest = 1;
 			x = checkers_on_board.get_checker(bot_choiseChecker).get_x();
 			y = checkers_on_board.get_checker(bot_choiseChecker).get_y();
 			make_queen();
+			queenRequest = -1;
 			Sleep(500);
 			computerSteps += 1;
 			return;
 		}
+
+		queenRequest = 1;
+		x = checkers_on_board.get_checker(bot_choiseChecker).get_x();
+		y = checkers_on_board.get_checker(bot_choiseChecker).get_y();
+		make_queen();
+		queenRequest = -1;
 	}
 
 	// ������������ ����� ����������� � ������������� ������
@@ -1725,15 +1743,32 @@ public:
 			make_queen_inter();
 		else
 		{
-			if (regime == "Computer" && bot_number_eat_checker != -1) {
-				if (checkers_on_board.get_checker(bot_number_eat_checker).get_color() == 0) {
-					if (checkers_on_board.get_checker(bot_number_eat_checker).get_y() == 0) {
-						checkers_on_board.get_checker(bot_number_eat_checker).make_queen();
+			if (regime == "Computer" && (bot_number_eat_checker != -1 || queenRequest == 1)) {
+				
+				
+				if (bot_number_eat_checker != -1) {
+					if (checkers_on_board.get_checker(bot_number_eat_checker).get_color() == 0) {
+						if (checkers_on_board.get_checker(bot_number_eat_checker).get_y() == 0) {
+							checkers_on_board.get_checker(bot_number_eat_checker).make_queen();
+						}
+					}
+					if (checkers_on_board.get_checker(bot_number_eat_checker).get_color() == 1) {
+						if (checkers_on_board.get_checker(bot_number_eat_checker).get_y() == 7) {
+							checkers_on_board.get_checker(bot_number_eat_checker).make_queen();
+						}
 					}
 				}
-				if (checkers_on_board.get_checker(bot_number_eat_checker).get_color() == 1) {
-					if (checkers_on_board.get_checker(bot_number_eat_checker).get_y() == 7) {
-						checkers_on_board.get_checker(bot_number_eat_checker).make_queen();
+				else
+				{
+					if (checkers_on_board.get_checker(bot_choiseChecker).get_color() == 0) {
+						if (checkers_on_board.get_checker(bot_choiseChecker).get_y() == 0) {
+							checkers_on_board.get_checker(bot_choiseChecker).make_queen();
+						}
+					}
+					if (checkers_on_board.get_checker(bot_choiseChecker).get_color() == 1) {
+						if (checkers_on_board.get_checker(bot_choiseChecker).get_y() == 7) {
+							checkers_on_board.get_checker(bot_choiseChecker).make_queen();
+						}
 					}
 				}
 			}
