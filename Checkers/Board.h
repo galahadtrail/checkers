@@ -182,7 +182,7 @@ public:
 		}
 
 		_window.draw(giveUp);
-		_window.draw(suggest);
+		
 
 		if (master) {
 			name.setFillColor(Color::Yellow);
@@ -228,13 +228,23 @@ public:
 		name.setString(L"Имя:   " + semi + "- " + to_string(masterScore));
 		nameGuest.setString(L"Имя гостя:   \n" + assignRegimeFromFile("regime.txt") + "- " + to_string(slaveScore));
 
+		ifstream Is("regime.txt");
+		string str;
+		Is >> str;
+		Is.close();
+		str.resize(3);
+
 		_window.draw(name);
 		_window.draw(nameGuest);
+		if (str == "PvP") {
+			_window.draw(suggest);
+		}
+		
 		string res = "";
 		if (give_up) {
 			res = "give";
 		}
-		if (sugges_t) {
+		if (sugges_t && str == "PvP") {
 			res = "draft";
 		}
 

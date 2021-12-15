@@ -36,9 +36,9 @@ void draftWindow(sf::RenderWindow& window, wstring name) {
     textGuest.setOutlineThickness(1);
     textGuest.setPosition(200, 50);
 
-    textGuest.setString("Player with name: \n" + name + "\nsuggest you to draw\nAre you agree?");
+    textGuest.setString(L"Игрок с именем: \n" + name + L"\nпредлагает вам сдаться\nвы согласны?");
 
-    sf::Text textAgree(L"Yes", font2, 23);
+    sf::Text textAgree(L"Да", font2, 23);
     textAgree.setFillColor(sf::Color::Black);
     textAgree.setStyle(sf::Text::Bold);
     textAgree.setOutlineColor(sf::Color::White);
@@ -46,7 +46,7 @@ void draftWindow(sf::RenderWindow& window, wstring name) {
     textAgree.setPosition(200, 250);
     bool yes = false;
 
-    sf::Text textDis(L"No", font2, 23);
+    sf::Text textDis(L"Нет", font2, 23);
     textDis.setFillColor(sf::Color::Black);
     textDis.setStyle(sf::Text::Bold);
     textDis.setOutlineColor(sf::Color::White);
@@ -232,7 +232,7 @@ void InstructionSettings(sf::RenderWindow& window) {
     bool pvp = false;
     wstring regime = L"";
 
-    sf::Text textGuest(L"Guest name:", font2, 23);
+    sf::Text textGuest(L"Имя гостя:", font2, 23);
     textGuest.setFillColor(sf::Color::Black);
     textGuest.setStyle(sf::Text::Bold);
     textGuest.setOutlineColor(sf::Color::White);
@@ -365,7 +365,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                 } else {
                     guestName += wchar_t(event.text.unicode);
                 }
-                textGuest.setString(L"Guest name: " + guestName);
+                textGuest.setString(L"Имя гостя: " + guestName);
                 textAmount.setString(L"Количество раундов:   " + rounds);
             }
 

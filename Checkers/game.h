@@ -1,3 +1,18 @@
+#pragma once
+#include <SFML/Graphics.hpp>
+#include "Checkers_on_board.h"
+#include "Checkers_on_board_Inter.h"
+#include <string>
+#include <fstream>
+#include "menu.h"
+#include "Square.h"
+#include <Windows.h>
+#include <map>
+#include <algorithm>
+#include <ctime>
+using namespace sf;
+
+
 void winDisplay(RenderWindow& window, wstring guestName)
 {
 	setlocale(LC_ALL, "ru");
@@ -147,9 +162,6 @@ void winDisplay(RenderWindow& window, wstring guestName)
 	}
 }
 
-
-
-
 class Game {
 private:
 	size_t amountSteps = 1;
@@ -158,30 +170,30 @@ private:
 	int how_many = 0;
 	int direction;
 	int queenRequest = -1;
-	bool condition_first_dir;//����������� ��� �������� �����, ��� ����������
+	bool condition_first_dir;//направления для поедания шашки, для компьютера
 	bool condition_sec_dir;
 	bool condition_third_dir;
 	bool condition_four_dir;
 	vector<int> comp_checker_can_move;
-	bool flag = false;//���������� ������, ��� �� ������ ���
-	bool who_can_move = 0;//���� ����, 0 ���� ��� �����, 1 ���� ��� ������
-	bool select_is_made = 0;//0 ���� ������ �� �������, 1 ���� �������
-	int choiseChecker;//����� ��������� ��� ���� �����
-	int bot_choiseChecker;//����� ��������� ��� ���� ����� �����������
-	int bot_number_eat_checker = -1;//����� ��������� ����� �����������, ������� ����� ������
-	std::string mode;//����� ����
-	std::string rounds;//���������� �������
-	std::string colorChecker;//���� �����
-	std::string regime;//PvP ��� ������ ����������
-	std::wstring guestName;// ��� ������� ������, ���� ������ PvP
-	bool computerColor;//���� ����� ���������� 
-	float x;//����� ������ � ������� ����� �� ��� �
-	float y;//����� ������ � ������� ����� �� ��� �
-	Vector2i mousePosition;//������� ����
+	bool flag = false;//переменная хранит, был ли первый ход
+	bool who_can_move = 0;//цвет хода, 0 если ход белых, 1 если ход черных
+	bool select_is_made = 0;//0 если фигуры не выбрана, 1 если выбрана
+	int choiseChecker;//номер выбранной для хода шашки
+	int bot_choiseChecker;//номер выбранной для хода шашки компьютером
+	int bot_number_eat_checker = -1;//номер выбранной шашки компьютером, которая может рубить
+	std::string mode;//режим игры
+	std::string rounds;//количество раундов
+	std::string colorChecker;//Цвет шашек
+	std::string regime;//PvP или против компьютера
+	std::wstring guestName;//Имя второго игрока, если выбран PvP
+	bool computerColor;//цвет шашек компьютера 
+	float x;//номер клетки в которой шашка по оси х
+	float y;//номер клетки в которой шашка по оси у
+	Vector2i mousePosition;//позиция мыши
 	Checkers_on_board checkers_on_board;
 	Checkers_on_board_Inter checkers_on_board_inter;
-	vector <int> who_must_eat;//����� �����, ������� ����� ������
-	//size_t time; //����� ���� � ��������.
+	vector <int> who_must_eat;//храню шашки, которые могут съесть
+	//size_t time; //время игры в секундах.
 public:
 	std::wstring getGuestName() { return guestName; };
 	size_t getAmountSteps() { return amountSteps; }
@@ -192,7 +204,7 @@ public:
 	string getRounds() { return rounds; };
 	void setRounds(string roundS) { rounds = roundS; };
 
-	//��������� �������� ���� �� �����
+	//получение настроек игры из файла
 	void assignValuesFromFile(std::string fileName)
 {
 	ifstream in(fileName);
@@ -230,7 +242,7 @@ public:
 	return;
 }
 
-	//��������� ������ ���� �� �����
+	//получение режима игры из файла
 	void assignRegimeFromFile(std::string fileName)
 	{
 		ifstream in(fileName);
@@ -249,13 +261,13 @@ public:
 		temp = "";
 	}
 
-	//��������� ����� 
+	//положение доски 
 	Checkers_on_board_Inter& get_checkers_on_board_inter() { return this->checkers_on_board_inter; }
 
-	//��������� ����� � ������������� ������
+	//положение доски в международном режиме
 	Checkers_on_board& get_checkers_on_board() { return this->checkers_on_board; }
 
-	//������������ ������� ���� �� ������
+	//установление позиции мыши на экране
 	void set_mouse_position(RenderWindow& _window) {
 		auto current = Mouse::getPosition(_window);
 		double maxSize = mode == "International" ? 10.9 : 8.9;
@@ -278,7 +290,7 @@ public:
 		}
 	}
 
-	//������������ ����� ����� ��� ������� ����
+	//установление цвета шашек для первого хода
 	void set_who_can_move()
 	{
 		if (mode == "Checkers" && flag == false)
@@ -288,7 +300,7 @@ public:
 		}
 	}
 
-	//����� ����� ��� ����
+	//выбор шашки для хода
 	void choise_of_chacker(RenderWindow& _window, Event _event)
 	{
 		if (mode == "International")
@@ -350,19 +362,21 @@ public:
 		}
 	}
 
-	//����� ����� ��� ���� � ������������� ������
+	//выбор шашки для хода в международном режиме
 	void choise_of_chacker_inter(RenderWindow& _window, Event _event)
 	{
 		if (_event.type == sf::Event::MouseButtonPressed) {
 			if (_event.key.code == Mouse::Left) {
 				set_mouse_position(_window);
-				if (_event.type == sf::Event::MouseButtonPressed) {//��� ������ ������ ������
+				if (_event.type == sf::Event::MouseButtonPressed) {//для отмены взятия фигуры
 					if (_event.key.code == Mouse::Left) {
-						if (checkers_on_board_inter.get_checker(choiseChecker).get_select() == 1 && select_is_made == 1) {
-							checkers_on_board_inter.get_checker(choiseChecker).leave_checker();
-							select_is_made = 0;
-							checkers_on_board_inter.delete_backlight();
-							return;
+						if (checkers_on_board_inter.get_size() > choiseChecker) {
+							if (checkers_on_board_inter.get_checker(choiseChecker).get_select() == 1 && select_is_made == 1) {
+								checkers_on_board_inter.get_checker(choiseChecker).leave_checker();
+								select_is_made = 0;
+								checkers_on_board_inter.delete_backlight();
+								return;
+							}
 						}
 					}
 				}
@@ -406,7 +420,7 @@ public:
 		}
 	}
 
-	//��� �����
+	//ход шашки
 	void change_position(RenderWindow& _window, Event _event)
 	{
 		if(mode =="International")
@@ -461,7 +475,7 @@ public:
 		}
 	}
 
-	//��� ����� � ������������� ������
+	//ход шашки в международном режиме
 	void change_position_inter(RenderWindow& _window, Event _event)
 	{
 		if (_event.type == sf::Event::MouseButtonPressed)
@@ -513,7 +527,7 @@ public:
 		}
 	}
 
-	//����� ���� �����, �������� ��������� ����� ������� 
+	//поиск всех шашек, которыми компьютер может сходить 
 	vector<int> bot_choise_chacker()
 	{
 		computerColor = colorChecker == "white" ? 1 : 0;
@@ -554,7 +568,7 @@ public:
 		return checkers_can_make_move;
 	}
 
-	//����� ���� �����, �������� ��������� ����� ������� � ������������� ������
+	//поиск всех шашек, которыми компьютер может сходить в международном режиме
 	vector<int> bot_choise_chacker_inter()
 	{
 		computerColor = colorChecker == "white" ? 1 : 0;
@@ -595,33 +609,33 @@ public:
 		return checkers_can_make_move;
 	}
 
-	//������������ ����� �����������
+	//передвижение шашек компьютером
 	void bot_make_move()
 	{
 		if (mode == "International")
 			return bot_make_move_inter();
 
 		srand(time(NULL));
-		comp_checker_can_move = bot_choise_chacker();//������ �� ����� ���������, ������� ����� �������
-		if (comp_checker_can_move.size() == 0)//���� ������ ����, �� ��������� _gme
+		comp_checker_can_move = bot_choise_chacker();//вектор из шашек компьютер, которые могут сходить
+		if (comp_checker_can_move.size() == 0)//если вектор пуст, то вызовется _gme
 			return;
 
 		int size = comp_checker_can_move.size();
 		int random = rand();
 		int randResult = rand() % comp_checker_can_move.size();
 
-		bot_choiseChecker = comp_checker_can_move[randResult];//����� �����, ������� ����� ������ ���������  БАГ БАГ БАГБАГ БАГ БАГБАГ БАГ БАГБАГ БАГ БАГ
-		bot_number_eat_checker = computerSteps == 0 ? -1 : bot_checker_which_eat(comp_checker_can_move);//�������� �����, ������� ����� �������
+		bot_choiseChecker = comp_checker_can_move[randResult];//номер шашки, которой будет ходить компьютер
+		bot_number_eat_checker = computerSteps == 0 ? -1 : bot_checker_which_eat(comp_checker_can_move);//выбирает шашку, которая может срубить
 		if (bot_number_eat_checker != -1)
 		{
-			return bot_eat_checker();//����� ����� ������
+			return bot_eat_checker();//рубит шашку игрока
 		}
 
 		if (bot_number_eat_checker != -1) {
 			bot_number_eat_checker = -1;
 		}
 
-		//�������� ��� ������������ ����� �����������
+		//алгоритм для передвижения шашки компьютером
 		x = checkers_on_board.get_checker(bot_choiseChecker).get_x();
 		y = checkers_on_board.get_checker(bot_choiseChecker).get_y();
 		if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment() == 0 && end_board(x + 1, y + 1) && computerColor == 1)
@@ -711,22 +725,30 @@ public:
 		queenRequest = -1;
 	}
 
-	// ������������ ����� ����������� � ������������� ������
+	// передвижение шашек компьютером в международном режиме
 	void bot_make_move_inter()
 	{
 		srand(time(NULL));
-		comp_checker_can_move = bot_choise_chacker_inter();//������ �� ����� ���������, ������� ����� �������
-		if (comp_checker_can_move.size() == 0)//���� ������ ����, �� ��������� _gme
+		comp_checker_can_move = bot_choise_chacker_inter();//вектор из шашек компьютер, которые могут сходить
+		if (comp_checker_can_move.size() == 0)//если вектор пуст, то вызовется _gme
 			return;
 
-		bot_choiseChecker = comp_checker_can_move[rand() % comp_checker_can_move.size()];//����� �����, ������� ����� ������ ���������
-		bot_number_eat_checker = computerSteps == 0 ? -1 : bot_checker_which_eat(comp_checker_can_move);//�������� �����, ������� ����� �������
+		int size = comp_checker_can_move.size();
+		int random = rand();
+		int randResult = rand() % comp_checker_can_move.size();
+
+		bot_choiseChecker = comp_checker_can_move[randResult];//номер шашки, которой будет ходить компьютер
+		bot_number_eat_checker = computerSteps == 0 ? -1 : bot_checker_which_eat(comp_checker_can_move);//выбирает шашку, которая может срубить
 		if (bot_number_eat_checker != -1)
 		{
-			return bot_eat_checker_inter();//����� ����� ������
+			return bot_eat_checker_inter();//рубит шашку игрока
 		}
 
-		//�������� ��� ������������ ����� �����������
+		if (bot_number_eat_checker != -1) {
+			bot_number_eat_checker = -1;
+		}
+
+		//алгоритм для передвижения шашки компьютером
 		x = checkers_on_board_inter.get_checker(bot_choiseChecker).get_x();
 		y = checkers_on_board_inter.get_checker(bot_choiseChecker).get_y();
 		if (checkers_on_board_inter.get_board().get_all_squares(x + 1, y + 1).get_employment() == 0 && end_board(x + 1, y + 1) && computerColor == 1)
@@ -738,6 +760,13 @@ public:
 			checkers_on_board_inter.get_checker(bot_choiseChecker).set_position(x * 50 + 107, y * 50 + 107);
 			checkers_on_board_inter.get_board().get_all_squares((x * 50 + 50) / 50, (y * 50 + 50) / 50).square_employment(checkers_on_board_inter.get_checker(bot_choiseChecker).get_color());
 			who_can_move = !who_can_move;
+
+
+			queenRequest = 1;
+			x = checkers_on_board_inter.get_checker(bot_choiseChecker).get_x();
+			y = checkers_on_board_inter.get_checker(bot_choiseChecker).get_y();
+			make_queen();
+			queenRequest = -1;
 			Sleep(500);
 			computerSteps += 1;
 			return;
@@ -751,6 +780,13 @@ public:
 			checkers_on_board_inter.get_checker(bot_choiseChecker).set_position(x * 50 + 7, y * 50 + 107);
 			checkers_on_board_inter.get_board().get_all_squares((x * 50 - 50) / 50, (y * 50 + 50) / 50).square_employment(checkers_on_board_inter.get_checker(bot_choiseChecker).get_color());
 			who_can_move = !who_can_move;
+
+
+			queenRequest = 1;
+			x = checkers_on_board_inter.get_checker(bot_choiseChecker).get_x();
+			y = checkers_on_board_inter.get_checker(bot_choiseChecker).get_y();
+			make_queen();
+			queenRequest = -1;
 			Sleep(500);
 			computerSteps += 1;
 			return;
@@ -764,6 +800,13 @@ public:
 			checkers_on_board_inter.get_checker(bot_choiseChecker).set_position(x * 50 + 107, y * 50 + 7);
 			checkers_on_board_inter.get_board().get_all_squares((x * 50 + 50) / 50, (y * 50 - 50) / 50).square_employment(checkers_on_board_inter.get_checker(bot_choiseChecker).get_color());
 			who_can_move = !who_can_move;
+
+
+			queenRequest = 1;
+			x = checkers_on_board_inter.get_checker(bot_choiseChecker).get_x();
+			y = checkers_on_board_inter.get_checker(bot_choiseChecker).get_y();
+			make_queen();
+			queenRequest = -1;
 			Sleep(500);
 			computerSteps += 1;
 			return;
@@ -777,13 +820,25 @@ public:
 			checkers_on_board_inter.get_checker(bot_choiseChecker).set_position(x * 50 + 7, y * 50 + 7);
 			checkers_on_board_inter.get_board().get_all_squares((x * 50 - 50) / 50, (y * 50 - 50) / 50).square_employment(checkers_on_board_inter.get_checker(bot_choiseChecker).get_color());
 			who_can_move = !who_can_move;
+
+			queenRequest = 1;
+			x = checkers_on_board_inter.get_checker(bot_choiseChecker).get_x();
+			y = checkers_on_board_inter.get_checker(bot_choiseChecker).get_y();
+			make_queen();
+			queenRequest = -1;
 			Sleep(500);
 			computerSteps += 1;
 			return;
 		}
+
+		queenRequest = 1;
+		x = checkers_on_board_inter.get_checker(bot_choiseChecker).get_x();
+		y = checkers_on_board_inter.get_checker(bot_choiseChecker).get_y();
+		make_queen();
+		queenRequest = -1;
 	}
 
-	//������� �������� ����� ����������� ��� ���������� �����
+	//условия поедания шашки компьютером для английских шашек
 	void conditions_for_Chekers()
 	{
 		condition_first_dir = condition_first_dir && computerColor == 1;
@@ -792,7 +847,7 @@ public:
 		condition_four_dir = condition_four_dir && computerColor == 0;
 	}
 
-	//������� �������� ����� ����������� ��� ������������� �����
+	//условия поедания шашки компьютером для международных шашек
 	void conditions_for_Inter()
 	{
 		condition_first_dir = checkers_on_board_inter.get_board().get_all_squares(x + 1, y + 1).get_employment() == 1 &&
@@ -809,15 +864,16 @@ public:
 			checkers_on_board_inter.get_board().get_all_squares(x - 2, y - 2).get_employment() == 0 && end_board(x - 2, y - 2);
 	}
 
-	//�������� �����, ������� ��������� ����� ������� ������������ ���������� �����, �� �� ����� ���� (���� �� ������� ����������� � msx=2 ����� ���� ���������� ����������
+	//выбирает шашку, которой компьютер может срубить максимальное количество шашек, но не более двух (если не ставить ограничение в msx=2 шашки цикл становится бескнечным
 	int bot_checker_which_eat(vector<int> checkers)
 	{
-		map<int, size_t> checkers_who_can_eat;// ���� - ����� �����, �������� - ������� ����� ��� ����� ������ ������
+		map<int, size_t> checkers_who_can_eat;// ключ - номер шашки, значение - сколько шашек она может съесть подряд
 
 		bool firstBlock = false;
 		bool secondBlock = false;
 		bool thirdBlock = false;
 		bool fourthBlock = false;
+		int maxSize = 7;
 
 		for(int number : checkers)
 		{
@@ -825,6 +881,7 @@ public:
 			{
 				x = checkers_on_board_inter.get_checker(number).get_x();
 				y = checkers_on_board_inter.get_checker(number).get_y();
+				maxSize = 9;
 			}
 
 			else
@@ -834,7 +891,7 @@ public:
 			}
 			
 			if (checkers_on_board.get_checker(number).get_queen() == 1) {
-				int count = 0; //���-�� �����, ������� ����� ������� ����� ����������
+				int count = 0; //кол-во шашек, которое может срубить шашка компьютера
 				int cond1index;
 				int cond2index;
 				int cond3index;
@@ -848,25 +905,25 @@ public:
 				bool sec_dir;
 				bool third_dir;
 				bool four_dir;
-				while (condition_first_dir || condition_sec_dir || condition_third_dir || condition_four_dir) //���� ���� ����������� ������� ����� �����������
+				while (condition_first_dir || condition_sec_dir || condition_third_dir || condition_four_dir) //пока есть возможность срубить шашку компьютером
 				{
 					condition_first_dir = 1;
 					condition_sec_dir = 1;
 					condition_third_dir = 1;
 					condition_four_dir = 1;
-					for (int i = 1, j = 1; x + i < 7 && y + j < 7; i++, j++) {
+					for (int i = 1, j = 1; x + i < maxSize && y + j < maxSize; i++, j++) {
 						first_dir = checkers_on_board.get_board().get_all_squares(x + i, y + j).get_employment() == 1 &&
 							checkers_on_board.get_board().get_all_squares(x + i, y + j).get_checker_color() != computerColor &&
 							checkers_on_board.get_board().get_all_squares(x + i + 1, y + j + 1).get_employment() == 0 && end_board(x + i + 1, y + j + 1);
 
 						if (first_dir) {
 							condition_first_dir = false;
-							cond1index = i;/////////////////////����������� �����
+							cond1index = i;
 							break;
 						}
 					}
 
-					for (int i = 1, j = 1; x - i > 0 && y + j < 7; i++, j++) {
+					for (int i = 1, j = 1; x - i > 0 && y + j < maxSize; i++, j++) {
 						sec_dir = checkers_on_board.get_board().get_all_squares(x - i, y + j).get_employment() == 1 &&
 							checkers_on_board.get_board().get_all_squares(x - i, y + j).get_checker_color() != computerColor &&
 							checkers_on_board.get_board().get_all_squares(x - i - 1, y + j + 1).get_employment() == 0 && end_board(x - i - 1, y + j + 1);
@@ -878,7 +935,7 @@ public:
 						}
 					}
 
-					for (int i = 1, j = 1; x + i < 7 && y - j > 0; i++, j++) {
+					for (int i = 1, j = 1; x + i < maxSize && y - j > 0; i++, j++) {
 						third_dir = checkers_on_board.get_board().get_all_squares(x + i, y - j).get_employment() == 1 &&
 							checkers_on_board.get_board().get_all_squares(x + i, y - j).get_checker_color() != computerColor &&
 							checkers_on_board.get_board().get_all_squares(x + i + 1, y - j - 1).get_employment() == 0 && end_board(x + i + 1, y - j - 1);
@@ -991,12 +1048,12 @@ public:
 				checkers_who_can_eat[number] = count;
 			}
 			else {
-				int count = 0; //���-�� �����, ������� ����� ������� ����� ����������
+				int count = 0;
 				condition_first_dir = 1;
 				condition_sec_dir = 1;
 				condition_third_dir = 1;
 				condition_four_dir = 1;
-				while (condition_first_dir || condition_sec_dir || condition_third_dir || condition_four_dir) //���� ���� ����������� ������� ����� �����������
+				while (condition_first_dir || condition_sec_dir || condition_third_dir || condition_four_dir) 
 				{
 					condition_first_dir = checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment() == 1 &&
 					checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != computerColor &&
@@ -1062,7 +1119,7 @@ public:
 			}
 		}
 
-		//����� �����, ������� ����� ������
+		//выбор шашки, которая может съесть
 		int max_val_key = key_number_max_val(checkers_who_can_eat);
 		int max_val = max_val_key > -1 ? checkers_who_can_eat[max_val_key] : 0;
 
@@ -1075,7 +1132,7 @@ public:
 		return -1;
 	}
 
-	//���������� ����� �����, ������� ����� ������� ������������ ���-�� ����� ������
+	//определяет номер шашки, которая может срубить максимальное кол-во шашек игрока
 	int key_number_max_val(map<int, size_t> _checkers_can_eat)
 	{
 		int max_value = 0;
@@ -1091,7 +1148,7 @@ public:
 		return  key_value;
 	}
 
-	//������� ���������� ����������� �����
+	//удаляет срубленную компьютером шашку
 	void bot_del_eaten_checker()
 	{
 		if (mode == "International")
@@ -1153,7 +1210,6 @@ public:
 		}
 	}
 
-
 	void bot_del_eaten_checker_inter()
 	{
 		for (int i = 0; i < checkers_on_board_inter.get_size(); i++) {
@@ -1212,7 +1268,7 @@ public:
 		}
 	}
 
-	//������� ��� ����������������� �������� ����� �����������
+	//функция для непосредственного поедания шашек компьютером
 	void bot_eat_checker()
 	{
 		if (mode == "International")
@@ -1231,7 +1287,7 @@ public:
 			bool cont = false;
 
 			if (checkers_on_board.get_checker(bot_number_eat_checker).get_queen() == 1) {
-				for (int i = 1, j = 1; x + i < 7 && y + j < 7; i++, j++) {//////////////////////////
+				for (int i = 1, j = 1; x + i < 7 && y + j < 7; i++, j++) {
 					if (checkers_on_board.get_board().get_all_squares(x + i, y + j).get_employment() == 1 &&
 						checkers_on_board.get_board().get_all_squares(x + i, y + j).get_checker_color() != computerColor &&
 						checkers_on_board.get_board().get_all_squares(x + i + 1, y + j + 1).get_employment() == 0 && end_board(x + i + 1, y + j + 1))
@@ -1431,72 +1487,219 @@ public:
 		who_can_move = !who_can_move;
 	}
 
-	//������� ��� ����������������� �������� ����� ����������� � ������������� ������
+	//функция для непосредственного поедания шашек компьютером в междунарожном режиме
 	void bot_eat_checker_inter()
 	{
-		while (count_eat != 0) //���� ������������, ���� ���� ����������� ������� ����� ������ 
-		{
-			x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
-			y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
-			if (checkers_on_board_inter.get_board().get_all_squares(x + 1, y + 1).get_employment() == 1 &&
-				checkers_on_board_inter.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != computerColor &&
-				checkers_on_board_inter.get_board().get_all_squares(x + 2, y + 2).get_employment() == 0 && end_board(x + 2, y + 2))
-			{
-				direction = 1;
-				bot_del_eaten_checker();
-				count_eat -= 1;
-				checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
-				checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position(x * 50 + 157, y * 50 + 157);
-				checkers_on_board_inter.get_board().get_all_squares((x * 50 + 100) / 50, (y * 50 + 100) / 50).square_employment(checkers_on_board_inter.get_checker(bot_number_eat_checker).get_color());
-				Sleep(500);
-				continue;
+		while (count_eat != 0) {
+
+			if (bot_number_eat_checker != -1) {
+				x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
+				y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
+			}
+			else {
+				break;
 			}
 
-			if (checkers_on_board_inter.get_board().get_all_squares(x - 1, y + 1).get_employment() == 1 &&
-				checkers_on_board_inter.get_board().get_all_squares(x - 1, y + 1).get_checker_color() != computerColor &&
-				checkers_on_board_inter.get_board().get_all_squares(x - 2, y + 2).get_employment() == 0 && end_board(x - 2, y + 2))
-			{
-				direction = 2;
-				bot_del_eaten_checker();
-				count_eat -= 1;
-				checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
+			bool cont = false;
 
-				checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position(x * 50 - 43, y * 50 + 157);
-				checkers_on_board_inter.get_board().get_all_squares((x * 50 - 100) / 50, (y * 50 + 100) / 50).square_employment(checkers_on_board_inter.get_checker(bot_number_eat_checker).get_color());
-				Sleep(500);
-				continue;
+			if (checkers_on_board_inter.get_checker(bot_number_eat_checker).get_queen() == 1) {
+				for (int i = 1, j = 1; x + i < 9 && y + j < 9; i++, j++) {//////////////////////////
+					if (checkers_on_board_inter.get_board().get_all_squares(x + i, y + j).get_employment() == 1 &&
+						checkers_on_board_inter.get_board().get_all_squares(x + i, y + j).get_checker_color() != computerColor &&
+						checkers_on_board_inter.get_board().get_all_squares(x + i + 1, y + j + 1).get_employment() == 0 && end_board(x + i + 1, y + j + 1))
+					{
+						direction = 1;
+						checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
+						checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position((x + i - 1) * 50 + 57, (y + j - 1) * 50 + 57);
+						x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
+						y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
+
+						bot_del_eaten_checker();
+						count_eat -= 1;
+						checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
+						checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position(x * 50 + 157, y * 50 + 157);
+						checkers_on_board_inter.get_board().get_all_squares((x * 50 + 100) / 50, (y * 50 + 100) / 50).square_employment(checkers_on_board_inter.get_checker(bot_number_eat_checker).get_color());
+						x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
+						y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
+						make_queen();
+						Sleep(500);
+						cont = true;
+						break;
+					}
+				}
+
+				if (cont) {
+					cont = false;
+					continue;
+				}
+
+				for (int i = 1, j = 1; x - i > 0 && y + j < 9; i++, j++) {
+					if (checkers_on_board_inter.get_board().get_all_squares(x - i, y + j).get_employment() == 1 &&
+						checkers_on_board_inter.get_board().get_all_squares(x - i, y + j).get_checker_color() != computerColor &&
+						checkers_on_board_inter.get_board().get_all_squares(x - i - 1, y + j + 1).get_employment() == 0 && end_board(x - i - 1, y + j + 1))
+					{
+						direction = 2;
+						checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
+						checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position((x - i + 1) * 50 + 57, (y + j - 1) * 50 + 57);
+						x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
+						y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
+
+						bot_del_eaten_checker();
+						count_eat -= 1;
+						checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
+						checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position(x * 50 - 43, y * 50 + 157);
+						checkers_on_board_inter.get_board().get_all_squares((x * 50 - 100) / 50, (y * 50 + 100) / 50).square_employment(checkers_on_board_inter.get_checker(bot_number_eat_checker).get_color());
+						x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
+						y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
+						make_queen();
+						Sleep(500);
+						cont = true;
+						break;
+					}
+				}
+
+				if (cont) {
+					cont = false;
+					continue;
+				}
+
+				for (int i = 1, j = 1; x + i < 9 && y - j > 0; i++, j++) {
+					if (checkers_on_board_inter.get_board().get_all_squares(x + i, y - j).get_employment() == 1 &&
+						checkers_on_board_inter.get_board().get_all_squares(x + i, y - j).get_checker_color() != computerColor &&
+						checkers_on_board_inter.get_board().get_all_squares(x + i + 1, y - j - 1).get_employment() == 0 && end_board(x + i + 1, y - j - 1))
+					{
+						direction = 3;
+						checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
+
+						checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position((x + i - 1) * 50 + 57, (y - j + 1) * 50 + 57);
+						x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
+						y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
+
+						bot_del_eaten_checker();
+						count_eat -= 1;
+						checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
+						checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position(x * 50 + 157, y * 50 - 43);
+						checkers_on_board_inter.get_board().get_all_squares((x * 50 + 100) / 50, (y * 50 - 100) / 50).square_employment(checkers_on_board_inter.get_checker(bot_number_eat_checker).get_color());
+						x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
+						y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
+						make_queen();
+						Sleep(500);
+						cont = true;
+						break;
+					}
+				}
+
+				if (cont) {
+					cont = false;
+					continue;
+				}
+
+				for (int i = 1, j = 1; x - i > 0 && y - j > 0; i++, j++) {
+					if (checkers_on_board_inter.get_board().get_all_squares(x - i, y - j).get_employment() == 1 &&
+						checkers_on_board_inter.get_board().get_all_squares(x - i, y - j).get_checker_color() != computerColor &&
+						checkers_on_board_inter.get_board().get_all_squares(x - i - 1, y - j - 1).get_employment() == 0 && end_board(x - i - 1, y - j - 1))
+					{
+						direction = 4;
+						checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
+						checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position((x - i + 1) * 50 + 57, (y - j + 1) * 50 + 57);
+						x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
+						y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
+
+						bot_del_eaten_checker();
+						count_eat -= 1;
+						checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
+						checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position(x * 50 - 43, y * 50 - 43);
+						checkers_on_board_inter.get_board().get_all_squares((x * 50 - 100) / 50, (y * 50 - 100) / 50).square_employment(checkers_on_board_inter.get_checker(bot_number_eat_checker).get_color());
+						x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
+						y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
+						make_queen();
+						Sleep(500);
+						cont = true;
+						break;
+					}
+				}
+
+				if (cont) {
+					cont = false;
+					continue;
+				}
+
 			}
+			else {
+				if (checkers_on_board_inter.get_board().get_all_squares(x + 1, y + 1).get_employment() == 1 &&
+					checkers_on_board_inter.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != computerColor &&
+					checkers_on_board_inter.get_board().get_all_squares(x + 2, y + 2).get_employment() == 0 && end_board(x + 2, y + 2))
+				{
+					direction = 1;
+					bot_del_eaten_checker();
+					count_eat -= 1;
+					checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
+					checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position(x * 50 + 157, y * 50 + 157);
+					checkers_on_board_inter.get_board().get_all_squares((x * 50 + 100) / 50, (y * 50 + 100) / 50).square_employment(checkers_on_board_inter.get_checker(bot_number_eat_checker).get_color());
+					x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
+					y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
+					make_queen();
+					Sleep(500);
+					continue;
+				}
 
-			if (checkers_on_board_inter.get_board().get_all_squares(x + 1, y - 1).get_employment() == 1 &&
-				checkers_on_board_inter.get_board().get_all_squares(x + 1, y - 1).get_checker_color() != computerColor &&
-				checkers_on_board_inter.get_board().get_all_squares(x + 2, y - 2).get_employment() == 0 && end_board(x + 2, y - 2))
-			{
-				direction = 3;
-				bot_del_eaten_checker();
-				count_eat -= 1;
-				checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
+				if (checkers_on_board_inter.get_board().get_all_squares(x - 1, y + 1).get_employment() == 1 &&
+					checkers_on_board_inter.get_board().get_all_squares(x - 1, y + 1).get_checker_color() != computerColor &&
+					checkers_on_board_inter.get_board().get_all_squares(x - 2, y + 2).get_employment() == 0 && end_board(x - 2, y + 2))
+				{
+					direction = 2;
+					bot_del_eaten_checker();
+					count_eat -= 1;
+					checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
+					checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position(x * 50 - 43, y * 50 + 157);
+					checkers_on_board_inter.get_board().get_all_squares((x * 50 - 100) / 50, (y * 50 + 100) / 50).square_employment(checkers_on_board_inter.get_checker(bot_number_eat_checker).get_color());
+					x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
+					y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
+					make_queen();
+					Sleep(500);
+					continue;
+				}
 
-				checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position(x * 50 + 157, y * 50 - 43);
-				checkers_on_board_inter.get_board().get_all_squares((x * 50 + 100) / 50, (y * 50 - 100) / 50).square_employment(checkers_on_board_inter.get_checker(bot_number_eat_checker).get_color());
-				Sleep(500);
-				continue;
-			}
+				if (checkers_on_board_inter.get_board().get_all_squares(x + 1, y - 1).get_employment() == 1 &&
+					checkers_on_board_inter.get_board().get_all_squares(x + 1, y - 1).get_checker_color() != computerColor &&
+					checkers_on_board_inter.get_board().get_all_squares(x + 2, y - 2).get_employment() == 0 && end_board(x + 2, y - 2))
+				{
+					direction = 3;
+					bot_del_eaten_checker();
+					count_eat -= 1;
+					checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
+					checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position(x * 50 + 157, y * 50 - 43);
+					checkers_on_board_inter.get_board().get_all_squares((x * 50 + 100) / 50, (y * 50 - 100) / 50).square_employment(checkers_on_board_inter.get_checker(bot_number_eat_checker).get_color());
+					x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
+					y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
+					make_queen();
+					Sleep(500);
+					continue;
+				}
 
-			if (checkers_on_board_inter.get_board().get_all_squares(x - 1, y - 1).get_employment() == 1 &&
-				checkers_on_board_inter.get_board().get_all_squares(x - 1, y - 1).get_checker_color() != computerColor &&
-				checkers_on_board_inter.get_board().get_all_squares(x - 2, y - 2).get_employment() == 0 && end_board(x - 2, y - 2))
-			{
-				direction = 4;
-				bot_del_eaten_checker();
-				count_eat -= 1;
-				checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
-
-				checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position(x * 50 - 43, y * 50 - 43);
-				checkers_on_board_inter.get_board().get_all_squares((x * 50 - 100) / 50, (y * 50 - 100) / 50).square_employment(checkers_on_board_inter.get_checker(bot_number_eat_checker).get_color());
-				Sleep(500);
-				continue;
+				if (checkers_on_board_inter.get_board().get_all_squares(x - 1, y - 1).get_employment() == 1 &&
+					checkers_on_board_inter.get_board().get_all_squares(x - 1, y - 1).get_checker_color() != computerColor &&
+					checkers_on_board_inter.get_board().get_all_squares(x - 2, y - 2).get_employment() == 0 && end_board(x - 2, y - 2))
+				{
+					direction = 4;
+					bot_del_eaten_checker();
+					count_eat -= 1;
+					checkers_on_board_inter.get_board().get_all_squares(x, y).square_free();
+					checkers_on_board_inter.get_checker(bot_number_eat_checker).set_position(x * 50 - 43, y * 50 - 43);
+					checkers_on_board_inter.get_board().get_all_squares((x * 50 - 100) / 50, (y * 50 - 100) / 50).square_employment(checkers_on_board_inter.get_checker(bot_number_eat_checker).get_color());
+					x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
+					y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
+					make_queen();
+					Sleep(500);
+					continue;
+				}
 			}
 		}
+
+		x = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_x();
+		y = checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y();
+		make_queen();
+
 		who_can_move = !who_can_move;
 	}
 
@@ -1506,7 +1709,7 @@ public:
 		change_position(_window, _event);
 	}
 
-	void square_for_move() {//�������� ����
+	void square_for_move() {   //варианты хода
 		if (mode != "International")
 		{
 			if (checkers_on_board.get_checker(choiseChecker).get_color()) {
@@ -1572,7 +1775,7 @@ public:
 
 	}
 
-	bool chance_eat_checker(bool _color) {//�������� ������ �����
+	bool chance_eat_checker(bool _color) {   //варианты съесть шашку
 		if (mode == "Russian" || mode == "Giveaway")
 			return chance_eat_checker_Russian(_color);
 
@@ -1582,7 +1785,7 @@ public:
 		return chance_eat_checker_Inter(_color);
 	}
 
-	bool chance_eat_checker_Inter(bool _color) {//�������� ������ �����
+	bool chance_eat_checker_Inter(bool _color) {   //варианты съесть шашку
 		bool more = 1;
 		if (checkers_on_board_inter.get_board().get_all_squares(x + 1, y + 1).get_employment()) {
 			if (checkers_on_board_inter.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != _color) {
@@ -1627,7 +1830,7 @@ public:
 		return more;
 	}
 
-	bool chance_eat_checker_Checkers(bool _color) {//�������� ������ �����
+	bool chance_eat_checker_Checkers(bool _color) {   //варианты съесть шашку
 		bool more = 1;
 		if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment()) {
 			if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != _color && _color == true) {
@@ -1672,7 +1875,7 @@ public:
 		return more;
 	}
 
-	bool chance_eat_checker_Russian(bool _color)//�������� ������ �����
+	bool chance_eat_checker_Russian(bool _color)   //варианты съесть шашку
 	{
 		bool more = 1;
 		if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_employment()) {
@@ -1718,7 +1921,7 @@ public:
 		return more;
 	}
 
-	//�������� �����
+	//поедание шашки
 	bool eat_checker()
 	{
 		if (mode == "International")
@@ -1748,7 +1951,7 @@ public:
 		return 0;
 	}
 
-	//�������� ����� � ������������� ������
+	//поедание шашки в международном режиме
 	bool eat_checker_inter()
 	{
 		if ((centre_on_square().x - 57) / 50 - x == 2 || (centre_on_square().x - 57) / 50 - x == -2 &&
@@ -1771,7 +1974,7 @@ public:
 		return 0;
 	}
 
-	//��������, ����� �� ����� ����� ������
+	//проверка, может ли шашка стать дамкой
 	void make_queen()
 	{
 		if (mode == "International")
@@ -1822,22 +2025,53 @@ public:
 		}
 	}
 
-	//��������, ����� �� ����� ����� ������ � ������������� ������
+	//проверка, может ли шашка стать дамкой в международном режиме
 	void make_queen_inter()
 	{
-		if (checkers_on_board_inter.get_checker(choiseChecker).get_color() == 0 && size(who_must_eat) == 0) {
-			if (checkers_on_board_inter.get_checker(choiseChecker).get_y() == 0) {
-				checkers_on_board_inter.get_checker(choiseChecker).make_queen();
+		if (regime == "Computer" && (bot_number_eat_checker != -1 || queenRequest == 1)) {
+
+
+			if (bot_number_eat_checker != -1) {
+				if (checkers_on_board_inter.get_checker(bot_number_eat_checker).get_color() == 0) {
+					if (checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y() == 0) {
+						checkers_on_board_inter.get_checker(bot_number_eat_checker).make_queen();
+					}
+				}
+				if (checkers_on_board_inter.get_checker(bot_number_eat_checker).get_color() == 1) {
+					if (checkers_on_board_inter.get_checker(bot_number_eat_checker).get_y() == 9) {
+						checkers_on_board_inter.get_checker(bot_number_eat_checker).make_queen();
+					}
+				}
+			}
+			else
+			{
+				if (checkers_on_board_inter.get_checker(bot_choiseChecker).get_color() == 0) {
+					if (checkers_on_board_inter.get_checker(bot_choiseChecker).get_y() == 0) {
+						checkers_on_board_inter.get_checker(bot_choiseChecker).make_queen();
+					}
+				}
+				if (checkers_on_board_inter.get_checker(bot_choiseChecker).get_color() == 1) {
+					if (checkers_on_board_inter.get_checker(bot_choiseChecker).get_y() == 9) {
+						checkers_on_board_inter.get_checker(bot_choiseChecker).make_queen();
+					}
+				}
 			}
 		}
-		if (checkers_on_board_inter.get_checker(choiseChecker).get_color() == 1 && size(who_must_eat) == 0) {
-			if (checkers_on_board_inter.get_checker(choiseChecker).get_y() == 9) {
-				checkers_on_board_inter.get_checker(choiseChecker).make_queen();
+		else {
+			if (checkers_on_board_inter.get_checker(choiseChecker).get_color() == 0) {
+				if (checkers_on_board_inter.get_checker(choiseChecker).get_y() == 0) {
+					checkers_on_board_inter.get_checker(choiseChecker).make_queen();
+				}
+			}
+			if (checkers_on_board_inter.get_checker(choiseChecker).get_color() == 1) {
+				if (checkers_on_board_inter.get_checker(choiseChecker).get_y() == 9) {
+					checkers_on_board_inter.get_checker(choiseChecker).make_queen();
+				}
 			}
 		}
 	}
 
-	//�������� ���� �����
+	//варианты хода дамки
 	bool queen_square_for_move(bool _color, int _i1, int _i2, int _i3, int _i4) {
 		if (mode == "Russian" || mode == "Giveaway")
 			return queen_square_for_move_Russian(_color, _i1, _i2, _i3, _i4);
@@ -1847,7 +2081,7 @@ public:
 		return queen_square_for_move_Inter(_color, _i1, _i2, _i3, _i4);
 	}
 
-	//�������� ���� ����� � ������������� ������
+	//варианты хода дамки в международном режиме
 	bool queen_square_for_move_Inter(bool _color, int _i1, int _i2, int _i3, int _i4) {//�������� ���� �����
 		int must_eat = 0;
 		bool can_eat[4] = { _i1, _i2, _i3, _i4 };
@@ -1995,7 +2229,7 @@ public:
 		}
 	}
 
-	//�������� ���� ����� � ���������� ������
+	//варианты хода дамки в английских шашках
 	bool queen_square_for_move_Checkers(bool _color, int _i1, int _i2, int _i3, int _i4) {//�������� ���� �����
 		int must_eat = 0;
 		bool can_eat[4] = { _i1, _i2, _i3, _i4 };
@@ -2143,7 +2377,7 @@ public:
 		}
 	}
 
-	//�������� ���� ����� � ������� ������
+	//варианты хода дамки в русских шашках
 	bool queen_square_for_move_Russian(bool _color, int _i1, int _i2, int _i3, int _i4) {//�������� ���� �����
 		int must_eat = 0;
 		bool can_eat[4] = { _i1, _i2, _i3, _i4 };
@@ -2291,7 +2525,7 @@ public:
 		}
 	}
 
-	//�������� ����� ������
+	//поедание шашки дамкой
 	bool queen_eat_checker()
 	{
 		if (mode == "International")
@@ -2389,7 +2623,7 @@ public:
 		return 0;
 	}
 
-	//�������� ����� ������ � ������������ ������
+	//поедание шашки дамкой в междунароном режиме
 	bool queen_eat_checker_inter() 
 	{
 		int x_eat = 0;
@@ -2484,7 +2718,7 @@ public:
 		return 0;
 	}
 
-	//�������� ������ �� ������� ����
+	//проверка выходы за пределы поля
 	bool end_board(float _x, float _y)
 	{
 		int maxSize = mode == "International" ? 10 : 8;
@@ -2494,7 +2728,7 @@ public:
 		return 0;
 	}
 
-	//�������� ������� �������, ��� ������� ����������� �������
+	//проверка попытки сходить, при наличии возможности срубить
 	bool if_you_can_eat_you_must_eat(bool _color) {
 		if (mode == "International")
 			return if_you_can_eat_you_must_eat_inter(_color);
@@ -2527,7 +2761,7 @@ public:
 			return 0;
 	}
 
-	//�������� ������� �������, ��� ������� ����������� ������� � ������������� ������
+	//проверка попытки сходить, при наличии возможности срубить в международном режиме
 	bool if_you_can_eat_you_must_eat_inter(bool _color)
 	{
 		while (who_must_eat.size() != 0) {
@@ -2556,7 +2790,7 @@ public:
 		return 0;
 	}
 
-	//���� ��������������, ��� ���� ����������� �������
+	//окно предупреждения, что есть возможность срубить
 	void error_choise_checker(RenderWindow& _window, Event _event)
 	{
 		while (1) {
@@ -2580,7 +2814,7 @@ public:
 		}
 	}
 
-	//��������� ������ ������ ����
+	//отрисовка экрана начала игры
 	void start_game(RenderWindow& _window, Event _event, bool& _start) {
 		while (1) {
 			_start = 0;
@@ -2588,7 +2822,7 @@ public:
 		}
 	}
 
-	//��������� ������ ����� ����
+	//отрисовка экрана конца игры
 	bool end_game(RenderWindow &_window, Event _event) {
 		wifstream input("user.txt");
 		wstring bulk;
