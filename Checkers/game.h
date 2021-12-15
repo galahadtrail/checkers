@@ -36,7 +36,7 @@ void winDisplay(RenderWindow & window, wstring guestName)
 	wstring str;
 	input >> str;
 	input.close();
-	sf::Text textMaster(L"�������: ", font2, 40);
+	sf::Text textMaster(L"Победил: ", font2, 40);
 	textMaster.setFillColor(sf::Color::Black);
 	textMaster.setStyle(sf::Text::Bold);
 	textMaster.setOutlineColor(sf::Color::White);
@@ -44,7 +44,7 @@ void winDisplay(RenderWindow & window, wstring guestName)
 	textMaster.setPosition(200, 100);
 
 	bool leave = false;
-	sf::Text no(L"����� � ����", font2, 23);
+	sf::Text no(L"Выйти в меню", font2, 23);
 	no.setFillColor(sf::Color::Black);
 	no.setOutlineColor(sf::Color::White);
 	no.setOutlineThickness(1);
@@ -52,7 +52,7 @@ void winDisplay(RenderWindow & window, wstring guestName)
 	no.setPosition(200, 250);
 
 	bool restart = false;
-	sf::Text res(L"�������", font2, 23);
+	sf::Text res(L"Рестарт", font2, 23);
 	res.setFillColor(sf::Color::Black);
 	res.setOutlineColor(sf::Color::White);
 	res.setOutlineThickness(1);
@@ -144,13 +144,13 @@ void winDisplay(RenderWindow & window, wstring guestName)
 			}
 		}
 		if (masterWin) {
-			textMaster.setString(L"�������: \n" + masterName + L"\n�� ������: " + score);
+			textMaster.setString(L"Победил: \n" + masterName + L"\nсо счётом: " + score);
 		}
 		if (slaveWin) {
-			textMaster.setString(L"�������: \n" + guestName + L"\n�� ������: " + score);
+			textMaster.setString(L"Победил: \n" + guestName + L"\nсо счётом: " + score);
 		}
 		if (paritet) {
-			textMaster.setString(L"�����!\n" + score);
+			textMaster.setString(L"Ничья!\n" + score);
 		}
 		window.clear();
 		window.draw(fon);
@@ -310,11 +310,14 @@ public:
 				set_mouse_position(_window);
 				if (_event.type == sf::Event::MouseButtonPressed) {//��� ������ ������ ������
 					if (_event.key.code == Mouse::Left) {
-						if (checkers_on_board.get_checker(choiseChecker).get_select() == 1 && select_is_made == 1) {
-							checkers_on_board.get_checker(choiseChecker).leave_checker();
-							select_is_made = 0;
-							checkers_on_board.delete_backlight();
-							return;
+						
+						if (checkers_on_board.get_size() > choiseChecker) {
+							if (checkers_on_board.get_checker(choiseChecker).get_select() == 1 && select_is_made == 1) {
+								checkers_on_board.get_checker(choiseChecker).leave_checker();
+								select_is_made = 0;
+								checkers_on_board.delete_backlight();
+								return;
+							}
 						}
 					}
 				}
@@ -821,6 +824,12 @@ public:
 	int bot_checker_which_eat(vector<int> checkers)
 	{
 		map<int, size_t> checkers_who_can_eat;// ���� - ����� �����, �������� - ������� ����� ��� ����� ������ ������
+
+		bool firstBlock = false;
+		bool secondBlock = false;
+		bool thirdBlock = false;
+		bool fourthBlock = false;
+
 		for(int number : checkers)
 		{
 			if(mode == "International")
@@ -912,45 +921,82 @@ public:
 
 					if (!condition_first_dir)
 					{
-						if (count == 1)
+						if (firstBlock) {
+							break;
+						}
+
+						if (count == 2)
 							break;
 						x = x + cond1index + 1;
 						y = y + cond1index + 1;
 						count += 1;
+
+						secondBlock = false;
+						thirdBlock = false;
+						fourthBlock = true;
 						continue;
 					}
 
 					if (!condition_sec_dir)
 					{
-						if (count == 1)
+						if (secondBlock) {
+							break;
+						}
+
+						if (count == 2)
 							break;
 						x = x - cond2index - 1;
 						y = y + cond2index + 1;
 						count += 1;
+						
+						firstBlock = false;
+						thirdBlock = true;
+						fourthBlock = false;
 						continue;
 					}
 
 					if (!condition_third_dir)
 					{
-						if (count == 1)
+						if (thirdBlock) {
+							break;
+						}
+
+						if (count == 2)
 							break;
 						x = x + cond3index + 1;
 						y = y - cond3index - 1;
 						count += 1;
+						
+						secondBlock = true;
+						firstBlock = false;
+						fourthBlock = false;
 						continue;
 					}
 
 					if (!condition_four_dir)
 					{
-						if (count == 1)
+						if (fourthBlock) {
+							break;
+						}
+
+						if (count == 2)
 							break;
 						x = x - cond4index - 1;
 						y = y - cond4index - 1;
 						count += 1;
+						
+						secondBlock = false;
+						thirdBlock = false;
+						firstBlock = true;
 						continue;
 					}
-					if (count == 1)
+					if (count == 2)
 						break;
+
+					if (condition_first_dir && condition_sec_dir && condition_third_dir && condition_four_dir)
+					{
+						break;
+					}
 				}
 
 				checkers_who_can_eat[number] = count;
@@ -1202,7 +1248,7 @@ public:
 						checkers_on_board.get_board().get_all_squares(x + i + 1, y + j + 1).get_employment() == 0 && end_board(x + i + 1, y + j + 1))
 					{
 						direction = 1;
-
+						checkers_on_board.get_board().get_all_squares(x, y).square_free();
 						checkers_on_board.get_checker(bot_number_eat_checker).set_position((x + i - 1) * 50 + 57, (y + j - 1) * 50 + 57);
 						x = checkers_on_board.get_checker(bot_number_eat_checker).get_x();
 						y = checkers_on_board.get_checker(bot_number_eat_checker).get_y();
@@ -1232,7 +1278,7 @@ public:
 						checkers_on_board.get_board().get_all_squares(x - i - 1, y + j + 1).get_employment() == 0 && end_board(x - i - 1, y + j + 1))
 					{
 						direction = 2;
-
+						checkers_on_board.get_board().get_all_squares(x, y).square_free();
 						checkers_on_board.get_checker(bot_number_eat_checker).set_position((x - i + 1) * 50 + 57, (y + j - 1) * 50 + 57);
 						x = checkers_on_board.get_checker(bot_number_eat_checker).get_x();
 						y = checkers_on_board.get_checker(bot_number_eat_checker).get_y();
@@ -1262,7 +1308,7 @@ public:
 						checkers_on_board.get_board().get_all_squares(x + i + 1, y - j - 1).get_employment() == 0 && end_board(x + i + 1, y - j - 1))
 					{
 						direction = 3;
-
+						checkers_on_board.get_board().get_all_squares(x, y).square_free();
 
 						checkers_on_board.get_checker(bot_number_eat_checker).set_position((x + i - 1) * 50 + 57, (y - j + 1) * 50 + 57);
 						x = checkers_on_board.get_checker(bot_number_eat_checker).get_x();
@@ -1293,7 +1339,7 @@ public:
 						checkers_on_board.get_board().get_all_squares(x - i - 1, y - j - 1).get_employment() == 0 && end_board(x - i - 1, y - j - 1))
 					{
 						direction = 4;
-
+						checkers_on_board.get_board().get_all_squares(x, y).square_free();
 						checkers_on_board.get_checker(bot_number_eat_checker).set_position((x - i + 1) * 50 + 57, (y - j + 1) * 50 + 57);
 						x = checkers_on_board.get_checker(bot_number_eat_checker).get_x();
 						y = checkers_on_board.get_checker(bot_number_eat_checker).get_y();
