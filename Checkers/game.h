@@ -167,41 +167,48 @@ private:
 	size_t amountSteps = 1;
 	size_t computerSteps = 0;
 	size_t count_eat = 0;
+
 	int how_many = 0;
 	int direction;
 	int queenRequest = -1;
+	int choiseChecker;//номер выбранной для хода шашки
+	int bot_choiseChecker;//номер выбранной для хода шашки компьютером
+	int bot_number_eat_checker = -1;//номер выбранной шашки компьютером, которая может рубить
+
 	bool condition_first_dir;//направления для поедания шашки, для компьютера
 	bool condition_sec_dir;
 	bool condition_third_dir;
 	bool condition_four_dir;
-	vector<int> comp_checker_can_move;
 	bool flag = false;//переменная хранит, был ли первый ход
 	bool who_can_move = 0;//цвет хода, 0 если ход белых, 1 если ход черных
 	bool select_is_made = 0;//0 если фигуры не выбрана, 1 если выбрана
-	int choiseChecker;//номер выбранной для хода шашки
-	int bot_choiseChecker;//номер выбранной для хода шашки компьютером
-	int bot_number_eat_checker = -1;//номер выбранной шашки компьютером, которая может рубить
+	bool computerColor;//цвет шашек компьютера 
+
 	std::string mode;//режим игры
 	std::string rounds;//количество раундов
 	std::string colorChecker;//Цвет шашек
 	std::string regime;//PvP или против компьютера
 	std::wstring guestName;//Имя второго игрока, если выбран PvP
-	bool computerColor;//цвет шашек компьютера 
+
 	float x;//номер клетки в которой шашка по оси х
 	float y;//номер клетки в которой шашка по оси у
-	Vector2i mousePosition;//позиция мыши
+
 	Checkers_on_board checkers_on_board;
 	Checkers_on_board_Inter checkers_on_board_inter;
+	Vector2i mousePosition;//позиция мыши
+	vector<int> comp_checker_can_move;
 	vector <int> who_must_eat;//храню шашки, которые могут съесть
-	//size_t time; //время игры в секундах.
+
 public:
 	std::wstring getGuestName() { return guestName; };
-	size_t getAmountSteps() { return amountSteps; }
 	std::string getMode() { return mode; }
 	std::string getColor() { return colorChecker; }
 	std::string getRegime() { return regime; }
+	std::string getRounds() { return rounds; };
+
+	size_t getAmountSteps() { return amountSteps; }
 	size_t getWhoCanMove() { return who_can_move; }
-	string getRounds() { return rounds; };
+
 	void setRounds(string roundS) { rounds = roundS; };
 
 	//получение настроек игры из файла
