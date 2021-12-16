@@ -1,0 +1,425 @@
+﻿  main.cpp
+  menu.cpp
+c:\dev\checkersddz\checkers\square.h(15): warning C4018: <: несоответствие типов со знаком и без знака
+c:\dev\checkersddz\checkers\square.h(24): warning C4018: <: несоответствие типов со знаком и без знака
+c:\dev\checkersddz\checkers\board.h(52): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\board.h(52): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\board.h(76): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\board.h(116): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\board.h(118): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\board.h(125): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\board.h(127): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\board.h(203): warning C4018: <: несоответствие типов со знаком и без знака
+c:\dev\checkersddz\checkers\checkers_on_board.h(19): warning C4458: объявление "time" скрывает член класса
+  c:\dev\checkersddz\checkers\checkers_on_board.h(13): note:  см. объявление "Checkers_on_board::time"
+c:\dev\checkersddz\checkers\checkers_on_board.h(74): warning C4458: объявление "time" скрывает член класса
+  c:\dev\checkersddz\checkers\checkers_on_board.h(13): note:  см. объявление "Checkers_on_board::time"
+c:\dev\checkersddz\checkers\checkers_on_board.h(76): warning C4018: <: несоответствие типов со знаком и без знака
+c:\dev\checkersddz\checkers\board_international.h(45): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\board_international.h(45): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\board_international.h(69): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\board_international.h(111): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\board_international.h(113): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\board_international.h(120): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\board_international.h(122): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\board_international.h(196): warning C4018: <: несоответствие типов со знаком и без знака
+c:\dev\checkersddz\checkers\checkers_on_board_inter.h(76): warning C4018: <: несоответствие типов со знаком и без знака
+c:\dev\checkersddz\checkers\game.h(121): warning C4456: объявление "in" скрывает предыдущее локальное объявление
+  c:\dev\checkersddz\checkers\game.h(27): note:  см. объявление "in"
+c:\dev\checkersddz\checkers\game.h(122): warning C4456: объявление "master_score" скрывает предыдущее локальное объявление
+  c:\dev\checkersddz\checkers\game.h(28): note:  см. объявление "master_score"
+c:\dev\checkersddz\checkers\game.h(123): warning C4456: объявление "slave_score" скрывает предыдущее локальное объявление
+  c:\dev\checkersddz\checkers\game.h(29): note:  см. объявление "slave_score"
+c:\dev\checkersddz\checkers\game.h(225): warning C4018: <: несоответствие типов со знаком и без знака
+c:\dev\checkersddz\checkers\game.h(234): warning C4018: <: несоответствие типов со знаком и без знака
+c:\dev\checkersddz\checkers\game.h(243): warning C4018: <: несоответствие типов со знаком и без знака
+c:\dev\checkersddz\checkers\game.h(262): warning C4018: <: несоответствие типов со знаком и без знака
+c:\dev\checkersddz\checkers\game.h(447): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(450): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+c:\dev\checkersddz\checkers\game.h(452): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(453): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(461): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+c:\dev\checkersddz\checkers\game.h(465): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(466): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(499): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(502): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+c:\dev\checkersddz\checkers\game.h(504): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(505): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(513): warning C4244: аргумент: преобразование "T" в "float", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+c:\dev\checkersddz\checkers\game.h(517): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(518): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(548): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(549): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(550): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(554): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(555): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(556): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(560): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(561): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(562): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(566): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(567): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(568): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(589): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(590): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(591): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(595): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(596): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(597): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(601): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(602): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(603): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(607): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(608): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(609): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(625): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(648): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(653): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(655): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(668): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(673): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(675): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(688): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(693): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(695): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(708): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(713): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(715): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(630): warning C4189: size: локальная переменная инициализирована, но не использована
+c:\dev\checkersddz\checkers\game.h(631): warning C4189: random: локальная переменная инициализирована, но не использована
+c:\dev\checkersddz\checkers\game.h(738): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(761): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(766): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(768): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(781): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(786): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(788): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(801): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(806): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(808): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(821): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(826): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(828): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(743): warning C4189: size: локальная переменная инициализирована, но не использована
+c:\dev\checkersddz\checkers\game.h(744): warning C4189: random: локальная переменная инициализирована, но не использована
+c:\dev\checkersddz\checkers\game.h(860): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(861): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(862): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(863): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(864): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(865): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(866): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(867): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(868): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(869): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(870): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(871): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(922): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(923): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(924): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(934): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(935): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(936): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(946): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(947): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(948): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(958): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(959): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(960): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1065): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1066): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1067): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1068): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1069): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1070): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1071): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1072): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1073): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1074): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1075): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1076): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1149): warning C4018: >: несоответствие типов со знаком и без знака
+c:\dev\checkersddz\checkers\game.h(1172): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1173): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1179): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1185): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1191): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1197): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1230): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1231): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1237): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1243): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1249): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1255): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1298): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1299): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1300): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1303): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1310): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1312): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1328): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1329): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1330): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1333): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1340): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1342): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1358): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1359): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1360): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1363): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1371): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1373): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1389): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1390): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1391): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1394): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1401): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1403): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1420): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1421): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1422): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1427): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1429): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1437): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1438): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1439): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1444): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1446): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1454): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1455): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1456): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1461): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1463): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1471): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1472): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1473): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1478): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1480): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1514): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1515): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1516): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1519): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1526): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1528): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1544): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1545): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1546): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1549): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1556): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1558): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1574): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1575): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1576): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1579): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1587): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1589): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1605): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1606): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1607): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1610): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1617): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1619): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1636): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1637): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1638): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1643): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1645): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1653): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1654): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1655): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1660): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1662): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1670): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1671): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1672): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1677): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1679): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1687): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1688): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1689): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1694): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1696): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1723): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1725): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1728): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1730): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1735): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1737): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1740): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1742): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1754): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1756): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1759): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1761): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1766): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1768): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1771): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1773): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1797): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1798): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1799): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1801): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1807): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1808): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1809): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1811): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1817): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1818): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1819): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1821): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1827): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1828): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1829): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1831): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1842): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1843): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1844): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1846): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1852): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1853): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1854): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1856): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1862): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1863): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1864): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1866): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1872): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1873): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1874): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1876): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1888): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1889): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1890): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1892): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1898): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1899): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1900): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1902): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1908): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1909): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1910): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1912): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1918): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1919): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1920): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1922): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1943): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(1969): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2094): warning C4838: преобразование из "int" в "bool" требует сужающего преобразования
+c:\dev\checkersddz\checkers\game.h(2096): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2097): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2101): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2107): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2131): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2132): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2134): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2140): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2164): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2165): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2167): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2173): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2197): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2198): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2200): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2206): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2242): warning C4838: преобразование из "int" в "bool" требует сужающего преобразования
+c:\dev\checkersddz\checkers\game.h(2244): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2245): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2249): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2255): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2279): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2280): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2282): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2288): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2312): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2313): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2315): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2321): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2345): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2346): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2348): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2354): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2390): warning C4838: преобразование из "int" в "bool" требует сужающего преобразования
+c:\dev\checkersddz\checkers\game.h(2392): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2393): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2397): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2403): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2427): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2428): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2430): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2436): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2460): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2461): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2463): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2469): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2493): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2494): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2496): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2502): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2544): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2545): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2562): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2563): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2580): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2581): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2598): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2599): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2618): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2639): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2640): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2657): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2658): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2675): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2676): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2693): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2694): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2713): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\dev\checkersddz\checkers\game.h(2825): warning C4100: _event: неиспользованный формальный параметр
+c:\dev\checkersddz\checkers\game.h(2825): warning C4100: _window: неиспользованный формальный параметр
+c:\dev\checkersddz\checkers\game.h(2929): warning C4456: объявление "out" скрывает предыдущее локальное объявление
+  c:\dev\checkersddz\checkers\game.h(2923): note:  см. объявление "out"
+c:\dev\checkersddz\checkers\game.h(2995): warning C4456: объявление "out" скрывает предыдущее локальное объявление
+  c:\dev\checkersddz\checkers\game.h(2989): note:  см. объявление "out"
+c:\dev\checkersddz\checkers\game.h(2833): warning C4100: _event: неиспользованный формальный параметр
+c:\dev\checkersddz\checkers\menu.cpp(103): warning C4100: window: неиспользованный формальный параметр
+c:\dev\checkersddz\checkers\menu.cpp(481): warning C4100: window: неиспользованный формальный параметр
+c:\dev\checkersddz\checkers\menu.cpp(933): warning C4456: объявление "in" скрывает предыдущее локальное объявление
+  c:\dev\checkersddz\checkers\menu.cpp(862): note:  см. объявление "in"
+c:\dev\checkersddz\checkers\menu.cpp(942): warning C4018: <: несоответствие типов со знаком и без знака
+c:\dev\checkersddz\checkers\menu.cpp(951): warning C4018: <: несоответствие типов со знаком и без знака
+c:\dev\checkersddz\checkers\menu.cpp(960): warning C4018: <: несоответствие типов со знаком и без знака
+c:\dev\checkersddz\checkers\menu.cpp(1004): warning C4456: объявление "input" скрывает предыдущее локальное объявление
+  c:\dev\checkersddz\checkers\menu.cpp(845): note:  см. объявление "input"
+c:\dev\checkersddz\checkers\menu.cpp(1005): warning C4456: объявление "str" скрывает предыдущее локальное объявление
+  c:\dev\checkersddz\checkers\menu.cpp(863): note:  см. объявление "str"
+c:\dev\checkersddz\checkers\menu.cpp(1046): warning C4456: объявление "i" скрывает предыдущее локальное объявление
+  c:\dev\checkersddz\checkers\menu.cpp(940): note:  см. объявление "i"
+c:\dev\checkersddz\checkers\menu.cpp(1046): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода
+c:\dev\checkersddz\checkers\game.h(298): warning C4715: Game::centre_on_square: значение возвращается не при всех путях выполнения
+c:\dev\checkersddz\checkers\game.h(2533): warning C4715: Game::queen_square_for_move_Russian: значение возвращается не при всех путях выполнения
+c:\dev\checkersddz\checkers\game.h(2237): warning C4715: Game::queen_square_for_move_Inter: значение возвращается не при всех путях выполнения
+c:\dev\checkersddz\checkers\game.h(2385): warning C4715: Game::queen_square_for_move_Checkers: значение возвращается не при всех путях выполнения
+c:\dev\checkersddz\checkers\game.h(983): warning C4701: использована потенциально неинициализированная локальная переменная "cond1index"
+c:\dev\checkersddz\checkers\game.h(1001): warning C4701: использована потенциально неинициализированная локальная переменная "cond2index"
+c:\dev\checkersddz\checkers\game.h(1019): warning C4701: использована потенциально неинициализированная локальная переменная "cond3index"
+c:\dev\checkersddz\checkers\game.h(1037): warning C4701: использована потенциально неинициализированная локальная переменная "cond4index"
+  All 889 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  ChessDDZ.vcxproj -> C:\dev\checkersddz\Checkers\Release\ChessDDZ.exe
