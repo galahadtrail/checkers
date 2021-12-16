@@ -1,5 +1,6 @@
 #include "menu.h"
 #include "Game.h"
+#include <utility>
 
 class PauseOption {
 private:
@@ -17,6 +18,87 @@ public:
 };
 
 PauseOption pauseOption;
+
+void draftWindow(sf::RenderWindow& window, wstring name) {
+    window.setActive(false);
+    Texture fon;
+    fon.loadFromFile("images/fon1.jpg");
+    Sprite fons(fon);
+    sf::Font font1;
+    font1.loadFromFile("Font//Deutsch Gothic.ttf");
+    sf::Font font2;
+    font2.loadFromFile("Font//bahnschrift.ttf");
+
+    sf::Text textGuest(L"", font2, 23);
+    textGuest.setFillColor(sf::Color::Black);
+    textGuest.setStyle(sf::Text::Bold);
+    textGuest.setOutlineColor(sf::Color::White);
+    textGuest.setOutlineThickness(1);
+    textGuest.setPosition(200, 50);
+
+    textGuest.setString(L"Игрок с именем: \n" + name + L"\nпредлагает вам сдаться\nвы согласны?");
+
+    sf::Text textAgree(L"Да", font2, 23);
+    textAgree.setFillColor(sf::Color::Black);
+    textAgree.setStyle(sf::Text::Bold);
+    textAgree.setOutlineColor(sf::Color::White);
+    textAgree.setOutlineThickness(1);
+    textAgree.setPosition(200, 250);
+    bool yes = false;
+
+    sf::Text textDis(L"Нет", font2, 23);
+    textDis.setFillColor(sf::Color::Black);
+    textDis.setStyle(sf::Text::Bold);
+    textDis.setOutlineColor(sf::Color::White);
+    textDis.setOutlineThickness(1);
+    textDis.setPosition(200, 300);
+    bool no = false;
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (IntRect(200, 250, 80, 30).contains(Mouse::getPosition(window))) {
+                textAgree.setFillColor(Color::Yellow);
+                if (Mouse::isButtonPressed(Mouse::Left)) {
+                    yes = true;
+                }
+            }
+            else {
+                yes = false;
+                textAgree.setFillColor(sf::Color::Black);
+            }
+            if (IntRect(200, 300, 80, 30).contains(Mouse::getPosition(window))) {
+                textDis.setFillColor(sf::Color::Yellow);
+                if (Mouse::isButtonPressed(Mouse::Left)) {
+                    no = true;
+                }
+            }
+            else {
+                no = false;
+                textDis.setFillColor(sf::Color::Black);
+            }
+        }
+        window.clear();
+        window.draw(fons);
+        window.draw(textGuest);
+        window.draw(textAgree);
+        window.draw(textDis);
+        window.display();
+        if (yes) {
+            ofstream out("score.txt");
+            out << 0 << "|" << 0;
+            out.close();
+            winDisplay(window, assignRegimeFromFile("regime.txt"));
+            return;
+        }
+
+        if (no) {
+            return;
+        }
+    }
+}
 
 void InstructionSettings(sf::RenderWindow& window) {
     Texture fon, whites, blacks;
@@ -150,7 +232,7 @@ void InstructionSettings(sf::RenderWindow& window) {
     bool pvp = false;
     wstring regime = L"";
 
-    sf::Text textGuest(L"Guest name:", font2, 23);
+    sf::Text textGuest(L"Имя гостя:", font2, 23);
     textGuest.setFillColor(sf::Color::Black);
     textGuest.setStyle(sf::Text::Bold);
     textGuest.setOutlineColor(sf::Color::White);
@@ -283,7 +365,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                 } else {
                     guestName += wchar_t(event.text.unicode);
                 }
-                textGuest.setString(L"Guest name: " + guestName);
+                textGuest.setString(L"Имя гостя: " + guestName);
                 textAmount.setString(L"Количество раундов:   " + rounds);
             }
 
@@ -322,6 +404,7 @@ void InstructionSettings(sf::RenderWindow& window) {
                 }
                 if (vsComputer) {
                     regime = L"Computer";
+                    guestName = L"Computer";
                 }
                 if (pvp) {
                     regime = L"PvP";
@@ -396,7 +479,7 @@ void InstructionSettings(sf::RenderWindow& window) {
 }
 
 void UserSettings(sf::RenderWindow& window) {
-    std::locale::global(std::locale(""));
+    std::locale::global(std::locale("ru"));
     std::wstring userName = L"";
     std::wstring theme = L"Default";
 
@@ -758,6 +841,7 @@ void Pause(sf::RenderWindow& window) {
 }
 
 void playGame(sf::RenderWindow& window) {
+    setlocale(LC_ALL, "ru");
     wifstream input("user.txt");
     wstring bulk;
     getline(input, bulk);
@@ -779,13 +863,13 @@ void playGame(sf::RenderWindow& window) {
     string str;
     in >> str;
     in.close();
-    
-    size_t amountSteps = 1;
+
 
     pauseOption.setTime(clock());
 
     while (window.isOpen() && str != "") {
         game.assignValuesFromFile("gameSettings.txt");
+        game.assignRegimeFromFile("regime.txt");
         Event event;
 
 
@@ -797,7 +881,6 @@ void playGame(sf::RenderWindow& window) {
                 newPollThread.wait();
                 window.setActive();
             }
-
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
                 window.setActive(false);
                 Pause(window);
@@ -819,8 +902,21 @@ void playGame(sf::RenderWindow& window) {
                 }
             }
 
+            ofstream out("ligth.txt");
+            out << game.getAmountSteps() << "|" << game.getColor() << "|" << game.getMode();
+            out.close();
+
             game.set_who_can_move();
-            game.make_move(window, event);
+            if(((game.getWhoCanMove() == 0 && game.getColor() == "black") || 
+                (game.getWhoCanMove() == 1 && game.getColor() == "white")) && game.getRegime() == "Computer")
+            {
+				game.bot_make_move();
+            }
+
+            else
+            {
+                game.make_move(window, event);
+            }
         }
 
         if (theme == 0) {
@@ -833,9 +929,6 @@ void playGame(sf::RenderWindow& window) {
         if (start) {
             game.start_game(window, event, start);
         }
-        ofstream out("ligth.txt");
-        out << game.getAmountOfSteps() << "|" << game.getColor() << "|" << game.getMode();
-        out.close();
 
         ifstream in("ligth.txt");
 
@@ -872,27 +965,27 @@ void playGame(sf::RenderWindow& window) {
         string regime = temp;
         bool master = false;
         if (regime != "Checkers") {
-            if (stoi(amountSteps) % 2 == 1 && masterColor == "white") {
+            if (!game.getWhoCanMove() && masterColor == "white") {
                 master = true;
             }
-            else if (stoi(amountSteps) % 2 == 1 && masterColor == "black") {
+            else if (!game.getWhoCanMove() && masterColor == "black") {
                 master = false;
             }
-            else if (stoi(amountSteps) % 2 == 0 && masterColor == "black") {
-                master =true;
+            else if (game.getWhoCanMove() && masterColor == "black") {
+                master = true;
             }
             else {
                 master = false;
             }
         }
         else {
-            if (stoi(amountSteps) % 2 == 1 && masterColor == "black") {
+            if (game.getWhoCanMove() && masterColor == "black") {
                 master = true;
             }
-            else if (stoi(amountSteps) % 2 == 0 && masterColor == "black") {
+            else if (!game.getWhoCanMove() && masterColor == "black") {
                 master = false;
             }
-            else if (stoi(amountSteps) % 2 == 1 && masterColor == "white") {
+            else if (game.getWhoCanMove() && masterColor == "white") {
                 master = false;
             }
             else {
@@ -907,6 +1000,69 @@ void playGame(sf::RenderWindow& window) {
                 game.get_checkers_on_board().draw_checkers(window, pauseOption.getTime(), master);
         else
             game.end_game(window, event);//рисую если конец игры
+
+        ifstream input("draft.txt");
+        string str;
+        input >> str;
+        input.close();
+
+        ifstream is("score.txt");
+        int master_score = 0;
+        int slave_score = 0;
+        is >> master_score;
+        is.ignore(1);
+        is >> slave_score;
+        is.close();
+
+        if (str == "give") {
+            if (master) {
+                slave_score++;
+            }
+            else {
+                master_score++;
+            }
+            int rounds = stoi(game.getRounds());
+            rounds--;
+            ofstream os("score.txt");
+            os << master_score << "|" << slave_score;
+            os.close();
+            game.setRounds(to_string(rounds));
+            winDisplay(window, game.getGuestName());
+            window.close();
+        }
+
+        if (str == "draft") {
+            wstring name;
+            if (master) {
+                wifstream nameInput("user.txt");
+                wstring buffer;
+                wstring semi;
+                do {
+                    buffer += nameInput.get();
+                } while (buffer[buffer.size() - 1] != '|');
+
+                buffer.resize(buffer.size() - 1);
+                bool stopFlag = false;
+                for (int i = 0; i < buffer.size(); i = i++) {
+                    while (buffer[i] != ':' && !stopFlag) {
+                        i++;
+                    }
+
+                    if (!stopFlag) {
+                        stopFlag = true;
+                        i++;
+                    }
+
+                    semi += buffer[i];
+
+                }
+                name = semi;
+            }
+            else {
+                name = assignRegimeFromFile("regime.txt");
+            }
+            draftWindow(window, name);
+        }
 
         window.display();
     }

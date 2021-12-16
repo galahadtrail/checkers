@@ -149,6 +149,34 @@ public:
 		nameGuest.setOutlineThickness(1);
 		nameGuest.setFillColor(sf::Color::Black);
 
+		Text giveUp(L"Сдаться", font1, 23);
+		giveUp.setPosition(650, 200);
+		giveUp.setOutlineColor(sf::Color::White);
+		giveUp.setOutlineThickness(1);
+		giveUp.setFillColor(sf::Color::Black);
+		bool give_up = false;
+
+		Text suggest(L"Предложить\nничью", font1, 23);
+		suggest.setPosition(650, 260);
+		suggest.setOutlineColor(sf::Color::White);
+		suggest.setOutlineThickness(1);
+		suggest.setFillColor(sf::Color::Black);
+		bool sugges_t = false;
+
+		if (IntRect(650, 200, 100, 20).contains(Mouse::getPosition(_window))) {
+			giveUp.setFillColor(sf::Color::Yellow);
+			if (Mouse::isButtonPressed(Mouse::Left)) {
+				give_up = true;
+			}
+		}
+		if (IntRect(650, 260, 100, 50).contains(Mouse::getPosition(_window))) {
+			suggest.setFillColor(sf::Color::Yellow);
+			if (Mouse::isButtonPressed(Mouse::Left)) {
+				sugges_t = true;
+			}
+		}
+		_window.draw(giveUp);
+		
 		if (master) {
 			name.setFillColor(Color::Yellow);
 		}
@@ -195,7 +223,28 @@ public:
 		name.setString(L"Имя:   " + semi + "- " + to_string(masterScore));
 		nameGuest.setString(L"Имя гостя:   \n" + assignRegimeFromFile("regime.txt") + "- " + to_string(slaveScore));
 
+		ifstream Is("regime.txt");
+		string str;
+		Is >> str;
+		Is.close();
+		str.resize(3);
+
 		_window.draw(name);
 		_window.draw(nameGuest);
+		if (str == "PvP") {
+			_window.draw(suggest);
+		}
+
+		string res = "";
+		if (give_up) {
+			res = "give";
+		}
+		if (sugges_t && str == "PvP") {
+			res = "draft";
+		}
+
+		ofstream ouT("draft.txt");
+		ouT << res;
+		ouT.close();
 	}
 };
